@@ -490,11 +490,11 @@
         <!-- Navigation Categories -->
         <nav class="border-t border-paw-border/30 hidden md:block">
             <ul class="flex justify-center space-x-10 py-3 text-sm font-medium text-gray-600">
-                <li><a href="#hero" class="hover:text-paw-accent transition">Tienda</a></li>
+                <li><a href="tienda.html" class="hover:text-paw-accent transition">Tienda</a></li>
                 <li><a href="#categories" class="hover:text-paw-accent transition">Colecciones</a></li>
                 <li><a href="#featured-bundles" class="hover:text-paw-accent transition">Kits</a></li>
                 <li><a href="#fun-facts" class="hover:text-paw-accent transition">Aprende</a></li>
-                <li><a href="#products" class="hover:text-paw-accent transition">Ofertas</a></li>
+                <li><a href="tienda.html" class="hover:text-paw-accent transition">Ofertas</a></li>
             </ul>
         </nav>
     </header>
@@ -508,7 +508,7 @@
                 class="w-full h-auto block">
 
             <!-- Botones clicables invisibles, alineados sobre la imagen -->
-            <a href="#products" aria-label="Comprar Ahora" class="absolute left-[4%] top-[64%] w-[18%] h-[9%]"></a>
+            <a href="tienda.html" aria-label="Comprar Ahora" class="absolute left-[4%] top-[64%] w-[18%] h-[9%]"></a>
             <a href="#categories" aria-label="Explorar Más" class="absolute left-[4%] top-[75%] w-[16%] h-[9%]"></a>
         </div>
 
@@ -556,7 +556,7 @@
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
 
             <!-- Category Card 1: Camas -->
-            <a href="#products" data-category="camas" id="cat-camas"
+            <a href="tienda.html?categoria=camas" data-category="camas" id="cat-camas"
                 class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center">
                 <div class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
                     style="aspect-ratio: 1230/1278;">
@@ -572,7 +572,7 @@
             </a>
 
             <!-- Category Card 2: Juguetes -->
-            <a href="#products" data-category="juguetes" id="cat-juguetes"
+            <a href="tienda.html?categoria=juguetes" data-category="juguetes" id="cat-juguetes"
                 class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center">
                 <div class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
                     style="aspect-ratio: 1230/1278;">
@@ -588,7 +588,7 @@
             </a>
 
             <!-- Category Card 3: Alimento -->
-            <a href="#products" data-category="alimento" id="cat-alimento"
+            <a href="tienda.html?categoria=alimento" data-category="alimento" id="cat-alimento"
                 class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center">
                 <div class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
                     style="aspect-ratio: 1230/1278;">
@@ -604,7 +604,7 @@
             </a>
 
             <!-- Category Card 4: Higiene -->
-            <a href="#products" data-category="higiene" id="cat-higiene"
+            <a href="tienda.html?categoria=higiene" data-category="higiene" id="cat-higiene"
                 class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center">
                 <div class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
                     style="aspect-ratio: 1230/1278;">
@@ -944,22 +944,6 @@
         </div>
     </section>
 
-    <section id="products" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-paw-card/40 rounded-4xl my-12">
-        <div class="flex flex-wrap justify-between items-end gap-x-4 gap-y-2 mb-8 border-b border-paw-border/50 pb-4">
-            <div>
-                <h2 class="font-serif text-[26px] sm:text-[34px] font-bold text-gray-900 leading-tight">〰 Los Más
-                    Vendidos 〰</h2>
-            </div>
-            <a href="#"
-                class="ml-auto whitespace-nowrap text-[15px] font-semibold text-paw-petrol underline underline-offset-4 hover:text-paw-accent transition-colors">Ver
-                todos ➔</a>
-        </div>
-
-        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-12">
-            <!-- Products will be injected here by JS -->
-        </div>
-    </section>
-
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div
             class="w-full bg-[#CD9554] rounded-4xl overflow-hidden shadow-lg relative flex flex-col md:flex-row items-center">
@@ -1139,7 +1123,7 @@
             {
                 id: 3,
                 name: "Snacks Naturales de Pollo y Carne",
-                category: "Premios",
+                category: "Alimento",
                 price: 6000,
                 rating: 4.7,
                 reviews: 74,
@@ -1167,11 +1151,39 @@
             return stars;
         }
 
+        let activeCategory = 'all';
+
+        function filterProducts(category) {
+            activeCategory = category;
+            document.querySelectorAll('.product-filter').forEach(button => {
+                const isActive = button.dataset.filter === category;
+                button.classList.toggle('active', isActive);
+                button.classList.toggle('bg-paw-petrol', isActive);
+                button.classList.toggle('text-white', isActive);
+                button.classList.toggle('bg-white', !isActive);
+                button.classList.toggle('text-gray-600', !isActive);
+            });
+            renderProducts();
+        }
+
         function renderProducts() {
             const grid = document.getElementById('product-grid');
+            if (!grid) return;
+            const count = document.getElementById('product-count');
             grid.innerHTML = '';
 
-            products.forEach(product => {
+            const visibleProducts = activeCategory === 'all'
+                ? products
+                : products.filter(product => product.category.toLowerCase() === activeCategory);
+
+            count.textContent = `${visibleProducts.length} producto${visibleProducts.length === 1 ? '' : 's'}`;
+
+            if (visibleProducts.length === 0) {
+                grid.innerHTML = '<p class="col-span-full text-center text-gray-500 py-10">No hay productos en esta categoría.</p>';
+                return;
+            }
+
+            visibleProducts.forEach(product => {
                 const card = document.createElement('div');
                 card.className = "group bg-white rounded-3xl p-4 flex flex-col h-full shadow-sm border border-gray-100 hover:shadow-xl hover:border-paw-accent/30 transition-all duration-300";
 
@@ -1341,6 +1353,12 @@
 
         // Initialize
         window.onload = function () {
+            document.querySelectorAll('#product-filters [data-filter]').forEach(button => {
+                button.addEventListener('click', () => filterProducts(button.dataset.filter));
+            });
+            document.querySelectorAll('#categories [data-category]').forEach(categoryCard => {
+                categoryCard.addEventListener('click', () => filterProducts(categoryCard.dataset.category));
+            });
             renderProducts();
             updateCartUI();
         }
