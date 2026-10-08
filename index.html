@@ -489,19 +489,12 @@
           </div>
         </div>
 
-        <!-- Search Bar (Desktop) -->
-        <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
-          <input
-            type="text"
-            placeholder="Buscar productos premium..."
-            class="w-full bg-white rounded-full py-2.5 pl-6 pr-10 text-sm focus:outline-none border border-paw-border focus:border-paw-accent transition-colors shadow-sm"
-          />
-          <button
-            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
-          >
-            🔍
-          </button>
-        </div>
+        <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-gray-600">
+          <a href="http://127.0.0.1:3000/tienda.html" class="hover:text-paw-accent transition">Tienda</a>
+          <a href="http://127.0.0.1:3000/index.html#categories" class="hover:text-paw-accent transition">Colecciones</a>
+          <a href="http://127.0.0.1:3000/index.html#fun-facts" class="hover:text-paw-accent transition">Aprende</a>
+          <a href="http://127.0.0.1:3000/tienda.html" class="hover:text-paw-accent transition">Ofertas</a>
+        </nav>
 
         <!-- Icons -->
         <div class="flex items-center space-x-6">
@@ -536,33 +529,6 @@
         </div>
       </div>
 
-      <!-- Navigation Categories -->
-      <nav class="border-t border-paw-border/30 hidden md:block">
-        <ul
-          class="flex justify-center space-x-10 py-3 text-sm font-medium text-gray-600"
-        >
-          <li>
-            <a href="tienda.html" class="hover:text-paw-accent transition"
-              >Tienda</a
-            >
-          </li>
-          <li>
-            <a href="#categories" class="hover:text-paw-accent transition"
-              >Colecciones</a
-            >
-          </li>
-          <li>
-            <a href="#fun-facts" class="hover:text-paw-accent transition"
-              >Aprende</a
-            >
-          </li>
-          <li>
-            <a href="tienda.html" class="hover:text-paw-accent transition"
-              >Ofertas</a
-            >
-          </li>
-        </ul>
-      </nav>
     </header>
 
     <section
