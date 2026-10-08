@@ -1,123 +1,447 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tienda - Malvinas Argentinas S.A.</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
-                    colors: {
-                        paw: {
-                            bg: '#F5F2EB', text: '#2D3748', accent: '#6B7A62',
-                            petrol: '#1F4A40', petrolDark: '#17372F',
-                            card: '#EBE5D9', border: '#DED8CB'
-                        }
-                    },
-                    borderRadius: { '4xl': '2rem' }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+            },
+            colors: {
+              paw: {
+                bg: "#F5F2EB",
+                text: "#2D3748",
+                accent: "#6B7A62",
+                petrol: "#1F4A40",
+                petrolDark: "#17372F",
+                card: "#EBE5D9",
+                border: "#DED8CB",
+              },
+            },
+            borderRadius: { "4xl": "2rem" },
+          },
+        },
+      };
     </script>
-</head>
-<body class="bg-paw-bg text-paw-text font-sans min-h-screen">
+  </head>
+  <body class="bg-paw-bg text-paw-text font-sans min-h-screen">
     <header class="bg-white/95 border-b border-paw-border/50 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-            <a href="index.html" class="font-serif font-bold text-lg sm:text-xl text-paw-petrol">Malvinas Argentinas S.A.</a>
-            <nav class="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600">
-                <a href="index.html" class="hover:text-paw-accent transition">Inicio</a>
-                <a href="index.html#categories" class="hover:text-paw-accent transition">Colecciones</a>
-            </nav>
-            <button onclick="toggleCart()" class="relative flex items-center gap-2 text-gray-600 hover:text-paw-accent transition">
-                <span class="text-xl">🛒</span><span class="hidden sm:inline text-sm font-medium">Carrito</span>
-                <span id="cart-counter" class="absolute -top-2 -right-3 bg-paw-petrol text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">0</span>
-            </button>
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4"
+      >
+        <a
+          href="index.html"
+          class="font-serif font-bold text-lg sm:text-xl text-paw-petrol"
+          >Malvinas Argentinas S.A.</a
+        >
+        <nav
+          class="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600"
+        >
+          <a href="index.html" class="hover:text-paw-accent transition"
+            >Inicio</a
+          >
+          <a
+            href="index.html#categories"
+            class="hover:text-paw-accent transition"
+            >Colecciones</a
+          >
+        </nav>
+        <div class="flex items-center gap-6">
+          <button
+            id="wishlist-button"
+            type="button"
+            onclick="showWishlist()"
+            class="flex items-center gap-2 text-gray-600 hover:text-paw-accent transition"
+          >
+            <svg
+              class="w-6 h-6"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              fill="#f4a7a7"
+              stroke="#d94b4b"
+              stroke-width="2.2"
+            >
+              <path d="M12 21.35 10.55 20C5.4 15.36 2 12.28 2 8.5A4.5 4.5 0 0 1 6.5 4c1.74 0 3.41.81 4.5 2.09A6.06 6.06 0 0 1 15.5 4 4.5 4.5 0 0 1 20 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35Z" />
+            </svg>
+            <span class="hidden sm:inline text-sm font-medium">Deseos</span>
+          </button>
+          <button
+            onclick="toggleCart()"
+            class="relative flex items-center gap-2 text-gray-600 hover:text-paw-accent transition"
+          >
+            <span class="text-xl">🛒</span
+            ><span class="hidden sm:inline text-sm font-medium">Carrito</span>
+            <span
+              id="cart-counter"
+              class="absolute -top-2 -right-3 bg-paw-petrol text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center"
+              >0</span
+            >
+          </button>
         </div>
+      </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div class="text-center mb-10">
-            <p class="text-paw-accent uppercase tracking-[0.2em] text-xs font-bold mb-3">Malvinas Pet Shop</p>
-            <h1 class="font-serif text-4xl sm:text-5xl font-bold text-gray-900">Nuestra tienda</h1>
-            <p class="text-gray-500 mt-3 max-w-xl mx-auto">Todo lo que necesitan para vivir, jugar y sentirse mejor.</p>
-        </div>
+      <div class="text-center mb-10">
+        <p
+          class="text-paw-accent uppercase tracking-[0.2em] text-xs font-bold mb-3"
+        >
+          Malvinas Pet Shop
+        </p>
+        <h1 class="font-serif text-4xl sm:text-5xl font-bold text-gray-900">
+          Nuestra tienda
+        </h1>
+        <p class="text-gray-500 mt-3 max-w-xl mx-auto">
+          Todo lo que necesitan para vivir, jugar y sentirse mejor.
+        </p>
+      </div>
 
-        <div id="product-filters" class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" role="group" aria-label="Filtrar productos por categoría">
-            <button type="button" data-filter="all" class="product-filter active bg-paw-petrol text-white px-5 py-2.5 rounded-full text-sm font-semibold">Todos</button>
-            <button type="button" data-filter="camas" class="product-filter bg-white text-gray-600 border border-paw-border px-5 py-2.5 rounded-full text-sm font-semibold hover:border-paw-accent">Camas</button>
-            <button type="button" data-filter="juguetes" class="product-filter bg-white text-gray-600 border border-paw-border px-5 py-2.5 rounded-full text-sm font-semibold hover:border-paw-accent">Juguetes</button>
-            <button type="button" data-filter="alimento" class="product-filter bg-white text-gray-600 border border-paw-border px-5 py-2.5 rounded-full text-sm font-semibold hover:border-paw-accent">Alimento</button>
-            <button type="button" data-filter="higiene" class="product-filter bg-white text-gray-600 border border-paw-border px-5 py-2.5 rounded-full text-sm font-semibold hover:border-paw-accent">Higiene</button>
-        </div>
+      <div
+        id="product-filters"
+        class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10"
+        role="group"
+        aria-label="Filtrar productos por categoría"
+      >
+        <button
+          type="button"
+          data-filter="all"
+          class="product-filter active bg-paw-petrol text-white px-5 py-2.5 rounded-full text-sm font-semibold"
+        >
+          Todos
+        </button>
+        <button
+          type="button"
+          data-filter="camas"
+          class="product-filter bg-white text-gray-600 border border-paw-border px-5 py-2.5 rounded-full text-sm font-semibold hover:border-paw-accent"
+        >
+          Camas
+        </button>
+        <button
+          type="button"
+          data-filter="juguetes"
+          class="product-filter bg-white text-gray-600 border border-paw-border px-5 py-2.5 rounded-full text-sm font-semibold hover:border-paw-accent"
+        >
+          Juguetes
+        </button>
+        <button
+          type="button"
+          data-filter="alimento"
+          class="product-filter bg-white text-gray-600 border border-paw-border px-5 py-2.5 rounded-full text-sm font-semibold hover:border-paw-accent"
+        >
+          Alimento
+        </button>
+        <button
+          type="button"
+          data-filter="higiene"
+          class="product-filter bg-white text-gray-600 border border-paw-border px-5 py-2.5 rounded-full text-sm font-semibold hover:border-paw-accent"
+        >
+          Higiene
+        </button>
+      </div>
 
-        <div class="flex justify-between items-center mb-5">
-            <h2 class="font-serif text-2xl font-bold text-gray-900">Productos</h2>
-            <span id="product-count" class="text-sm font-medium text-gray-500"></span>
-        </div>
-        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"></div>
+      <div class="flex justify-between items-center mb-5">
+        <h2
+          id="product-heading"
+          class="font-serif text-2xl font-bold text-gray-900"
+        >
+          Productos
+        </h2>
+        <span
+          id="product-count"
+          class="text-sm font-medium text-gray-500"
+        ></span>
+      </div>
+      <div
+        id="product-grid"
+        class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
+      ></div>
     </main>
 
-    <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-50 hidden opacity-0 transition-opacity" onclick="toggleCart()"></div>
-    <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-[420px] bg-[#F8F9FA] shadow-2xl z-[60] translate-x-full transition-transform flex flex-col">
-        <div class="p-6 border-b bg-white flex justify-between items-center">
-            <h2 class="font-serif text-2xl font-bold">🛒 Tu Carrito</h2>
-            <button onclick="toggleCart()" class="text-3xl text-gray-400">&times;</button>
+    <div
+      id="cart-overlay"
+      class="fixed inset-0 bg-black/40 z-50 hidden opacity-0 transition-opacity"
+      onclick="toggleCart()"
+    ></div>
+    <aside
+      id="cart-drawer"
+      class="fixed top-0 right-0 h-full w-full max-w-[420px] bg-[#F8F9FA] shadow-2xl z-[60] translate-x-full transition-transform flex flex-col"
+    >
+      <div class="p-6 border-b bg-white flex justify-between items-center">
+        <h2 class="font-serif text-2xl font-bold">🛒 Tu Carrito</h2>
+        <button onclick="toggleCart()" class="text-3xl text-gray-400">
+          &times;
+        </button>
+      </div>
+      <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-3"></div>
+      <div class="p-6 bg-white border-t space-y-4">
+        <div class="flex justify-between font-bold text-xl">
+          <span>Total</span><span id="cart-total">$0</span>
         </div>
-        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-3"></div>
-        <div class="p-6 bg-white border-t space-y-4">
-            <div class="flex justify-between font-bold text-xl"><span>Total</span><span id="cart-total">$0</span></div>
-            <button onclick="checkoutWhatsApp()" class="w-full bg-[#25D366] text-white font-bold py-4 rounded-2xl">Comprar por WhatsApp 📱</button>
-        </div>
+        <button
+          onclick="checkoutWhatsApp()"
+          class="w-full bg-[#25D366] text-white font-bold py-4 rounded-2xl"
+        >
+          Comprar por WhatsApp 📱
+        </button>
+      </div>
     </aside>
 
     <script>
-        const products = [
-            { id: 1, name: 'Peluche con sonido', category: 'Juguetes', price: 12000, rating: 4.8, reviews: 128, image: 'assets/image-19.jpg' },
-            { id: 2, name: 'Camita 10', category: 'Camas', price: 49990, rating: 4.9, reviews: 96, image: 'assets/image-20.jpg' },
-            { id: 3, name: 'Snacks Naturales de Pollo y Carne', category: 'Alimento', price: 6000, rating: 4.7, reviews: 74, image: 'assets/image-21.jpg' },
-            { id: 4, name: 'Juguete interactivo', category: 'Juguetes', price: 24990, rating: 4.6, reviews: 112, image: 'assets/image-22.jpg' },
-            { id: 5, name: 'Cama nido acolchada', category: 'Camas', price: 42990, rating: 4.8, reviews: 61, image: 'assets/image-08.jpg' },
-            { id: 6, name: 'Colchón refrescante', category: 'Camas', price: 55990, rating: 4.7, reviews: 48, image: 'assets/image-09.jpg' },
-            { id: 7, name: 'Cueva polar para descanso', category: 'Camas', price: 63990, rating: 4.9, reviews: 37, image: 'assets/image-10.jpg' },
-            { id: 8, name: 'Pelota mordillo resistente', category: 'Juguetes', price: 8990, rating: 4.5, reviews: 83, image: 'assets/image-11.jpg' },
-            { id: 9, name: 'Cuerda dental multicolor', category: 'Juguetes', price: 7490, rating: 4.6, reviews: 56, image: 'assets/image-12.jpg' },
-            { id: 10, name: 'Frisbee flexible', category: 'Juguetes', price: 10990, rating: 4.4, reviews: 42, image: 'assets/image-13.jpg' },
-            { id: 11, name: 'Alimento balanceado premium', category: 'Alimento', price: 28990, rating: 4.9, reviews: 104, image: 'assets/image-14.jpg' },
-            { id: 12, name: 'Mix de croquetas para cachorro', category: 'Alimento', price: 21990, rating: 4.8, reviews: 78, image: 'assets/image-16.jpg' },
-            { id: 13, name: 'Galletas de avena y manzana', category: 'Alimento', price: 8490, rating: 4.7, reviews: 65, image: 'assets/image-17.jpg' },
-            { id: 14, name: 'Shampoo hipoalergénico', category: 'Higiene', price: 12990, rating: 4.8, reviews: 52, image: 'assets/image-06.jpg' },
-            { id: 15, name: 'Toallitas húmedas biodegradables', category: 'Higiene', price: 6990, rating: 4.6, reviews: 44, image: 'assets/image-07.jpg' },
-            { id: 16, name: 'Cepillo removedor de pelo', category: 'Higiene', price: 9990, rating: 4.7, reviews: 39, image: 'assets/image-18.jpg' }
-        ];
-        let cart = [];
-        let activeCategory = new URLSearchParams(location.search).get('categoria') || 'all';
-        const money = value => new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(value);
-        const stars = rating => Array.from({ length: 5 }, (_, i) => `<span class="${i < Math.floor(rating) ? 'text-yellow-400' : 'text-gray-200'}">★</span>`).join('');
-
-        function filterProducts(category) {
-            activeCategory = category;
-            document.querySelectorAll('.product-filter').forEach(button => {
-                const selected = button.dataset.filter === category;
-                button.classList.toggle('active', selected);
-                button.classList.toggle('bg-paw-petrol', selected);
-                button.classList.toggle('text-white', selected);
-                button.classList.toggle('bg-white', !selected);
-                button.classList.toggle('text-gray-600', !selected);
-            });
-            renderProducts();
+      const products = [
+        {
+          id: 1,
+          name: "Peluche con sonido",
+          category: "Juguetes",
+          price: 12000,
+          rating: 4.8,
+          reviews: 128,
+          image: "assets/image-19.jpg",
+        },
+        {
+          id: 2,
+          name: "Camita 10",
+          category: "Camas",
+          price: 49990,
+          rating: 4.9,
+          reviews: 96,
+          image: "assets/image-20.jpg",
+        },
+        {
+          id: 3,
+          name: "Snacks Naturales de Pollo y Carne",
+          category: "Alimento",
+          price: 6000,
+          rating: 4.7,
+          reviews: 74,
+          image: "assets/image-21.jpg",
+        },
+        {
+          id: 4,
+          name: "Juguete interactivo",
+          category: "Juguetes",
+          price: 24990,
+          rating: 4.6,
+          reviews: 112,
+          image: "assets/image-22.jpg",
+        },
+        {
+          id: 5,
+          name: "Cama nido acolchada",
+          category: "Camas",
+          price: 42990,
+          rating: 4.8,
+          reviews: 61,
+          image: "assets/image-08.jpg",
+        },
+        {
+          id: 6,
+          name: "Colchón refrescante",
+          category: "Camas",
+          price: 55990,
+          rating: 4.7,
+          reviews: 48,
+          image: "assets/image-09.jpg",
+        },
+        {
+          id: 7,
+          name: "Cueva polar para descanso",
+          category: "Camas",
+          price: 63990,
+          rating: 4.9,
+          reviews: 37,
+          image: "assets/image-10.jpg",
+        },
+        {
+          id: 8,
+          name: "Pelota mordillo resistente",
+          category: "Juguetes",
+          price: 8990,
+          rating: 4.5,
+          reviews: 83,
+          image: "assets/image-11.jpg",
+        },
+        {
+          id: 9,
+          name: "Cuerda dental multicolor",
+          category: "Juguetes",
+          price: 7490,
+          rating: 4.6,
+          reviews: 56,
+          image: "assets/image-12.jpg",
+        },
+        {
+          id: 10,
+          name: "Frisbee flexible",
+          category: "Juguetes",
+          price: 10990,
+          rating: 4.4,
+          reviews: 42,
+          image: "assets/image-13.jpg",
+        },
+        {
+          id: 11,
+          name: "Alimento balanceado premium",
+          category: "Alimento",
+          price: 28990,
+          rating: 4.9,
+          reviews: 104,
+          image: "assets/image-14.jpg",
+        },
+        {
+          id: 12,
+          name: "Mix de croquetas para cachorro",
+          category: "Alimento",
+          price: 21990,
+          rating: 4.8,
+          reviews: 78,
+          image: "assets/image-16.jpg",
+        },
+        {
+          id: 13,
+          name: "Galletas de avena y manzana",
+          category: "Alimento",
+          price: 8490,
+          rating: 4.7,
+          reviews: 65,
+          image: "assets/image-17.jpg",
+        },
+        {
+          id: 14,
+          name: "Shampoo hipoalergénico",
+          category: "Higiene",
+          price: 12990,
+          rating: 4.8,
+          reviews: 52,
+          image: "assets/image-06.jpg",
+        },
+        {
+          id: 15,
+          name: "Toallitas húmedas biodegradables",
+          category: "Higiene",
+          price: 6990,
+          rating: 4.6,
+          reviews: 44,
+          image: "assets/image-07.jpg",
+        },
+        {
+          id: 16,
+          name: "Cepillo removedor de pelo",
+          category: "Higiene",
+          price: 9990,
+          rating: 4.7,
+          reviews: 39,
+          image: "assets/image-18.jpg",
+        },
+      ];
+      let cart = [];
+      const wishlistStorageKey = "malvinasWishlist";
+      let wishlist = [];
+      try {
+        const savedWishlist = JSON.parse(
+          localStorage.getItem(wishlistStorageKey) || "[]",
+        );
+        if (Array.isArray(savedWishlist)) {
+          wishlist = savedWishlist.filter(
+            (id) => Number.isInteger(id) && products.some((item) => item.id === id),
+          );
+        } else {
+          console.error("La lista de deseos guardada tiene un formato inválido.");
         }
+      } catch (error) {
+        console.error("No se pudo cargar la lista de deseos guardada.", error);
+      }
+      let activeCategory =
+        new URLSearchParams(location.search).get("categoria") || "all";
+      let showingWishlist =
+        new URLSearchParams(location.search).get("vista") === "deseos";
+      const money = (value) =>
+        new Intl.NumberFormat("es-AR", {
+          style: "currency",
+          currency: "ARS",
+          maximumFractionDigits: 0,
+        }).format(value);
+      const stars = (rating) =>
+        Array.from(
+          { length: 5 },
+          (_, i) =>
+            `<span class="${i < Math.floor(rating) ? "text-yellow-400" : "text-gray-200"}">★</span>`,
+        ).join("");
 
-        function renderProducts() {
-            const visible = activeCategory === 'all' ? products : products.filter(product => product.category.toLowerCase() === activeCategory);
-            document.getElementById('product-count').textContent = `${visible.length} producto${visible.length === 1 ? '' : 's'}`;
-            document.getElementById('product-grid').innerHTML = visible.map(product => `
+      function filterProducts(category) {
+        activeCategory = category;
+        showingWishlist = false;
+        document.querySelectorAll(".product-filter").forEach((button) => {
+          const selected = button.dataset.filter === category;
+          button.classList.toggle("active", selected);
+          button.classList.toggle("bg-paw-petrol", selected);
+          button.classList.toggle("text-white", selected);
+          button.classList.toggle("bg-white", !selected);
+          button.classList.toggle("text-gray-600", !selected);
+        });
+        renderProducts();
+      }
+
+      function showWishlist() {
+        showingWishlist = true;
+        document.querySelectorAll(".product-filter").forEach((button) => {
+          button.classList.remove("active", "bg-paw-petrol", "text-white");
+          button.classList.add("bg-white", "text-gray-600");
+        });
+        history.replaceState(null, "", "tienda.html?vista=deseos");
+        renderProducts();
+        document.getElementById("product-grid").scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      function renderProducts() {
+        const visible = showingWishlist
+          ? products.filter((product) => wishlist.includes(product.id))
+          : activeCategory === "all"
+            ? products
+            : products.filter(
+                (product) => product.category.toLowerCase() === activeCategory,
+              );
+        document.getElementById("product-heading").textContent = showingWishlist
+          ? "Mis deseos"
+          : "Productos";
+        document.getElementById("product-count").textContent =
+          `${visible.length} producto${visible.length === 1 ? "" : "s"}`;
+        if (showingWishlist && visible.length === 0) {
+          document.getElementById("product-grid").innerHTML =
+            '<p class="col-span-full text-center text-gray-500 py-10">Todavía no guardaste productos en Deseos.</p>';
+          return;
+        }
+        document.getElementById("product-grid").innerHTML = visible
+          .map(
+            (product) => {
+              const isSaved = wishlist.includes(product.id);
+              return `
                 <article class="group bg-white rounded-3xl p-4 flex flex-col shadow-sm border border-gray-100 hover:shadow-xl transition">
                     <div class="relative bg-gray-50 rounded-2xl aspect-square mb-4 overflow-hidden">
                         <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <button
+                          type="button"
+                          onclick="toggleWishlist(${product.id})"
+                          aria-label="${isSaved ? "Quitar de" : "Agregar a"} Deseos: ${product.name}"
+                          aria-pressed="${isSaved}"
+                          class="absolute top-3 right-3 w-9 h-9 bg-white/90 backdrop-blur rounded-full flex items-center justify-center transition-all z-10 shadow-sm hover:scale-110"
+                        >
+                          <svg class="w-5 h-5" viewBox="0 0 24 24" aria-hidden="true" fill="${isSaved ? "#f4a7a7" : "none"}" stroke="#d94b4b" stroke-width="2.2">
+                            <path d="M12 21.35 10.55 20C5.4 15.36 2 12.28 2 8.5A4.5 4.5 0 0 1 6.5 4c1.74 0 3.41.81 4.5 2.09A6.06 6.06 0 0 1 15.5 4 4.5 4.5 0 0 1 20 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35Z" />
+                          </svg>
+                        </button>
                     </div>
                     <h3 class="font-bold text-gray-900 leading-snug mb-2">${product.name}</h3>
                     <div class="flex items-center gap-1 mb-4">${stars(product.rating)} <span class="text-[10px] text-gray-400">(${product.reviews})</span></div>
@@ -125,47 +449,103 @@
                         <strong class="text-lg block mb-3">${money(product.price)}</strong>
                         <button onclick="addToCart(${product.id})" class="w-full bg-green-50 hover:bg-paw-accent hover:text-white text-paw-accent font-bold py-2.5 rounded-xl border border-green-200 transition">🛒 AGREGAR</button>
                     </div>
-                </article>`).join('');
-        }
+                </article>`;
+            },
+          )
+          .join("");
+      }
 
-        function addToCart(id) {
-            const product = products.find(item => item.id === id);
-            const existing = cart.find(item => item.id === id);
-            existing ? existing.qty++ : cart.push({ ...product, qty: 1 });
-            updateCart();
-            toggleCart(true);
+      function toggleWishlist(id) {
+        wishlist = wishlist.includes(id)
+          ? wishlist.filter((savedId) => savedId !== id)
+          : [...wishlist, id];
+        try {
+          localStorage.setItem(wishlistStorageKey, JSON.stringify(wishlist));
+        } catch (error) {
+          console.error("No se pudo guardar la lista de deseos.", error);
+          alert("No se pudo guardar el producto en Deseos. Revisá la configuración del navegador.");
         }
+        renderProducts();
+      }
 
-        function updateCart() {
-            document.getElementById('cart-counter').textContent = cart.reduce((sum, item) => sum + item.qty, 0);
-            document.getElementById('cart-items').innerHTML = cart.length ? cart.map(item => `
+      function addToCart(id) {
+        const product = products.find((item) => item.id === id);
+        const existing = cart.find((item) => item.id === id);
+        existing ? existing.qty++ : cart.push({ ...product, qty: 1 });
+        updateCart();
+        toggleCart(true);
+      }
+
+      function updateCart() {
+        document.getElementById("cart-counter").textContent = cart.reduce(
+          (sum, item) => sum + item.qty,
+          0,
+        );
+        document.getElementById("cart-items").innerHTML = cart.length
+          ? cart
+              .map(
+                (item) => `
                 <div class="flex gap-3 bg-white p-3 rounded-xl">
                     <img src="${item.image}" alt="" class="w-16 h-16 rounded-lg object-cover">
                     <div class="flex-1"><strong class="text-sm">${item.name}</strong><p>${item.qty} x ${money(item.price)}</p></div>
                     <button onclick="removeItem(${item.id})" class="text-red-400">×</button>
-                </div>`).join('') : '<p class="text-center text-gray-500 py-10">Tu carrito está vacío.</p>';
-            document.getElementById('cart-total').textContent = money(cart.reduce((sum, item) => sum + item.price * item.qty, 0));
-        }
+                </div>`,
+              )
+              .join("")
+          : '<p class="text-center text-gray-500 py-10">Tu carrito está vacío.</p>';
+        document.getElementById("cart-total").textContent = money(
+          cart.reduce((sum, item) => sum + item.price * item.qty, 0),
+        );
+      }
 
-        function removeItem(id) { cart = cart.filter(item => item.id !== id); updateCart(); }
-        function toggleCart(forceOpen = null) {
-            const drawer = document.getElementById('cart-drawer'), overlay = document.getElementById('cart-overlay');
-            const open = forceOpen === null ? drawer.classList.contains('translate-x-full') : forceOpen;
-            drawer.classList.toggle('translate-x-full', !open);
-            overlay.classList.toggle('hidden', !open);
-            requestAnimationFrame(() => overlay.classList.toggle('opacity-0', !open));
-        }
-        function checkoutWhatsApp() {
-            if (!cart.length) return;
-            const text = cart.map(item => `${item.qty}x ${item.name} - ${money(item.price * item.qty)}`).join('\n');
-            window.open(`https://wa.me/?text=${encodeURIComponent(`Hola! Quisiera realizar este pedido:\n\n${text}`)}`, '_blank');
-        }
-        document.querySelectorAll('#product-filters [data-filter]').forEach(button => button.addEventListener('click', () => {
-            filterProducts(button.dataset.filter);
-            history.replaceState(null, '', `tienda.html${button.dataset.filter === 'all' ? '' : `?categoria=${button.dataset.filter}`}`);
-        }));
-        filterProducts(activeCategory);
+      function removeItem(id) {
+        cart = cart.filter((item) => item.id !== id);
         updateCart();
+      }
+      function toggleCart(forceOpen = null) {
+        const drawer = document.getElementById("cart-drawer"),
+          overlay = document.getElementById("cart-overlay");
+        const open =
+          forceOpen === null
+            ? drawer.classList.contains("translate-x-full")
+            : forceOpen;
+        drawer.classList.toggle("translate-x-full", !open);
+        overlay.classList.toggle("hidden", !open);
+        requestAnimationFrame(() =>
+          overlay.classList.toggle("opacity-0", !open),
+        );
+      }
+      function checkoutWhatsApp() {
+        if (!cart.length) return;
+        const text = cart
+          .map(
+            (item) =>
+              `${item.qty}x ${item.name} - ${money(item.price * item.qty)}`,
+          )
+          .join("\n");
+        window.open(
+          `https://wa.me/?text=${encodeURIComponent(`Hola! Quisiera realizar este pedido:\n\n${text}`)}`,
+          "_blank",
+        );
+      }
+      document
+        .querySelectorAll("#product-filters [data-filter]")
+        .forEach((button) =>
+          button.addEventListener("click", () => {
+            filterProducts(button.dataset.filter);
+            history.replaceState(
+              null,
+              "",
+              `tienda.html${button.dataset.filter === "all" ? "" : `?categoria=${button.dataset.filter}`}`,
+            );
+          }),
+        );
+      if (showingWishlist) {
+        showWishlist();
+      } else {
+        filterProducts(activeCategory);
+      }
+      updateCart();
     </script>
-</body>
+  </body>
 </html>

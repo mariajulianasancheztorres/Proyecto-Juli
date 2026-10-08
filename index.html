@@ -1,1195 +1,1736 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Malvinas Argentinas S.A. - Pet Shop Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@500;600&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,500&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,500&display=swap"
+      rel="stylesheet"
+    />
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        paw: {
-                            bg: '#F5F2EB', // Cream background
-                            text: '#2D3748', // Dark slate text
-                            accent: '#6B7A62', // Sage green accent
-                            accentDark: '#4A5542',
-                            sage: '#6B7A62',
-                            sageSoft: '#EEF1EA',
-                            sageLight: '#B9C6AF',
-                            petrol: '#1F4A40',
-                            petrolDark: '#17372F',
-                            card: '#EBE5D9', // Slightly darker cream for cards
-                            border: '#DED8CB'
-                        }
-                    },
-                    borderRadius: {
-                        '4xl': '2rem',
-                        '5xl': '2.5rem',
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+            },
+            colors: {
+              paw: {
+                bg: "#F5F2EB", // Cream background
+                text: "#2D3748", // Dark slate text
+                accent: "#6B7A62", // Sage green accent
+                accentDark: "#4A5542",
+                sage: "#6B7A62",
+                sageSoft: "#EEF1EA",
+                sageLight: "#B9C6AF",
+                petrol: "#1F4A40",
+                petrolDark: "#17372F",
+                card: "#EBE5D9", // Slightly darker cream for cards
+                border: "#DED8CB",
+              },
+            },
+            borderRadius: {
+              "4xl": "2rem",
+              "5xl": "2.5rem",
+            },
+          },
+        },
+      };
     </script>
     <style>
-        /* Custom scrollbar for horizontal scrolling sections */
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
+      /* Custom scrollbar for horizontal scrolling sections */
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .blob-shape {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        animation: morph 8s ease-in-out infinite;
+      }
+
+      @keyframes morph {
+        0%,
+        100% {
+          border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
         }
 
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        34% {
+          border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
         }
 
-        .blob-shape {
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            animation: morph 8s ease-in-out infinite;
+        67% {
+          border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+        }
+      }
+
+      @keyframes dance-spin {
+        0% {
+          transform: rotateY(0deg) rotateZ(0deg) translateY(0);
         }
 
-        @keyframes morph {
-
-            0%,
-            100% {
-                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            }
-
-            34% {
-                border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
-            }
-
-            67% {
-                border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
-            }
+        25% {
+          transform: rotateY(90deg) rotateZ(5deg) translateY(-10px);
         }
 
-        @keyframes dance-spin {
-            0% {
-                transform: rotateY(0deg) rotateZ(0deg) translateY(0);
-            }
-
-            25% {
-                transform: rotateY(90deg) rotateZ(5deg) translateY(-10px);
-            }
-
-            50% {
-                transform: rotateY(180deg) rotateZ(0deg) translateY(0);
-            }
-
-            75% {
-                transform: rotateY(270deg) rotateZ(-5deg) translateY(-10px);
-            }
-
-            100% {
-                transform: rotateY(360deg) rotateZ(0deg) translateY(0);
-            }
+        50% {
+          transform: rotateY(180deg) rotateZ(0deg) translateY(0);
         }
 
-        @keyframes walk-trail {
-            0% {
-                opacity: 0;
-                transform: translateY(10px) scale(0.8);
-            }
-
-            20% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-
-            80% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(10px) scale(0.8);
-            }
+        75% {
+          transform: rotateY(270deg) rotateZ(-5deg) translateY(-10px);
         }
 
-        .pet-dancer {
-            display: inline-block;
-            animation: dance-spin 4s linear infinite;
-            transform-style: preserve-3d;
+        100% {
+          transform: rotateY(360deg) rotateZ(0deg) translateY(0);
+        }
+      }
+
+      @keyframes walk-trail {
+        0% {
+          opacity: 0;
+          transform: translateY(10px) scale(0.8);
         }
 
-        .paw-print {
-            opacity: 0;
-            animation: walk-trail 3s linear infinite;
+        20% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
         }
 
-        /* Staggered animation delays for the trail effect */
-        .paw-1 {
-            animation-delay: 0s;
-            left: 5%;
+        80% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
         }
 
-        .paw-2 {
-            animation-delay: 0.3s;
-            left: 15%;
-            top: 20px;
+        100% {
+          opacity: 0;
+          transform: translateY(10px) scale(0.8);
+        }
+      }
+
+      .pet-dancer {
+        display: inline-block;
+        animation: dance-spin 4s linear infinite;
+        transform-style: preserve-3d;
+      }
+
+      .paw-print {
+        opacity: 0;
+        animation: walk-trail 3s linear infinite;
+      }
+
+      /* Staggered animation delays for the trail effect */
+      .paw-1 {
+        animation-delay: 0s;
+        left: 5%;
+      }
+
+      .paw-2 {
+        animation-delay: 0.3s;
+        left: 15%;
+        top: 20px;
+      }
+
+      .paw-3 {
+        animation-delay: 0.6s;
+        left: 25%;
+      }
+
+      .paw-4 {
+        animation-delay: 0.9s;
+        left: 35%;
+        top: 20px;
+      }
+
+      .paw-5 {
+        animation-delay: 1.2s;
+        left: 45%;
+      }
+
+      .paw-6 {
+        animation-delay: 1.5s;
+        left: 55%;
+        top: 20px;
+      }
+
+      .paw-7 {
+        animation-delay: 1.8s;
+        left: 65%;
+      }
+
+      .paw-8 {
+        animation-delay: 2.1s;
+        left: 75%;
+        top: 20px;
+      }
+
+      .paw-9 {
+        animation-delay: 2.4s;
+        left: 85%;
+      }
+
+      .paw-10 {
+        animation-delay: 2.7s;
+        left: 95%;
+        top: 20px;
+      }
+
+      /* Header Paws */
+      .hpaw-1 {
+        animation-delay: 0s;
+        left: 2%;
+      }
+
+      .hpaw-2 {
+        animation-delay: 0.2s;
+        left: 7%;
+        top: 15px;
+      }
+
+      .hpaw-3 {
+        animation-delay: 0.4s;
+        left: 12%;
+      }
+
+      .hpaw-4 {
+        animation-delay: 0.6s;
+        left: 17%;
+        top: 15px;
+      }
+
+      .hpaw-5 {
+        animation-delay: 0.8s;
+        left: 22%;
+      }
+
+      .hpaw-6 {
+        animation-delay: 1s;
+        left: 27%;
+        top: 15px;
+      }
+
+      .hpaw-7 {
+        animation-delay: 1.2s;
+        left: 32%;
+      }
+
+      .hpaw-8 {
+        animation-delay: 1.4s;
+        left: 37%;
+        top: 15px;
+      }
+
+      .hpaw-9 {
+        animation-delay: 1.6s;
+        left: 42%;
+      }
+
+      .hpaw-10 {
+        animation-delay: 1.8s;
+        left: 47%;
+        top: 15px;
+      }
+
+      .hpaw-11 {
+        animation-delay: 2s;
+        left: 52%;
+      }
+
+      .hpaw-12 {
+        animation-delay: 2.2s;
+        left: 57%;
+        top: 15px;
+      }
+
+      .hpaw-13 {
+        animation-delay: 2.4s;
+        left: 62%;
+      }
+
+      .hpaw-14 {
+        animation-delay: 2.6s;
+        left: 67%;
+        top: 15px;
+      }
+
+      .hpaw-15 {
+        animation-delay: 2.8s;
+        left: 72%;
+      }
+
+      .hpaw-16 {
+        animation-delay: 3s;
+        left: 77%;
+        top: 15px;
+      }
+
+      .hpaw-17 {
+        animation-delay: 3.2s;
+        left: 82%;
+      }
+
+      .hpaw-18 {
+        animation-delay: 3.4s;
+        left: 87%;
+        top: 15px;
+      }
+
+      .hpaw-19 {
+        animation-delay: 3.6s;
+        left: 92%;
+      }
+
+      .hpaw-20 {
+        animation-delay: 3.8s;
+        left: 97%;
+        top: 15px;
+      }
+
+      /* Huellas decorativas animadas (bloque izquierdo "30% OFF") */
+      .paw-trail {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .paw-trail .paw {
+        position: absolute;
+        width: 72px;
+        height: 72px;
+        color: #c98b76;
+        /* terracota palido */
+        opacity: 0;
+        transform: rotate(var(--r, 0deg)) scale(0.8);
+        animation: paw-walk 4s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      @keyframes paw-walk {
+        0% {
+          opacity: 0;
+          transform: rotate(var(--r, 0deg)) scale(0.8);
         }
 
-        .paw-3 {
-            animation-delay: 0.6s;
-            left: 25%;
+        30% {
+          opacity: 0.12;
+          transform: rotate(var(--r, 0deg)) scale(1.2);
         }
 
-        .paw-4 {
-            animation-delay: 0.9s;
-            left: 35%;
-            top: 20px;
+        100% {
+          opacity: 0;
+          transform: rotate(var(--r, 0deg)) scale(0.8);
         }
+      }
 
-        .paw-5 {
-            animation-delay: 1.2s;
-            left: 45%;
-        }
-
-        .paw-6 {
-            animation-delay: 1.5s;
-            left: 55%;
-            top: 20px;
-        }
-
-        .paw-7 {
-            animation-delay: 1.8s;
-            left: 65%;
-        }
-
-        .paw-8 {
-            animation-delay: 2.1s;
-            left: 75%;
-            top: 20px;
-        }
-
-        .paw-9 {
-            animation-delay: 2.4s;
-            left: 85%;
-        }
-
-        .paw-10 {
-            animation-delay: 2.7s;
-            left: 95%;
-            top: 20px;
-        }
-
-        /* Header Paws */
-        .hpaw-1 {
-            animation-delay: 0s;
-            left: 2%;
-        }
-
-        .hpaw-2 {
-            animation-delay: 0.2s;
-            left: 7%;
-            top: 15px;
-        }
-
-        .hpaw-3 {
-            animation-delay: 0.4s;
-            left: 12%;
-        }
-
-        .hpaw-4 {
-            animation-delay: 0.6s;
-            left: 17%;
-            top: 15px;
-        }
-
-        .hpaw-5 {
-            animation-delay: 0.8s;
-            left: 22%;
-        }
-
-        .hpaw-6 {
-            animation-delay: 1.0s;
-            left: 27%;
-            top: 15px;
-        }
-
-        .hpaw-7 {
-            animation-delay: 1.2s;
-            left: 32%;
-        }
-
-        .hpaw-8 {
-            animation-delay: 1.4s;
-            left: 37%;
-            top: 15px;
-        }
-
-        .hpaw-9 {
-            animation-delay: 1.6s;
-            left: 42%;
-        }
-
-        .hpaw-10 {
-            animation-delay: 1.8s;
-            left: 47%;
-            top: 15px;
-        }
-
-        .hpaw-11 {
-            animation-delay: 2.0s;
-            left: 52%;
-        }
-
-        .hpaw-12 {
-            animation-delay: 2.2s;
-            left: 57%;
-            top: 15px;
-        }
-
-        .hpaw-13 {
-            animation-delay: 2.4s;
-            left: 62%;
-        }
-
-        .hpaw-14 {
-            animation-delay: 2.6s;
-            left: 67%;
-            top: 15px;
-        }
-
-        .hpaw-15 {
-            animation-delay: 2.8s;
-            left: 72%;
-        }
-
-        .hpaw-16 {
-            animation-delay: 3.0s;
-            left: 77%;
-            top: 15px;
-        }
-
-        .hpaw-17 {
-            animation-delay: 3.2s;
-            left: 82%;
-        }
-
-        .hpaw-18 {
-            animation-delay: 3.4s;
-            left: 87%;
-            top: 15px;
-        }
-
-        .hpaw-19 {
-            animation-delay: 3.6s;
-            left: 92%;
-        }
-
-        .hpaw-20 {
-            animation-delay: 3.8s;
-            left: 97%;
-            top: 15px;
-        }
-
-        /* Huellas decorativas animadas (bloque izquierdo "30% OFF") */
-        .paw-trail {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
+      @media (prefers-reduced-motion: reduce) {
         .paw-trail .paw {
-            position: absolute;
-            width: 72px;
-            height: 72px;
-            color: #C98B76;
-            /* terracota palido */
-            opacity: 0;
-            transform: rotate(var(--r, 0deg)) scale(0.8);
-            animation: paw-walk 4s ease-in-out infinite;
-            pointer-events: none;
+          animation: none;
+          opacity: 0.08;
+          transform: rotate(var(--r, 0deg));
         }
-
-        @keyframes paw-walk {
-            0% {
-                opacity: 0;
-                transform: rotate(var(--r, 0deg)) scale(0.8);
-            }
-
-            30% {
-                opacity: 0.12;
-                transform: rotate(var(--r, 0deg)) scale(1.2);
-            }
-
-            100% {
-                opacity: 0;
-                transform: rotate(var(--r, 0deg)) scale(0.8);
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .paw-trail .paw {
-                animation: none;
-                opacity: 0.08;
-                transform: rotate(var(--r, 0deg));
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body class="bg-paw-bg text-paw-text font-sans antialiased selection:bg-paw-accent selection:text-white relative">
-
-    <svg style="display: none;">
-        <symbol id="realistic-paw" viewBox="0 0 100 100">
-            <!-- Central pad -->
-            <path d="M49.9,85.2c-12.8,0-23.7-8.3-26.6-20.7c-2.3-10,3.3-20.4,12.7-24.1c4.4-1.7,9.3-2.6,13.9-2.6
-                c4.6,0,9.5,0.9,13.9,2.6c9.4,3.7,15,14.1,12.7,24.1C73.6,76.9,62.7,85.2,49.9,85.2z" fill="#fff"
-                stroke="#0878b8" stroke-width="4" />
-            <!-- Toes -->
-            <path d="M22.5,46.1c-6.8,0-12.4-6.5-12.4-14.5S15.7,17,22.5,17s12.4,6.5,12.4,14.5S29.3,46.1,22.5,46.1z"
-                fill="#8bd3f7" stroke="#0878b8" stroke-width="3" />
-            <path d="M40.8,30.3c-6.8,0-12.4-6.5-12.4-14.5S34,1.3,40.8,1.3s12.4,6.5,12.4,14.5S47.6,30.3,40.8,30.3z"
-                fill="#8bd3f7" stroke="#0878b8" stroke-width="3" />
-            <path d="M59.2,30.3c-6.8,0-12.4-6.5-12.4-14.5S52.4,1.3,59.2,1.3s12.4,6.5,12.4,14.5S66,30.3,59.2,30.3z"
-                fill="#8bd3f7" stroke="#0878b8" stroke-width="3" />
-            <path d="M77.5,46.1c-6.8,0-12.4-6.5-12.4-14.5S70.7,17,77.5,17s12.4,6.5,12.4,14.5S84.3,46.1,77.5,46.1z"
-                fill="#8bd3f7" stroke="#0878b8" stroke-width="3" />
-        </symbol>
+  <body
+    class="bg-paw-bg text-paw-text font-sans antialiased selection:bg-paw-accent selection:text-white relative"
+  >
+    <svg style="display: none">
+      <symbol id="realistic-paw" viewBox="0 0 100 100">
+        <!-- Central pad -->
+        <path
+          d="M49.9,85.2c-12.8,0-23.7-8.3-26.6-20.7c-2.3-10,3.3-20.4,12.7-24.1c4.4-1.7,9.3-2.6,13.9-2.6
+                c4.6,0,9.5,0.9,13.9,2.6c9.4,3.7,15,14.1,12.7,24.1C73.6,76.9,62.7,85.2,49.9,85.2z"
+          fill="#fff"
+          stroke="#0878b8"
+          stroke-width="4"
+        />
+        <!-- Toes -->
+        <path
+          d="M22.5,46.1c-6.8,0-12.4-6.5-12.4-14.5S15.7,17,22.5,17s12.4,6.5,12.4,14.5S29.3,46.1,22.5,46.1z"
+          fill="#8bd3f7"
+          stroke="#0878b8"
+          stroke-width="3"
+        />
+        <path
+          d="M40.8,30.3c-6.8,0-12.4-6.5-12.4-14.5S34,1.3,40.8,1.3s12.4,6.5,12.4,14.5S47.6,30.3,40.8,30.3z"
+          fill="#8bd3f7"
+          stroke="#0878b8"
+          stroke-width="3"
+        />
+        <path
+          d="M59.2,30.3c-6.8,0-12.4-6.5-12.4-14.5S52.4,1.3,59.2,1.3s12.4,6.5,12.4,14.5S66,30.3,59.2,30.3z"
+          fill="#8bd3f7"
+          stroke="#0878b8"
+          stroke-width="3"
+        />
+        <path
+          d="M77.5,46.1c-6.8,0-12.4-6.5-12.4-14.5S70.7,17,77.5,17s12.4,6.5,12.4,14.5S84.3,46.1,77.5,46.1z"
+          fill="#8bd3f7"
+          stroke="#0878b8"
+          stroke-width="3"
+        />
+      </symbol>
     </svg>
 
-    <div class="absolute top-0 left-0 w-full h-24 overflow-hidden pointer-events-none z-40 opacity-30">
-        <svg class="paw-print hpaw-1 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-2 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-3 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-4 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-5 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-6 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-7 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-8 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-9 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-10 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-11 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-12 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-13 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-14 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-15 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-16 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-17 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-18 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-19 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
-        <svg class="paw-print hpaw-20 absolute w-6 h-6">
-            <use href="#realistic-paw"></use>
-        </svg>
+    <div
+      class="absolute top-0 left-0 w-full h-24 overflow-hidden pointer-events-none z-40 opacity-30"
+    >
+      <svg class="paw-print hpaw-1 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-2 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-3 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-4 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-5 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-6 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-7 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-8 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-9 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-10 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-11 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-12 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-13 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-14 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-15 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-16 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-17 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-18 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-19 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
+      <svg class="paw-print hpaw-20 absolute w-6 h-6">
+        <use href="#realistic-paw"></use>
+      </svg>
     </div>
 
     <!-- Top Announcement Bar -->
-    <div class="bg-paw-accent text-white text-xs font-medium py-2 px-4 text-center tracking-wide relative z-50">
-        ENVIOS GRATIS EN COMPRAS SUPERIORES A $50.000
+    <div
+      class="bg-paw-accent text-white text-xs font-medium py-2 px-4 text-center tracking-wide relative z-50"
+    >
+      ENVIOS GRATIS EN COMPRAS SUPERIORES A $50.000
     </div>
 
     <!-- Main Header -->
-    <header class="bg-paw-bg sticky top-0 z-50 border-b border-paw-border/50 backdrop-blur-md bg-opacity-90">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-
-            <!-- Logo area with embedded image -->
-            <div class="flex items-center gap-2">
-                <div class="logo-malvinas flex items-center">
-                    <span
-                        class="font-serif font-bold text-lg sm:text-3xl leading-none text-[#172033] mr-1.5 sm:mr-2">Malvinas
-                        Argentinas</span>
-                    <span
-                        class="font-serif font-bold text-lg sm:text-3xl leading-none text-[#008dcc] mr-2 sm:mr-4">S.A.</span>
-                    <div class="flex items-center gap-1 sm:gap-2">
-                        <span class="text-2xl sm:text-4xl pet-dancer">🐶</span>
-                        <span class="text-2xl sm:text-4xl pet-dancer" style="animation-delay: 1s;">🐱</span>
-                    </div>
-                </div>
-                <div class="hidden sm:flex flex-col ml-2">
-                    <span class="text-[12px] uppercase tracking-[0.2em] font-bold text-[#9aaabd]">PET SHOP</span>
-                </div>
+    <header
+      class="bg-paw-bg sticky top-0 z-50 border-b border-paw-border/50 backdrop-blur-md bg-opacity-90"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
+      >
+        <!-- Logo area with embedded image -->
+        <div class="flex items-center gap-2">
+          <div class="logo-malvinas flex items-center">
+            <span
+              class="font-serif font-bold text-lg sm:text-3xl leading-none text-[#172033] mr-1.5 sm:mr-2"
+              >Malvinas Argentinas</span
+            >
+            <span
+              class="font-serif font-bold text-lg sm:text-3xl leading-none text-[#008dcc] mr-2 sm:mr-4"
+              >S.A.</span
+            >
+            <div class="flex items-center gap-1 sm:gap-2">
+              <span class="text-2xl sm:text-4xl pet-dancer">🐶</span>
+              <span
+                class="text-2xl sm:text-4xl pet-dancer"
+                style="animation-delay: 1s"
+                >🐱</span
+              >
             </div>
-
-            <!-- Search Bar (Desktop) -->
-            <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
-                <input type="text" placeholder="Buscar productos premium..."
-                    class="w-full bg-white rounded-full py-2.5 pl-6 pr-10 text-sm focus:outline-none border border-paw-border focus:border-paw-accent transition-colors shadow-sm">
-                <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-                    🔍
-                </button>
-            </div>
-
-            <!-- Icons -->
-            <div class="flex items-center space-x-6">
-                <button
-                    class="hidden sm:flex flex-col items-center gap-1 text-gray-600 hover:text-paw-accent transition">
-                    <span class="text-xl">🤍</span>
-                    <span class="text-[10px] font-medium">Deseos</span>
-                </button>
-                <button
-                    class="hidden sm:flex flex-col items-center gap-1 text-gray-600 hover:text-paw-accent transition">
-                    <span class="text-xl">👤</span>
-                    <span class="text-[10px] font-medium">Cuenta</span>
-                </button>
-                <button onclick="toggleCart()"
-                    class="flex flex-col items-center gap-1 text-gray-600 hover:text-paw-accent transition relative group">
-                    <span class="text-xl">🛒</span>
-                    <span class="text-[10px] font-medium">Carrito</span>
-                    <span id="cart-counter"
-                        class="absolute -top-1 -right-2 bg-paw-petrol text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">0</span>
-                </button>
-            </div>
+          </div>
+          <div class="hidden sm:flex flex-col ml-2">
+            <span
+              class="text-[12px] uppercase tracking-[0.2em] font-bold text-[#9aaabd]"
+              >PET SHOP</span
+            >
+          </div>
         </div>
 
-        <!-- Navigation Categories -->
-        <nav class="border-t border-paw-border/30 hidden md:block">
-            <ul class="flex justify-center space-x-10 py-3 text-sm font-medium text-gray-600">
-                <li><a href="tienda.html" class="hover:text-paw-accent transition">Tienda</a></li>
-                <li><a href="#categories" class="hover:text-paw-accent transition">Colecciones</a></li>
-                <li><a href="#featured-bundles" class="hover:text-paw-accent transition">Kits</a></li>
-                <li><a href="#fun-facts" class="hover:text-paw-accent transition">Aprende</a></li>
-                <li><a href="tienda.html" class="hover:text-paw-accent transition">Ofertas</a></li>
-            </ul>
-        </nav>
+        <!-- Search Bar (Desktop) -->
+        <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
+          <input
+            type="text"
+            placeholder="Buscar productos premium..."
+            class="w-full bg-white rounded-full py-2.5 pl-6 pr-10 text-sm focus:outline-none border border-paw-border focus:border-paw-accent transition-colors shadow-sm"
+          />
+          <button
+            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+          >
+            🔍
+          </button>
+        </div>
+
+        <!-- Icons -->
+        <div class="flex items-center space-x-6">
+          <a
+            href="tienda.html?vista=deseos"
+            class="hidden sm:flex flex-col items-center gap-1 text-gray-600 hover:text-paw-accent transition"
+          >
+            <svg
+              class="w-6 h-6 transition-colors"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              fill="#f4a7a7"
+              stroke="#d94b4b"
+              stroke-width="2.2"
+            >
+              <path d="M12 21.35 10.55 20C5.4 15.36 2 12.28 2 8.5A4.5 4.5 0 0 1 6.5 4c1.74 0 3.41.81 4.5 2.09A6.06 6.06 0 0 1 15.5 4A4.5 4.5 0 0 1 20 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35Z" />
+            </svg>
+            <span class="text-[10px] font-medium">Deseos</span>
+          </a>
+          <button
+            onclick="toggleCart()"
+            class="flex flex-col items-center gap-1 text-gray-600 hover:text-paw-accent transition relative group"
+          >
+            <span class="text-xl">🛒</span>
+            <span class="text-[10px] font-medium">Carrito</span>
+            <span
+              id="cart-counter"
+              class="absolute -top-1 -right-2 bg-paw-petrol text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform"
+              >0</span
+            >
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Categories -->
+      <nav class="border-t border-paw-border/30 hidden md:block">
+        <ul
+          class="flex justify-center space-x-10 py-3 text-sm font-medium text-gray-600"
+        >
+          <li>
+            <a href="tienda.html" class="hover:text-paw-accent transition"
+              >Tienda</a
+            >
+          </li>
+          <li>
+            <a href="#categories" class="hover:text-paw-accent transition"
+              >Colecciones</a
+            >
+          </li>
+          <li>
+            <a href="#featured-bundles" class="hover:text-paw-accent transition"
+              >Kits</a
+            >
+          </li>
+          <li>
+            <a href="#fun-facts" class="hover:text-paw-accent transition"
+              >Aprende</a
+            >
+          </li>
+          <li>
+            <a href="tienda.html" class="hover:text-paw-accent transition"
+              >Ofertas</a
+            >
+          </li>
+        </ul>
+      </nav>
     </header>
 
-    <section id="hero" class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="rounded-4xl sm:rounded-[3rem] overflow-hidden relative shadow-sm">
+    <section
+      id="hero"
+      class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8"
+    >
+      <div
+        class="rounded-4xl sm:rounded-[3rem] overflow-hidden relative shadow-sm"
+      >
+        <!-- Imagen de portada final (texto y colores ya integrados) -->
+        <img
+          src="assets/image-01.jpg"
+          alt="Todo lo que necesitan para ser más felices - Un gato y un perro, buenos amigos"
+          class="w-full h-auto block"
+        />
 
-            <!-- Imagen de portada final (texto y colores ya integrados) -->
-            <img src="assets/image-01.jpg"
-                alt="Todo lo que necesitan para ser más felices - Un gato y un perro, buenos amigos"
-                class="w-full h-auto block">
+        <!-- Botones clicables invisibles, alineados sobre la imagen -->
+        <a
+          href="tienda.html"
+          aria-label="Comprar Ahora"
+          class="absolute left-[4%] top-[64%] w-[18%] h-[9%]"
+        ></a>
+        <a
+          href="#categories"
+          aria-label="Explorar Más"
+          class="absolute left-[4%] top-[75%] w-[16%] h-[9%]"
+        ></a>
+      </div>
 
-            <!-- Botones clicables invisibles, alineados sobre la imagen -->
-            <a href="tienda.html" aria-label="Comprar Ahora" class="absolute left-[4%] top-[64%] w-[18%] h-[9%]"></a>
-            <a href="#categories" aria-label="Explorar Más" class="absolute left-[4%] top-[75%] w-[16%] h-[9%]"></a>
-        </div>
-
-        <!-- Trust Badges -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 px-4">
-            <div
-                class="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-paw-border/30 hover:border-paw-accent transition-colors">
-                <div class="bg-paw-sageSoft p-2 rounded-full text-paw-accent text-xl">🌿</div>
-                <div>
-                    <h4 class="font-bold text-sm text-gray-800">Natural & Seguro</h4>
-                    <p class="text-[11px] text-gray-500">100% amigable con mascotas</p>
-                </div>
-            </div>
-            <div
-                class="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-paw-border/30 hover:border-paw-accent transition-colors">
-                <div class="bg-paw-sageSoft p-2 rounded-full text-paw-accent text-xl">🚚</div>
-                <div>
-                    <h4 class="font-bold text-sm text-gray-800">Envío Rápido</h4>
-                    <p class="text-[11px] text-gray-500">Gratis en órdenes > $50k</p>
-                </div>
-            </div>
-            <div
-                class="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-paw-border/30 hover:border-paw-accent transition-colors">
-                <div class="bg-paw-sageSoft p-2 rounded-full text-paw-accent text-xl">🛡️</div>
-                <div>
-                    <h4 class="font-bold text-sm text-gray-800">Pagos Seguros</h4>
-                    <p class="text-[11px] text-gray-500">Transacciones protegidas</p>
-                </div>
-            </div>
-            <div
-                class="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-paw-border/30 hover:border-paw-accent transition-colors">
-                <div class="bg-paw-sageSoft p-2 rounded-full text-paw-accent text-xl">❤️</div>
-                <div>
-                    <h4 class="font-bold text-sm text-gray-800">Amado por ellos</h4>
-                    <p class="text-[11px] text-gray-500">Productos testeados</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="categories"
-        class="max-w-7xl lg:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-12 lg:py-16 text-center">
-        <h2 class="font-serif text-[26px] sm:text-[34px] font-bold text-gray-900 mb-8 lg:mb-12">〰 Comprar por Categoría
-            〰</h2>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-
-            <!-- Category Card 1: Camas -->
-            <a href="tienda.html?categoria=camas" data-category="camas" id="cat-camas"
-                class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center">
-                <div class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
-                    style="aspect-ratio: 1230/1278;">
-                    <img src="assets/image-02.jpg"
-                        alt="Camas"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <h3 class="font-serif font-bold text-lg lg:text-2xl text-gray-900">Camas</h3>
-                <p class="text-xs lg:text-base text-gray-500 mb-2 lg:mb-3">Acogedoras & Cómodas</p>
-                <span
-                    class="bg-paw-petrol text-white text-xs lg:text-sm px-6 py-2 lg:px-8 lg:py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity">Ver
-                    Más</span>
-            </a>
-
-            <!-- Category Card 2: Juguetes -->
-            <a href="tienda.html?categoria=juguetes" data-category="juguetes" id="cat-juguetes"
-                class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center">
-                <div class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
-                    style="aspect-ratio: 1230/1278;">
-                    <img src="assets/image-03.jpg"
-                        alt="Juguetes"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <h3 class="font-serif font-bold text-lg lg:text-2xl text-gray-900">Juguetes</h3>
-                <p class="text-xs lg:text-base text-gray-500 mb-2 lg:mb-3">Diversión Interactiva</p>
-                <span
-                    class="bg-paw-petrol text-white text-xs lg:text-sm px-6 py-2 lg:px-8 lg:py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity">Ver
-                    Más</span>
-            </a>
-
-            <!-- Category Card 3: Alimento -->
-            <a href="tienda.html?categoria=alimento" data-category="alimento" id="cat-alimento"
-                class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center">
-                <div class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
-                    style="aspect-ratio: 1230/1278;">
-                    <img src="assets/image-04.jpg"
-                        alt="Alimento"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <h3 class="font-serif font-bold text-lg lg:text-2xl text-gray-900">Alimento</h3>
-                <p class="text-xs lg:text-base text-gray-500 mb-2 lg:mb-3">Nutrición & Salud</p>
-                <span
-                    class="bg-paw-petrol text-white text-xs lg:text-sm px-6 py-2 lg:px-8 lg:py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity">Ver
-                    Más</span>
-            </a>
-
-            <!-- Category Card 4: Higiene -->
-            <a href="tienda.html?categoria=higiene" data-category="higiene" id="cat-higiene"
-                class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center">
-                <div class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
-                    style="aspect-ratio: 1230/1278;">
-                    <img src="assets/image-05.jpg"
-                        alt="Higiene"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <h3 class="font-serif font-bold text-lg lg:text-2xl text-gray-900">Higiene</h3>
-                <p class="text-xs lg:text-base text-gray-500 mb-2 lg:mb-3">Limpieza & Cuidado</p>
-                <span
-                    class="bg-paw-petrol text-white text-xs lg:text-sm px-6 py-2 lg:px-8 lg:py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity">Ver
-                    Más</span>
-            </a>
-
-        </div>
-    </section>
-
-    <section id="featured-bundles" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <!-- Trust Badges -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 px-4">
         <div
-            class="bg-[#F4EDDF] rounded-4xl p-0 relative overflow-hidden flex flex-col md:flex-row items-stretch justify-between border border-[#E8DCC0] gap-0 min-h-[650px] md:min-h-[500px]">
-            <div
-                class="z-10 relative overflow-hidden md:overflow-visible w-full md:w-1/5 min-h-[340px] md:min-h-0 flex flex-col justify-center items-center p-6 md:p-4 lg:p-6">
-                <!-- Fondo decorativo: caminito de huellas -->
-                <div class="paw-trail" aria-hidden="true">
-                    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-                        <defs>
-                            <symbol id="paw-icon" viewBox="0 0 64 64">
-                                <g fill="currentColor">
-                                    <ellipse cx="32" cy="42" rx="14" ry="12" />
-                                    <ellipse cx="14" cy="28" rx="6" ry="8" transform="rotate(-20 14 28)" />
-                                    <ellipse cx="25" cy="17" rx="6" ry="8.5" transform="rotate(-6 25 17)" />
-                                    <ellipse cx="39" cy="17" rx="6" ry="8.5" transform="rotate(6 39 17)" />
-                                    <ellipse cx="50" cy="28" rx="6" ry="8" transform="rotate(20 50 28)" />
-                                </g>
-                            </symbol>
-                        </defs>
-                    </svg>
-                    <svg class="paw" style="left:4%;bottom:3%;--r:-20deg;animation-delay:0s" viewBox="0 0 64 64"
-                        aria-hidden="true">
-                        <use href="#paw-icon" />
-                    </svg>
-                    <svg class="paw" style="right:4%;bottom:21%;--r:18deg;animation-delay:0.8s" viewBox="0 0 64 64"
-                        aria-hidden="true">
-                        <use href="#paw-icon" />
-                    </svg>
-                    <svg class="paw" style="left:6%;bottom:39%;--r:-20deg;animation-delay:1.6s" viewBox="0 0 64 64"
-                        aria-hidden="true">
-                        <use href="#paw-icon" />
-                    </svg>
-                    <svg class="paw" style="right:4%;bottom:57%;--r:18deg;animation-delay:2.4s" viewBox="0 0 64 64"
-                        aria-hidden="true">
-                        <use href="#paw-icon" />
-                    </svg>
-                    <svg class="paw" style="left:6%;bottom:75%;--r:-20deg;animation-delay:3.2s" viewBox="0 0 64 64"
-                        aria-hidden="true">
-                        <use href="#paw-icon" />
-                    </svg>
-                </div>
-                <!-- Decoracion: patas de gato y perro (detras del contenido) -->
-                <img src="assets/image-06.jpg"
-                    alt="" aria-hidden="true"
-                    class="absolute top-0 left-0 w-44 h-auto z-0 pointer-events-none opacity-90">
-                <img src="assets/image-07.jpg"
-                    alt="" aria-hidden="true"
-                    class="absolute bottom-0 left-0 w-52 h-auto z-0 pointer-events-none mix-blend-multiply opacity-90">
-                <div
-                    class="absolute inset-0 flex flex-col justify-center items-center text-center z-10 p-4 md:translate-x-[125%]">
-                    <!-- Decoracion sutil (solo visual) -->
-                    <svg class="absolute w-5 h-5 pointer-events-none"
-                        style="left:4%;top:12%;color:#C9A27E;opacity:0.45;transform:rotate(-18deg)" viewBox="0 0 64 64"
-                        aria-hidden="true">
-                        <use href="#paw-icon" />
-                    </svg>
-                    <svg class="absolute pointer-events-none"
-                        style="right:7%;top:14%;width:14px;height:14px;color:#E3B85F;opacity:0.75" viewBox="0 0 24 24"
-                        aria-hidden="true">
-                        <path fill="currentColor"
-                            d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z" />
-                    </svg>
-                    <svg class="absolute w-5 h-5 pointer-events-none"
-                        style="right:4%;top:30%;color:#C9A27E;opacity:0.4;transform:rotate(16deg)" viewBox="0 0 64 64"
-                        aria-hidden="true">
-                        <use href="#paw-icon" />
-                    </svg>
-                    <svg class="absolute pointer-events-none"
-                        style="left:6%;top:37%;width:10px;height:10px;color:#E3B85F;opacity:0.65" viewBox="0 0 24 24"
-                        aria-hidden="true">
-                        <path fill="currentColor"
-                            d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z" />
-                    </svg>
-                    <svg class="absolute w-5 h-5 pointer-events-none"
-                        style="left:5%;bottom:8%;color:#C9A27E;opacity:0.4;transform:rotate(-14deg)" viewBox="0 0 64 64"
-                        aria-hidden="true">
-                        <use href="#paw-icon" />
-                    </svg>
-                    <svg class="absolute w-5 h-5 pointer-events-none"
-                        style="right:5%;bottom:13%;color:#C9A27E;opacity:0.45;transform:rotate(20deg)"
-                        viewBox="0 0 64 64" aria-hidden="true">
-                        <use href="#paw-icon" />
-                    </svg>
-                    <svg class="absolute pointer-events-none"
-                        style="right:9%;bottom:5%;width:12px;height:12px;color:#E3B85F;opacity:0.7" viewBox="0 0 24 24"
-                        aria-hidden="true">
-                        <path fill="currentColor"
-                            d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z" />
-                    </svg>
-                    <span
-                        class="relative z-10 inline-block bg-white text-paw-accent text-[13px] font-bold tracking-wide px-4 py-1.5 rounded-full mb-5 w-fit shadow-sm">Oferta
-                        Especial 🐾</span>
-                    <h2
-                        class="relative z-10 font-['Anton'] text-[44px] lg:text-[48px] font-black [font-synthesis:none] whitespace-nowrap tracking-wide text-gray-900 leading-none mt-1 mb-6">
-                        30% OFF</h2>
-                    <p class="relative z-10 font-['Poppins'] text-[19px] leading-snug text-gray-700 mb-7 font-medium">En
-                        todos los accesorios para paseo.</p>
-                    <p
-                        class="relative z-10 font-['Poppins'] text-[13px] md:text-[14px] font-medium text-gray-600 text-center -mt-4 mb-5">
-                        Paseos felices comienzan aquí</p>
-                    <button
-                        class="relative z-10 bg-[#D35400] hover:bg-[#A04000] text-white w-[150px] h-[45px] inline-flex items-center justify-center text-[15px] lg:text-base rounded-full font-semibold transition shadow-lg">Comprar
-                        Oferta</button>
-                </div>
-            </div>
-
-            <!-- Galería/carrusel de mascotas, dentro de la misma tarjeta -->
-            <div id="pet-gallery"
-                class="md:w-4/5 w-full h-full p-0 m-0 min-h-[450px] md:min-h-[500px] relative rounded-[2rem] overflow-hidden bg-[#F4EDDF]">
-                <div class="absolute inset-0 w-full h-full flex justify-end">
-                    <img src="assets/image-08.jpg"
-                        alt="Perro con frisbee en la playa"
-                        class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-100">
-                    <img src="assets/image-09.jpg"
-                        alt="Mujer paseando tres perros con correa"
-                        class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-0">
-                    <img src="assets/image-10.jpg"
-                        alt="Mochila transportadora para gato"
-                        class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-0">
-                    <img src="assets/image-11.jpg"
-                        alt="Mascota en bolso transportador"
-                        class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-0">
-                    <img src="assets/image-12.jpg"
-                        alt="Perro con mochila de paseo"
-                        class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-0">
-                    <img src="assets/image-13.jpg"
-                        alt="Perro con accesorios de paseo"
-                        class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-0">
-                    <!-- Flechas (ancladas a la foto actual) -->
-                    <button id="pet-gallery-prev" aria-label="Foto anterior"
-                        class="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 w-9 h-9 rounded-full flex items-center justify-center shadow-md transition">‹</button>
-                    <button id="pet-gallery-next" aria-label="Foto siguiente"
-                        class="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 w-9 h-9 rounded-full flex items-center justify-center shadow-md transition">›</button>
-                </div>
-
-                <!-- Indicadores -->
-                <div id="pet-gallery-dots" class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-2"></div>
-            </div>
+          class="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-paw-border/30 hover:border-paw-accent transition-colors"
+        >
+          <div class="bg-paw-sageSoft p-2 rounded-full text-paw-accent text-xl">
+            🌿
+          </div>
+          <div>
+            <h4 class="font-bold text-sm text-gray-800">Natural & Seguro</h4>
+            <p class="text-[11px] text-gray-500">100% amigable con mascotas</p>
+          </div>
         </div>
+        <div
+          class="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-paw-border/30 hover:border-paw-accent transition-colors"
+        >
+          <div class="bg-paw-sageSoft p-2 rounded-full text-paw-accent text-xl">
+            🚚
+          </div>
+          <div>
+            <h4 class="font-bold text-sm text-gray-800">Envío Rápido</h4>
+            <p class="text-[11px] text-gray-500">Gratis en órdenes > $50k</p>
+          </div>
+        </div>
+        <div
+          class="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-paw-border/30 hover:border-paw-accent transition-colors"
+        >
+          <div class="bg-paw-sageSoft p-2 rounded-full text-paw-accent text-xl">
+            🛡️
+          </div>
+          <div>
+            <h4 class="font-bold text-sm text-gray-800">Pagos Seguros</h4>
+            <p class="text-[11px] text-gray-500">Transacciones protegidas</p>
+          </div>
+        </div>
+        <div
+          class="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-paw-border/30 hover:border-paw-accent transition-colors"
+        >
+          <div class="bg-paw-sageSoft p-2 rounded-full text-paw-accent text-xl">
+            ❤️
+          </div>
+          <div>
+            <h4 class="font-bold text-sm text-gray-800">Amado por ellos</h4>
+            <p class="text-[11px] text-gray-500">Productos testeados</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="categories"
+      class="max-w-7xl lg:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-12 lg:py-16 text-center"
+    >
+      <h2
+        class="font-serif text-[26px] sm:text-[34px] font-bold text-gray-900 mb-8 lg:mb-12"
+      >
+        〰 Comprar por Categoría 〰
+      </h2>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <!-- Category Card 1: Camas -->
+        <a
+          href="tienda.html?categoria=camas"
+          data-category="camas"
+          id="cat-camas"
+          class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center"
+        >
+          <div
+            class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
+            style="aspect-ratio: 1230/1278"
+          >
+            <img
+              src="assets/image-02.jpg"
+              alt="Camas"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <h3 class="font-serif font-bold text-lg lg:text-2xl text-gray-900">
+            Camas
+          </h3>
+          <p class="text-xs lg:text-base text-gray-500 mb-2 lg:mb-3">
+            Acogedoras & Cómodas
+          </p>
+          <span
+            class="bg-paw-petrol text-white text-xs lg:text-sm px-6 py-2 lg:px-8 lg:py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity"
+            >Ver Más</span
+          >
+        </a>
+
+        <!-- Category Card 2: Juguetes -->
+        <a
+          href="tienda.html?categoria=juguetes"
+          data-category="juguetes"
+          id="cat-juguetes"
+          class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center"
+        >
+          <div
+            class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
+            style="aspect-ratio: 1230/1278"
+          >
+            <img
+              src="assets/image-03.jpg"
+              alt="Juguetes"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <h3 class="font-serif font-bold text-lg lg:text-2xl text-gray-900">
+            Juguetes
+          </h3>
+          <p class="text-xs lg:text-base text-gray-500 mb-2 lg:mb-3">
+            Diversión Interactiva
+          </p>
+          <span
+            class="bg-paw-petrol text-white text-xs lg:text-sm px-6 py-2 lg:px-8 lg:py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity"
+            >Ver Más</span
+          >
+        </a>
+
+        <!-- Category Card 3: Alimento -->
+        <a
+          href="tienda.html?categoria=alimento"
+          data-category="alimento"
+          id="cat-alimento"
+          class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center"
+        >
+          <div
+            class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
+            style="aspect-ratio: 1230/1278"
+          >
+            <img
+              src="assets/image-04.jpg"
+              alt="Alimento"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <h3 class="font-serif font-bold text-lg lg:text-2xl text-gray-900">
+            Alimento
+          </h3>
+          <p class="text-xs lg:text-base text-gray-500 mb-2 lg:mb-3">
+            Nutrición & Salud
+          </p>
+          <span
+            class="bg-paw-petrol text-white text-xs lg:text-sm px-6 py-2 lg:px-8 lg:py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity"
+            >Ver Más</span
+          >
+        </a>
+
+        <!-- Category Card 4: Higiene -->
+        <a
+          href="tienda.html?categoria=higiene"
+          data-category="higiene"
+          id="cat-higiene"
+          class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center"
+        >
+          <div
+            class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
+            style="aspect-ratio: 1230/1278"
+          >
+            <img
+              src="assets/image-05.jpg"
+              alt="Higiene"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <h3 class="font-serif font-bold text-lg lg:text-2xl text-gray-900">
+            Higiene
+          </h3>
+          <p class="text-xs lg:text-base text-gray-500 mb-2 lg:mb-3">
+            Limpieza & Cuidado
+          </p>
+          <span
+            class="bg-paw-petrol text-white text-xs lg:text-sm px-6 py-2 lg:px-8 lg:py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity"
+            >Ver Más</span
+          >
+        </a>
+      </div>
+    </section>
+
+    <section
+      id="featured-bundles"
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"
+    >
+      <div
+        class="bg-[#F4EDDF] rounded-4xl p-0 relative overflow-hidden flex flex-col md:flex-row items-stretch justify-between border border-[#E8DCC0] gap-0 min-h-[650px] md:min-h-[500px]"
+      >
+        <div
+          class="z-10 relative overflow-hidden md:overflow-visible w-full md:w-1/5 min-h-[340px] md:min-h-0 flex flex-col justify-center items-center p-6 md:p-4 lg:p-6"
+        >
+          <!-- Fondo decorativo: caminito de huellas -->
+          <div class="paw-trail" aria-hidden="true">
+            <svg
+              width="0"
+              height="0"
+              style="position: absolute"
+              aria-hidden="true"
+            >
+              <defs>
+                <symbol id="paw-icon" viewBox="0 0 64 64">
+                  <g fill="currentColor">
+                    <ellipse cx="32" cy="42" rx="14" ry="12" />
+                    <ellipse
+                      cx="14"
+                      cy="28"
+                      rx="6"
+                      ry="8"
+                      transform="rotate(-20 14 28)"
+                    />
+                    <ellipse
+                      cx="25"
+                      cy="17"
+                      rx="6"
+                      ry="8.5"
+                      transform="rotate(-6 25 17)"
+                    />
+                    <ellipse
+                      cx="39"
+                      cy="17"
+                      rx="6"
+                      ry="8.5"
+                      transform="rotate(6 39 17)"
+                    />
+                    <ellipse
+                      cx="50"
+                      cy="28"
+                      rx="6"
+                      ry="8"
+                      transform="rotate(20 50 28)"
+                    />
+                  </g>
+                </symbol>
+              </defs>
+            </svg>
+            <svg
+              class="paw"
+              style="left: 4%; bottom: 3%; --r: -20deg; animation-delay: 0s"
+              viewBox="0 0 64 64"
+              aria-hidden="true"
+            >
+              <use href="#paw-icon" />
+            </svg>
+            <svg
+              class="paw"
+              style="right: 4%; bottom: 21%; --r: 18deg; animation-delay: 0.8s"
+              viewBox="0 0 64 64"
+              aria-hidden="true"
+            >
+              <use href="#paw-icon" />
+            </svg>
+            <svg
+              class="paw"
+              style="left: 6%; bottom: 39%; --r: -20deg; animation-delay: 1.6s"
+              viewBox="0 0 64 64"
+              aria-hidden="true"
+            >
+              <use href="#paw-icon" />
+            </svg>
+            <svg
+              class="paw"
+              style="right: 4%; bottom: 57%; --r: 18deg; animation-delay: 2.4s"
+              viewBox="0 0 64 64"
+              aria-hidden="true"
+            >
+              <use href="#paw-icon" />
+            </svg>
+            <svg
+              class="paw"
+              style="left: 6%; bottom: 75%; --r: -20deg; animation-delay: 3.2s"
+              viewBox="0 0 64 64"
+              aria-hidden="true"
+            >
+              <use href="#paw-icon" />
+            </svg>
+          </div>
+          <!-- Decoracion: patas de gato y perro (detras del contenido) -->
+          <img
+            src="assets/image-06.jpg"
+            alt=""
+            aria-hidden="true"
+            class="absolute top-0 left-0 w-44 h-auto z-0 pointer-events-none opacity-90"
+          />
+          <img
+            src="assets/image-07.jpg"
+            alt=""
+            aria-hidden="true"
+            class="absolute bottom-0 left-0 w-52 h-auto z-0 pointer-events-none mix-blend-multiply opacity-90"
+          />
+          <div
+            class="absolute inset-0 flex flex-col justify-center items-center text-center z-10 p-4 md:translate-x-[125%]"
+          >
+            <!-- Decoracion sutil (solo visual) -->
+            <svg
+              class="absolute w-5 h-5 pointer-events-none"
+              style="
+                left: 4%;
+                top: 12%;
+                color: #c9a27e;
+                opacity: 0.45;
+                transform: rotate(-18deg);
+              "
+              viewBox="0 0 64 64"
+              aria-hidden="true"
+            >
+              <use href="#paw-icon" />
+            </svg>
+            <svg
+              class="absolute pointer-events-none"
+              style="
+                right: 7%;
+                top: 14%;
+                width: 14px;
+                height: 14px;
+                color: #e3b85f;
+                opacity: 0.75;
+              "
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                fill="currentColor"
+                d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"
+              />
+            </svg>
+            <svg
+              class="absolute w-5 h-5 pointer-events-none"
+              style="
+                right: 4%;
+                top: 30%;
+                color: #c9a27e;
+                opacity: 0.4;
+                transform: rotate(16deg);
+              "
+              viewBox="0 0 64 64"
+              aria-hidden="true"
+            >
+              <use href="#paw-icon" />
+            </svg>
+            <svg
+              class="absolute pointer-events-none"
+              style="
+                left: 6%;
+                top: 37%;
+                width: 10px;
+                height: 10px;
+                color: #e3b85f;
+                opacity: 0.65;
+              "
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                fill="currentColor"
+                d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"
+              />
+            </svg>
+            <svg
+              class="absolute w-5 h-5 pointer-events-none"
+              style="
+                left: 5%;
+                bottom: 8%;
+                color: #c9a27e;
+                opacity: 0.4;
+                transform: rotate(-14deg);
+              "
+              viewBox="0 0 64 64"
+              aria-hidden="true"
+            >
+              <use href="#paw-icon" />
+            </svg>
+            <svg
+              class="absolute w-5 h-5 pointer-events-none"
+              style="
+                right: 5%;
+                bottom: 13%;
+                color: #c9a27e;
+                opacity: 0.45;
+                transform: rotate(20deg);
+              "
+              viewBox="0 0 64 64"
+              aria-hidden="true"
+            >
+              <use href="#paw-icon" />
+            </svg>
+            <svg
+              class="absolute pointer-events-none"
+              style="
+                right: 9%;
+                bottom: 5%;
+                width: 12px;
+                height: 12px;
+                color: #e3b85f;
+                opacity: 0.7;
+              "
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                fill="currentColor"
+                d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"
+              />
+            </svg>
+            <span
+              class="relative z-10 inline-block bg-white text-paw-accent text-[13px] font-bold tracking-wide px-4 py-1.5 rounded-full mb-5 w-fit shadow-sm"
+              >Oferta Especial 🐾</span
+            >
+            <h2
+              class="relative z-10 font-['Anton'] text-[44px] lg:text-[48px] font-black [font-synthesis:none] whitespace-nowrap tracking-wide text-gray-900 leading-none mt-1 mb-6"
+            >
+              30% OFF
+            </h2>
+            <p
+              class="relative z-10 font-['Poppins'] text-[19px] leading-snug text-gray-700 mb-7 font-medium"
+            >
+              En todos los accesorios para paseo.
+            </p>
+            <p
+              class="relative z-10 font-['Poppins'] text-[13px] md:text-[14px] font-medium text-gray-600 text-center -mt-4 mb-5"
+            >
+              Paseos felices comienzan aquí
+            </p>
+            <button
+              class="relative z-10 bg-[#D35400] hover:bg-[#A04000] text-white w-[150px] h-[45px] inline-flex items-center justify-center text-[15px] lg:text-base rounded-full font-semibold transition shadow-lg"
+            >
+              Comprar Oferta
+            </button>
+          </div>
+        </div>
+
+        <!-- Galería/carrusel de mascotas, dentro de la misma tarjeta -->
+        <div
+          id="pet-gallery"
+          class="md:w-4/5 w-full h-full p-0 m-0 min-h-[450px] md:min-h-[500px] relative rounded-[2rem] overflow-hidden bg-[#F4EDDF]"
+        >
+          <div class="absolute inset-0 w-full h-full flex justify-end">
+            <img
+              src="assets/image-08.jpg"
+              alt="Perro con frisbee en la playa"
+              class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-100"
+            />
+            <img
+              src="assets/image-09.jpg"
+              alt="Mujer paseando tres perros con correa"
+              class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-0"
+            />
+            <img
+              src="assets/image-10.jpg"
+              alt="Mochila transportadora para gato"
+              class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-0"
+            />
+            <img
+              src="assets/image-11.jpg"
+              alt="Mascota en bolso transportador"
+              class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-0"
+            />
+            <img
+              src="assets/image-12.jpg"
+              alt="Perro con mochila de paseo"
+              class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-0"
+            />
+            <img
+              src="assets/image-13.jpg"
+              alt="Perro con accesorios de paseo"
+              class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-0"
+            />
+            <!-- Flechas (ancladas a la foto actual) -->
+            <button
+              id="pet-gallery-prev"
+              aria-label="Foto anterior"
+              class="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 w-9 h-9 rounded-full flex items-center justify-center shadow-md transition"
+            >
+              ‹
+            </button>
+            <button
+              id="pet-gallery-next"
+              aria-label="Foto siguiente"
+              class="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 w-9 h-9 rounded-full flex items-center justify-center shadow-md transition"
+            >
+              ›
+            </button>
+          </div>
+
+          <!-- Indicadores -->
+          <div
+            id="pet-gallery-dots"
+            class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-2"
+          ></div>
+        </div>
+      </div>
     </section>
 
     <!-- Ajuste de anclaje: la flecha izquierda sigue el borde izquierdo de la foto visible -->
     <script>
-            (function () {
-                const gallery = document.getElementById('pet-gallery');
-                const prev = document.getElementById('pet-gallery-prev');
-                if (!gallery || !prev) return;
-                const slides = gallery.querySelectorAll('.pet-gallery-slide');
-                function place() {
-                    let active = slides[0];
-                    slides.forEach(s => {if (s.classList.contains('opacity-100')) active = s;});
-                    prev.style.left = (active.offsetLeft + 12) + 'px';
-                }
-                slides.forEach(s => {
-                    new MutationObserver(place).observe(s, {attributes: true, attributeFilter: ['class']});
-                    s.addEventListener('load', place);
-                });
-                window.addEventListener('resize', place);
-                window.addEventListener('load', place);
-                place();
-            })();
+      (function () {
+        const gallery = document.getElementById("pet-gallery");
+        const prev = document.getElementById("pet-gallery-prev");
+        if (!gallery || !prev) return;
+        const slides = gallery.querySelectorAll(".pet-gallery-slide");
+        function place() {
+          let active = slides[0];
+          slides.forEach((s) => {
+            if (s.classList.contains("opacity-100")) active = s;
+          });
+          prev.style.left = active.offsetLeft + 12 + "px";
+        }
+        slides.forEach((s) => {
+          new MutationObserver(place).observe(s, {
+            attributes: true,
+            attributeFilter: ["class"],
+          });
+          s.addEventListener("load", place);
+        });
+        window.addEventListener("resize", place);
+        window.addEventListener("load", place);
+        place();
+      })();
     </script>
 
     <script>
-        (function () {
-            const gallery = document.getElementById('pet-gallery');
-            if (!gallery) return;
-            const slides = gallery.querySelectorAll('.pet-gallery-slide');
-            const dotsContainer = document.getElementById('pet-gallery-dots');
-            const prevBtn = document.getElementById('pet-gallery-prev');
-            const nextBtn = document.getElementById('pet-gallery-next');
-            const AUTOPLAY_MS = 2000;
-            let current = 0;
-            let timer = null;
-            let isPaused = false;
-            let hasStarted = false;
+      (function () {
+        const gallery = document.getElementById("pet-gallery");
+        if (!gallery) return;
+        const slides = gallery.querySelectorAll(".pet-gallery-slide");
+        const dotsContainer = document.getElementById("pet-gallery-dots");
+        const prevBtn = document.getElementById("pet-gallery-prev");
+        const nextBtn = document.getElementById("pet-gallery-next");
+        const AUTOPLAY_MS = 2000;
+        let current = 0;
+        let timer = null;
+        let isPaused = false;
+        let hasStarted = false;
 
-            slides.forEach((_, i) => {
-                const dot = document.createElement('button');
-                dot.className = 'pet-gallery-dot w-2.5 h-2.5 rounded-full transition-colors ' + (i === 0 ? 'bg-white' : 'bg-white/50 hover:bg-white/80');
-                dot.setAttribute('aria-label', 'Ir a la foto ' + (i + 1));
-                dot.addEventListener('click', () => {goTo(i); resetTimer();});
-                dotsContainer.appendChild(dot);
-            });
-            const dots = dotsContainer.querySelectorAll('.pet-gallery-dot');
+        slides.forEach((_, i) => {
+          const dot = document.createElement("button");
+          dot.className =
+            "pet-gallery-dot w-2.5 h-2.5 rounded-full transition-colors " +
+            (i === 0 ? "bg-white" : "bg-white/50 hover:bg-white/80");
+          dot.setAttribute("aria-label", "Ir a la foto " + (i + 1));
+          dot.addEventListener("click", () => {
+            goTo(i);
+            resetTimer();
+          });
+          dotsContainer.appendChild(dot);
+        });
+        const dots = dotsContainer.querySelectorAll(".pet-gallery-dot");
 
-            function goTo(index) {
-                slides[current].classList.remove('opacity-100');
-                slides[current].classList.add('opacity-0');
-                dots[current].classList.remove('bg-white');
-                dots[current].classList.add('bg-white/50', 'hover:bg-white/80');
+        function goTo(index) {
+          slides[current].classList.remove("opacity-100");
+          slides[current].classList.add("opacity-0");
+          dots[current].classList.remove("bg-white");
+          dots[current].classList.add("bg-white/50", "hover:bg-white/80");
 
-                current = (index + slides.length) % slides.length;
+          current = (index + slides.length) % slides.length;
 
-                slides[current].classList.remove('opacity-0');
-                slides[current].classList.add('opacity-100');
-                dots[current].classList.add('bg-white');
-                dots[current].classList.remove('bg-white/50', 'hover:bg-white/80');
-            }
+          slides[current].classList.remove("opacity-0");
+          slides[current].classList.add("opacity-100");
+          dots[current].classList.add("bg-white");
+          dots[current].classList.remove("bg-white/50", "hover:bg-white/80");
+        }
 
-            function startTimer() {
-                clearInterval(timer);
-                timer = setInterval(() => {
-                    if (!isPaused) goTo(current + 1);
-                }, AUTOPLAY_MS);
-            }
-            function resetTimer() {
-                startTimer();
-            }
+        function startTimer() {
+          clearInterval(timer);
+          timer = setInterval(() => {
+            if (!isPaused) goTo(current + 1);
+          }, AUTOPLAY_MS);
+        }
+        function resetTimer() {
+          startTimer();
+        }
 
-            prevBtn.addEventListener('click', () => {goTo(current - 1); resetTimer();});
-            nextBtn.addEventListener('click', () => {goTo(current + 1); resetTimer();});
+        prevBtn.addEventListener("click", () => {
+          goTo(current - 1);
+          resetTimer();
+        });
+        nextBtn.addEventListener("click", () => {
+          goTo(current + 1);
+          resetTimer();
+        });
 
-            // Pausa al pasar el mouse (solo aplica en dispositivos con mouse; en celular no se dispara)
-            gallery.addEventListener('mouseenter', () => {isPaused = true;});
-            gallery.addEventListener('mouseleave', () => {isPaused = false;});
+        // Pausa al pasar el mouse (solo aplica en dispositivos con mouse; en celular no se dispara)
+        gallery.addEventListener("mouseenter", () => {
+          isPaused = true;
+        });
+        gallery.addEventListener("mouseleave", () => {
+          isPaused = false;
+        });
 
-            // Arranca la reproducción automática recién cuando la sección entra en pantalla
-            if ('IntersectionObserver' in window) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !hasStarted) {
-                            hasStarted = true;
-                            startTimer();
-                            observer.disconnect();
-                        }
-                    });
-                }, {threshold: 0.3});
-                observer.observe(gallery);
-            } else {
-                startTimer();
-            }
-        })();
+        // Arranca la reproducción automática recién cuando la sección entra en pantalla
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting && !hasStarted) {
+                  hasStarted = true;
+                  startTimer();
+                  observer.disconnect();
+                }
+              });
+            },
+            { threshold: 0.3 },
+          );
+          observer.observe(gallery);
+        } else {
+          startTimer();
+        }
+      })();
     </script>
 
-    <section id="fun-facts" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <h2 class="font-serif text-[26px] sm:text-[34px] font-bold text-gray-900 mb-8 lg:mb-12 text-center">〰 Aprendé
-            sobre tu mascota 〰</h2>
-        <div class="flex flex-col md:flex-row gap-8 items-stretch">
-
-            <!-- Left: Bigotes fun fact (real image) -->
-            <div class="md:w-1/2 w-full h-[480px] rounded-3xl overflow-hidden shadow-lg relative group">
-                <img src="assets/image-14.jpg"
-                    alt="Los bigotes de los gatos"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-8">
-                    <div class="text-white">
-                        <span
-                            class="bg-[#CD9554] text-white text-xs font-bold px-3 py-1 rounded-full mb-3 inline-block">Mundo
-                            Felino</span>
-                        <h3 class="text-2xl font-serif font-bold mb-2">Los bigotes no son un detalle</h3>
-                        <p class="text-sm opacity-90 max-w-sm">Son un órgano sensorial: le permiten a tu gato medir
-                            espacios y percibir el aire a su alrededor. Nunca deben recortarse.</p>
-                    </div>
-                </div>
+    <section
+      id="fun-facts"
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14"
+    >
+      <h2
+        class="font-serif text-[26px] sm:text-[34px] font-bold text-gray-900 mb-8 lg:mb-12 text-center"
+      >
+        〰 Aprendé sobre tu mascota 〰
+      </h2>
+      <div class="flex flex-col md:flex-row gap-8 items-stretch">
+        <!-- Left: Bigotes fun fact (real image) -->
+        <div
+          class="md:w-1/2 w-full h-[480px] rounded-3xl overflow-hidden shadow-lg relative group"
+        >
+          <img
+            src="assets/image-14.jpg"
+            alt="Los bigotes de los gatos"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-8"
+          >
+            <div class="text-white">
+              <span
+                class="bg-[#CD9554] text-white text-xs font-bold px-3 py-1 rounded-full mb-3 inline-block"
+                >Mundo Felino</span
+              >
+              <h3 class="text-2xl font-serif font-bold mb-2">
+                Los bigotes no son un detalle
+              </h3>
+              <p class="text-sm opacity-90 max-w-sm">
+                Son un órgano sensorial: le permiten a tu gato medir espacios y
+                percibir el aire a su alrededor. Nunca deben recortarse.
+              </p>
             </div>
-
-            <!-- Right: Manejo del enojo / comportamiento (real image) -->
-            <div class="md:w-1/2 w-full h-[480px] rounded-3xl overflow-hidden shadow-lg relative group bg-[#152238]">
-                <img src="assets/image-15.jpg"
-                    alt="Pasos para calmar el enojo de tu mascota"
-                    class="w-full h-full object-cover object-center opacity-90 group-hover:opacity-100 transition-opacity">
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
-                    <div class="text-white">
-                        <span
-                            class="bg-paw-accent text-white text-xs font-bold px-3 py-1 rounded-full mb-3 inline-block">Comportamiento</span>
-                        <h3 class="text-2xl font-serif font-bold mb-2">Pasos para calmarle el enojo</h3>
-                        <p class="text-sm opacity-90 max-w-sm">Dale espacio, hablale bajito y evitá los castigos: la
-                            paciencia y la rutina son las mejores herramientas para un hogar tranquilo.</p>
-                    </div>
-                </div>
-            </div>
-
+          </div>
         </div>
+
+        <!-- Right: Manejo del enojo / comportamiento (real image) -->
+        <div
+          class="md:w-1/2 w-full h-[480px] rounded-3xl overflow-hidden shadow-lg relative group bg-[#152238]"
+        >
+          <img
+            src="assets/image-15.jpg"
+            alt="Pasos para calmar el enojo de tu mascota"
+            class="w-full h-full object-cover object-center opacity-90 group-hover:opacity-100 transition-opacity"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8"
+          >
+            <div class="text-white">
+              <span
+                class="bg-paw-accent text-white text-xs font-bold px-3 py-1 rounded-full mb-3 inline-block"
+                >Comportamiento</span
+              >
+              <h3 class="text-2xl font-serif font-bold mb-2">
+                Pasos para calmarle el enojo
+              </h3>
+              <p class="text-sm opacity-90 max-w-sm">
+                Dale espacio, hablale bajito y evitá los castigos: la paciencia
+                y la rutina son las mejores herramientas para un hogar
+                tranquilo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Promo: Snacks felinos (imagen real Paca) -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="bg-[#B7E4D8] rounded-4xl overflow-hidden shadow-sm relative flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 w-full h-72 md:h-96 relative overflow-hidden">
-                <img src="assets/image-16.jpg"
-                    alt="Snacks y mimos para gatos" class="w-full h-full object-cover">
-            </div>
-            <div class="p-8 md:p-12 md:w-1/2 text-center md:text-left text-[#0F3D33]">
-                <span
-                    class="inline-block bg-white/70 text-[#0F3D33] text-xs font-bold px-3 py-1 rounded-full mb-4">Mimos
-                    Felinos 🐾</span>
-                <h2 class="font-serif text-4xl font-bold mb-4 leading-tight">Su nuevo compañero de siesta</h2>
-                <p class="text-base mb-6 opacity-90 max-w-sm mx-auto md:mx-0">Snacks suaves y camas calentitas para esas
-                    largas horas de descanso felino.</p>
-                <button
-                    class="bg-paw-petrol hover:bg-paw-petrolDark text-white px-8 py-3 rounded-full font-['Poppins'] font-semibold text-sm transition shadow-lg">Ver
-                    Mimos para Gatos</button>
-            </div>
+      <div
+        class="bg-[#B7E4D8] rounded-4xl overflow-hidden shadow-sm relative flex flex-col md:flex-row items-center"
+      >
+        <div class="md:w-1/2 w-full h-72 md:h-96 relative overflow-hidden">
+          <img
+            src="assets/image-16.jpg"
+            alt="Snacks y mimos para gatos"
+            class="w-full h-full object-cover"
+          />
         </div>
+        <div
+          class="p-8 md:p-12 md:w-1/2 text-center md:text-left text-[#0F3D33]"
+        >
+          <span
+            class="inline-block bg-white/70 text-[#0F3D33] text-xs font-bold px-3 py-1 rounded-full mb-4"
+            >Mimos Felinos 🐾</span
+          >
+          <h2 class="font-serif text-4xl font-bold mb-4 leading-tight">
+            Su nuevo compañero de siesta
+          </h2>
+          <p class="text-base mb-6 opacity-90 max-w-sm mx-auto md:mx-0">
+            Snacks suaves y camas calentitas para esas largas horas de descanso
+            felino.
+          </p>
+          <button
+            class="bg-paw-petrol hover:bg-paw-petrolDark text-white px-8 py-3 rounded-full font-['Poppins'] font-semibold text-sm transition shadow-lg"
+          >
+            Ver Mimos para Gatos
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- Promo: Alimento premium para perros (imagen real PremieR) -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div
-            class="bg-[#1B2A4A] rounded-4xl overflow-hidden shadow-sm relative flex flex-col md:flex-row-reverse items-center">
-            <div class="md:w-1/2 w-full h-72 md:h-96 relative overflow-hidden">
-                <img src="assets/image-17.jpg"
-                    alt="Perro disfrutando alimento premium" class="w-full h-full object-cover">
-            </div>
-            <div class="p-8 md:p-12 md:w-1/2 text-center md:text-left text-white">
-                <span
-                    class="inline-block bg-white/10 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">Nutrición
-                    Premium 🦴</span>
-                <h2 class="font-serif text-4xl font-bold mb-4 leading-tight">Alimento que se disfruta en cada bocado
-                </h2>
-                <p class="text-base mb-6 opacity-90 max-w-sm mx-auto md:mx-0">Fórmulas balanceadas pensadas para la
-                    energía y la salud de tu perro, día a día.</p>
-                <button
-                    class="bg-white hover:bg-gray-100 text-[#1B2A4A] px-8 py-3 rounded-full font-['Poppins'] font-semibold text-sm transition shadow-lg">Ver
-                    Alimento para Perros</button>
-            </div>
+      <div
+        class="bg-[#1B2A4A] rounded-4xl overflow-hidden shadow-sm relative flex flex-col md:flex-row-reverse items-center"
+      >
+        <div class="md:w-1/2 w-full h-72 md:h-96 relative overflow-hidden">
+          <img
+            src="assets/image-17.jpg"
+            alt="Perro disfrutando alimento premium"
+            class="w-full h-full object-cover"
+          />
         </div>
+        <div class="p-8 md:p-12 md:w-1/2 text-center md:text-left text-white">
+          <span
+            class="inline-block bg-white/10 text-white text-xs font-bold px-3 py-1 rounded-full mb-4"
+            >Nutrición Premium 🦴</span
+          >
+          <h2 class="font-serif text-4xl font-bold mb-4 leading-tight">
+            Alimento que se disfruta en cada bocado
+          </h2>
+          <p class="text-base mb-6 opacity-90 max-w-sm mx-auto md:mx-0">
+            Fórmulas balanceadas pensadas para la energía y la salud de tu
+            perro, día a día.
+          </p>
+          <button
+            class="bg-white hover:bg-gray-100 text-[#1B2A4A] px-8 py-3 rounded-full font-['Poppins'] font-semibold text-sm transition shadow-lg"
+          >
+            Ver Alimento para Perros
+          </button>
+        </div>
+      </div>
     </section>
 
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div
+        class="w-full bg-[#CD9554] rounded-4xl overflow-hidden shadow-lg relative flex flex-col md:flex-row items-center"
+      >
         <div
-            class="w-full bg-[#CD9554] rounded-4xl overflow-hidden shadow-lg relative flex flex-col md:flex-row items-center">
-
-            <div class="relative p-12 md:py-10 md:pl-20 md:pr-12 md:w-[58%] text-center md:text-left text-white z-10">
-                <h2 class="font-serif mb-5"><span class="block text-4xl md:text-[46px] font-normal leading-tight">Muerde
-                        la</span><span class="block text-5xl md:text-[62px] font-black leading-[1.05]">Felicidad</span>
-                </h2>
-                <p class="font-serif italic text-xl md:text-[22px] mb-4 opacity-95">Diversión que se disfruta a cuatro
-                    patas</p>
-                <p class="text-lg md:text-xl leading-relaxed mb-6 opacity-90 md:max-w-[520px]">Juguetes resistentes y
-                    seguros para horas de diversión inagotable.</p>
-                <button
-                    class="bg-[#2C3E50] hover:bg-black text-white px-8 py-3 rounded-full font-bold uppercase tracking-wider text-sm transition shadow-lg">Descubrir
-                    Ahora</button>
-            </div>
-
-            <!-- Stylized background pattern or image -->
-            <div class="md:w-1/2 h-80 md:h-full relative overflow-hidden w-full">
-                <!-- Abstract paw or bone shapes as background -->
-                <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                    alt="Juguetes" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-50">
-            </div>
-
-            <!-- Dalmata con pelota: asomado desde abajo a la derecha, mirando hacia el texto -->
-            <img src="assets/image-18.jpg"
-                alt="Dalmata sosteniendo una pelota de tenis"
-                class="absolute bottom-0 right-0 h-[350px] md:h-[372px] w-auto object-contain md:right-10 -scale-x-100 pointer-events-none select-none">
+          class="relative p-12 md:py-10 md:pl-20 md:pr-12 md:w-[58%] text-center md:text-left text-white z-10"
+        >
+          <h2 class="font-serif mb-5">
+            <span
+              class="block text-4xl md:text-[46px] font-normal leading-tight"
+              >Muerde la</span
+            ><span
+              class="block text-5xl md:text-[62px] font-black leading-[1.05]"
+              >Felicidad</span
+            >
+          </h2>
+          <p class="font-serif italic text-xl md:text-[22px] mb-4 opacity-95">
+            Diversión que se disfruta a cuatro patas
+          </p>
+          <p
+            class="text-lg md:text-xl leading-relaxed mb-6 opacity-90 md:max-w-[520px]"
+          >
+            Juguetes resistentes y seguros para horas de diversión inagotable.
+          </p>
+          <button
+            class="bg-[#2C3E50] hover:bg-black text-white px-8 py-3 rounded-full font-bold uppercase tracking-wider text-sm transition shadow-lg"
+          >
+            Descubrir Ahora
+          </button>
         </div>
+
+        <!-- Stylized background pattern or image -->
+        <div class="md:w-1/2 h-80 md:h-full relative overflow-hidden w-full">
+          <!-- Abstract paw or bone shapes as background -->
+          <img
+            src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Juguetes"
+            class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-50"
+          />
+        </div>
+
+        <!-- Dalmata con pelota: asomado desde abajo a la derecha, mirando hacia el texto -->
+        <img
+          src="assets/image-18.jpg"
+          alt="Dalmata sosteniendo una pelota de tenis"
+          class="absolute bottom-0 right-0 h-[350px] md:h-[372px] w-auto object-contain md:right-10 -scale-x-100 pointer-events-none select-none"
+        />
+      </div>
     </section>
 
-    <footer class="bg-[#2D3748] text-white pt-16 pb-8 px-4 sm:px-6 lg:px-8 mt-12 rounded-t-4xl">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-
-            <!-- Brand -->
-            <div class="space-y-4">
-                <div class="flex items-center gap-2 mb-4">
-                    <span
-                        class="font-serif font-bold text-lg md:text-xl lg:text-lg text-white whitespace-nowrap">Malvinas
-                        Argentinas S.A.</span>
-                </div>
-                <p class="text-sm text-gray-300 mt-2 mb-2 font-medium">Rodriguez Peña 102, CABA</p>
-                <p class="text-sm text-gray-400 max-w-xs">
-                    Productos cuidadosamente seleccionados para las mascotas que merecen lo mejor. Calidad y amor en
-                    cada entrega.
-                </p>
-                <div class="flex space-x-4 pt-4">
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-paw-accent transition">f</a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-paw-accent transition">in</a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-paw-accent transition">tw</a>
-                </div>
-            </div>
-
-            <!-- Quick Links -->
-            <div>
-                <h4 class="font-serif font-bold text-lg mb-6 border-b border-paw-accent/60 pb-2 inline-block">Enlaces
-                    Rápidos</h4>
-                <ul class="space-y-3 text-sm text-gray-400">
-                    <li><a href="#" class="hover:text-paw-sageLight transition flex items-center gap-2"><span
-                                class="text-paw-accent">›</span> Tienda</a></li>
-                    <li><a href="#" class="hover:text-paw-sageLight transition flex items-center gap-2"><span
-                                class="text-paw-accent">›</span> Sobre Nosotros</a></li>
-                    <li><a href="#" class="hover:text-paw-sageLight transition flex items-center gap-2"><span
-                                class="text-paw-accent">›</span> Blog</a></li>
-                    <li><a href="#" class="hover:text-paw-sageLight transition flex items-center gap-2"><span
-                                class="text-paw-accent">›</span> Contacto</a></li>
-                </ul>
-            </div>
-
-            <!-- Service -->
-            <div>
-                <h4 class="font-serif font-bold text-lg mb-6 border-b border-paw-accent/60 pb-2 inline-block">Atención
-                    al Cliente</h4>
-                <ul class="space-y-3 text-sm text-gray-400">
-                    <li><a href="#" class="hover:text-paw-sageLight transition flex items-center gap-2"><span
-                                class="text-paw-accent">›</span> Preguntas Frecuentes</a></li>
-                    <li><a href="#" class="hover:text-paw-sageLight transition flex items-center gap-2"><span
-                                class="text-paw-accent">›</span> Políticas de Envío</a></li>
-                    <li><a href="#" class="hover:text-paw-sageLight transition flex items-center gap-2"><span
-                                class="text-paw-accent">›</span> Devoluciones</a></li>
-                    <li><a href="#" class="hover:text-paw-sageLight transition flex items-center gap-2"><span
-                                class="text-paw-accent">›</span> Términos y Condiciones</a></li>
-                </ul>
-            </div>
-
-            <!-- Newsletter -->
-            <div>
-                <h4 class="font-serif font-bold text-lg mb-6 border-b border-paw-accent/60 pb-2 inline-block">Newsletter
-                </h4>
-                <p class="text-sm text-gray-400 mb-4">Recibe tips, ofertas exclusivas y novedades directamente en tu
-                    correo.</p>
-                <div class="flex flex-col gap-3">
-                    <input type="email" placeholder="Ingresa tu email"
-                        class="w-full px-5 py-3 rounded-full text-sm bg-gray-700 border-none text-white focus:ring-2 focus:ring-paw-accent outline-none">
-                    <button
-                        class="bg-paw-accent text-white px-4 py-3 rounded-full font-['Poppins'] font-semibold text-sm tracking-wide hover:bg-paw-accentDark transition w-full">SUSCRIBIRSE</button>
-                </div>
-            </div>
+    <footer
+      class="bg-[#2D3748] text-white pt-16 pb-8 px-4 sm:px-6 lg:px-8 mt-12 rounded-t-4xl"
+    >
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
+      >
+        <!-- Brand -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2 mb-4">
+            <span
+              class="font-serif font-bold text-lg md:text-xl lg:text-lg text-white whitespace-nowrap"
+              >Malvinas Argentinas S.A.</span
+            >
+          </div>
+          <p class="text-sm text-gray-300 mt-2 mb-2 font-medium">
+            Rodriguez Peña 102, CABA
+          </p>
+          <p class="text-sm text-gray-400 max-w-xs">
+            Productos cuidadosamente seleccionados para las mascotas que merecen
+            lo mejor. Calidad y amor en cada entrega.
+          </p>
+          <div class="flex space-x-4 pt-4">
+            <a
+              href="#"
+              class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-paw-accent transition"
+              >f</a
+            >
+            <a
+              href="#"
+              class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-paw-accent transition"
+              >in</a
+            >
+            <a
+              href="#"
+              class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-paw-accent transition"
+              >tw</a
+            >
+          </div>
         </div>
 
-        <!-- Bottom Footer -->
-        <div
-            class="max-w-7xl mx-auto border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-            <p>&copy; 2026 Malvinas Argentinas S.A. Todos los derechos reservados.</p>
-            <div class="flex space-x-6">
-                <span class="flex items-center gap-1"><span class="text-lg">💳</span> Pagos Seguros</span>
-                <span class="flex items-center gap-1"><span class="text-lg">🔒</span> Compra Protegida</span>
-            </div>
+        <!-- Quick Links -->
+        <div>
+          <h4
+            class="font-serif font-bold text-lg mb-6 border-b border-paw-accent/60 pb-2 inline-block"
+          >
+            Enlaces Rápidos
+          </h4>
+          <ul class="space-y-3 text-sm text-gray-400">
+            <li>
+              <a
+                href="#"
+                class="hover:text-paw-sageLight transition flex items-center gap-2"
+                ><span class="text-paw-accent">›</span> Tienda</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="hover:text-paw-sageLight transition flex items-center gap-2"
+                ><span class="text-paw-accent">›</span> Sobre Nosotros</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="hover:text-paw-sageLight transition flex items-center gap-2"
+                ><span class="text-paw-accent">›</span> Blog</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="hover:text-paw-sageLight transition flex items-center gap-2"
+                ><span class="text-paw-accent">›</span> Contacto</a
+              >
+            </li>
+          </ul>
         </div>
+
+        <!-- Service -->
+        <div>
+          <h4
+            class="font-serif font-bold text-lg mb-6 border-b border-paw-accent/60 pb-2 inline-block"
+          >
+            Atención al Cliente
+          </h4>
+          <ul class="space-y-3 text-sm text-gray-400">
+            <li>
+              <a
+                href="#"
+                class="hover:text-paw-sageLight transition flex items-center gap-2"
+                ><span class="text-paw-accent">›</span> Preguntas Frecuentes</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="hover:text-paw-sageLight transition flex items-center gap-2"
+                ><span class="text-paw-accent">›</span> Políticas de Envío</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="hover:text-paw-sageLight transition flex items-center gap-2"
+                ><span class="text-paw-accent">›</span> Devoluciones</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="hover:text-paw-sageLight transition flex items-center gap-2"
+                ><span class="text-paw-accent">›</span> Términos y
+                Condiciones</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h4
+            class="font-serif font-bold text-lg mb-6 border-b border-paw-accent/60 pb-2 inline-block"
+          >
+            Newsletter
+          </h4>
+          <p class="text-sm text-gray-400 mb-4">
+            Recibe tips, ofertas exclusivas y novedades directamente en tu
+            correo.
+          </p>
+          <div class="flex flex-col gap-3">
+            <input
+              type="email"
+              placeholder="Ingresa tu email"
+              class="w-full px-5 py-3 rounded-full text-sm bg-gray-700 border-none text-white focus:ring-2 focus:ring-paw-accent outline-none"
+            />
+            <button
+              class="bg-paw-accent text-white px-4 py-3 rounded-full font-['Poppins'] font-semibold text-sm tracking-wide hover:bg-paw-accentDark transition w-full"
+            >
+              SUSCRIBIRSE
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Footer -->
+      <div
+        class="max-w-7xl mx-auto border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500"
+      >
+        <p>
+          &copy; 2026 Malvinas Argentinas S.A. Todos los derechos reservados.
+        </p>
+        <div class="flex space-x-6">
+          <span class="flex items-center gap-1"
+            ><span class="text-lg">💳</span> Pagos Seguros</span
+          >
+          <span class="flex items-center gap-1"
+            ><span class="text-lg">🔒</span> Compra Protegida</span
+          >
+        </div>
+      </div>
     </footer>
 
-    <div id="cart-overlay"
-        class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] hidden transition-opacity duration-300 opacity-0"
-        onclick="toggleCart()"></div>
+    <div
+      id="cart-overlay"
+      class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] hidden transition-opacity duration-300 opacity-0"
+      onclick="toggleCart()"
+    ></div>
 
     <!-- Cart Drawer -->
-    <div id="cart-drawer"
-        class="fixed top-0 right-0 h-full w-full max-w-[420px] bg-[#F8F9FA] shadow-2xl z-[70] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
-        <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-white shadow-sm z-10">
-            <h3 class="font-serif text-2xl font-bold text-gray-900 flex items-center gap-3">
-                <span class="bg-paw-accent/10 p-2 rounded-xl text-paw-accent">🛒</span> Tu Carrito
-            </h3>
-            <button onclick="toggleCart()"
-                class="text-gray-400 hover:text-red-500 text-3xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-50 transition">&times;</button>
+    <div
+      id="cart-drawer"
+      class="fixed top-0 right-0 h-full w-full max-w-[420px] bg-[#F8F9FA] shadow-2xl z-[70] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col"
+    >
+      <div
+        class="p-6 border-b border-gray-200 flex justify-between items-center bg-white shadow-sm z-10"
+      >
+        <h3
+          class="font-serif text-2xl font-bold text-gray-900 flex items-center gap-3"
+        >
+          <span class="bg-paw-accent/10 p-2 rounded-xl text-paw-accent"
+            >🛒</span
+          >
+          Tu Carrito
+        </h3>
+        <button
+          onclick="toggleCart()"
+          class="text-gray-400 hover:text-red-500 text-3xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-50 transition"
+        >
+          &times;
+        </button>
+      </div>
+
+      <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <!-- Items will be injected here -->
+      </div>
+
+      <div
+        class="p-6 bg-white border-t border-gray-200 space-y-4 shadow-[0_-10px_40px_rgba(0,0,0,0.08)] z-10"
+      >
+        <div
+          class="flex justify-between items-center text-gray-600 font-medium"
+        >
+          <span>Subtotal</span>
+          <span id="cart-subtotal" class="text-gray-900">$0</span>
+        </div>
+        <div
+          class="flex justify-between items-center text-gray-600 font-medium pb-4 border-b border-gray-100"
+        >
+          <span>Envío</span>
+          <span class="text-green-600 text-sm">Calculado en el checkout</span>
+        </div>
+        <div class="flex justify-between items-center text-xl pt-2">
+          <span class="font-bold text-gray-900">Total</span>
+          <span id="cart-total" class="font-black text-paw-accent text-2xl"
+            >$0</span
+          >
         </div>
 
-        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
-            <!-- Items will be injected here -->
-        </div>
-
-        <div class="p-6 bg-white border-t border-gray-200 space-y-4 shadow-[0_-10px_40px_rgba(0,0,0,0.08)] z-10">
-            <div class="flex justify-between items-center text-gray-600 font-medium">
-                <span>Subtotal</span>
-                <span id="cart-subtotal" class="text-gray-900">$0</span>
-            </div>
-            <div class="flex justify-between items-center text-gray-600 font-medium pb-4 border-b border-gray-100">
-                <span>Envío</span>
-                <span class="text-green-600 text-sm">Calculado en el checkout</span>
-            </div>
-            <div class="flex justify-between items-center text-xl pt-2">
-                <span class="font-bold text-gray-900">Total</span>
-                <span id="cart-total" class="font-black text-paw-accent text-2xl">$0</span>
-            </div>
-
-            <button onclick="checkoutWhatsApp()"
-                class="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold py-4 rounded-2xl transition shadow-lg shadow-[#25D366]/30 flex justify-center items-center gap-3 mt-4 transform hover:-translate-y-1">
-                Comprar por WhatsApp <span class="text-2xl">📱</span>
-            </button>
-            <p class="text-[10px] text-gray-400 text-center uppercase tracking-widest mt-2">Compra 100% Segura</p>
-        </div>
+        <button
+          onclick="checkoutWhatsApp()"
+          class="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold py-4 rounded-2xl transition shadow-lg shadow-[#25D366]/30 flex justify-center items-center gap-3 mt-4 transform hover:-translate-y-1"
+        >
+          Comprar por WhatsApp <span class="text-2xl">📱</span>
+        </button>
+        <p
+          class="text-[10px] text-gray-400 text-center uppercase tracking-widest mt-2"
+        >
+          Compra 100% Segura
+        </p>
+      </div>
     </div>
 
     <script>
-        // Premium Product Data
-        const products = [
-            {
-                id: 1,
-                name: "Peluche con sonido",
-                category: "Juguetes",
-                price: 12000,
-                rating: 4.8,
-                reviews: 128,
-                image: "assets/image-19.jpg"
-            },
-            {
-                id: 2,
-                name: "Camita 10",
-                category: "Camas",
-                price: 49990,
-                rating: 4.9,
-                reviews: 96,
-                image: "assets/image-20.jpg"
-            },
-            {
-                id: 3,
-                name: "Snacks Naturales de Pollo y Carne",
-                category: "Alimento",
-                price: 6000,
-                rating: 4.7,
-                reviews: 74,
-                image: "assets/image-21.jpg"
-            },
-            {
-                id: 4,
-                name: "Jueguete intereractivo",
-                category: "Juguetes",
-                price: 24990,
-                rating: 4.6,
-                reviews: 112,
-                image: "assets/image-22.jpg"
-            }
-        ];
+      // Premium Product Data
+      const products = [
+        {
+          id: 1,
+          name: "Peluche con sonido",
+          category: "Juguetes",
+          price: 12000,
+          rating: 4.8,
+          reviews: 128,
+          image: "assets/image-19.jpg",
+        },
+        {
+          id: 2,
+          name: "Camita 10",
+          category: "Camas",
+          price: 49990,
+          rating: 4.9,
+          reviews: 96,
+          image: "assets/image-20.jpg",
+        },
+        {
+          id: 3,
+          name: "Snacks Naturales de Pollo y Carne",
+          category: "Alimento",
+          price: 6000,
+          rating: 4.7,
+          reviews: 74,
+          image: "assets/image-21.jpg",
+        },
+        {
+          id: 4,
+          name: "Jueguete intereractivo",
+          category: "Juguetes",
+          price: 24990,
+          rating: 4.6,
+          reviews: 112,
+          image: "assets/image-22.jpg",
+        },
+      ];
 
-        let cart = [];
+      let cart = [];
 
-        function renderStars(rating) {
-            let stars = '';
-            for (let i = 1; i <= 5; i++) {
-                if (i <= Math.floor(rating)) stars += '<span class="text-yellow-400 text-sm">★</span>';
-                else stars += '<span class="text-gray-200 text-sm">★</span>';
-            }
-            return stars;
+      function renderStars(rating) {
+        let stars = "";
+        for (let i = 1; i <= 5; i++) {
+          if (i <= Math.floor(rating))
+            stars += '<span class="text-yellow-400 text-sm">★</span>';
+          else stars += '<span class="text-gray-200 text-sm">★</span>';
+        }
+        return stars;
+      }
+
+      let activeCategory = "all";
+
+      function filterProducts(category) {
+        activeCategory = category;
+        document.querySelectorAll(".product-filter").forEach((button) => {
+          const isActive = button.dataset.filter === category;
+          button.classList.toggle("active", isActive);
+          button.classList.toggle("bg-paw-petrol", isActive);
+          button.classList.toggle("text-white", isActive);
+          button.classList.toggle("bg-white", !isActive);
+          button.classList.toggle("text-gray-600", !isActive);
+        });
+        renderProducts();
+      }
+
+      function renderProducts() {
+        const grid = document.getElementById("product-grid");
+        if (!grid) return;
+        const count = document.getElementById("product-count");
+        grid.innerHTML = "";
+
+        const visibleProducts =
+          activeCategory === "all"
+            ? products
+            : products.filter(
+                (product) => product.category.toLowerCase() === activeCategory,
+              );
+
+        count.textContent = `${visibleProducts.length} producto${visibleProducts.length === 1 ? "" : "s"}`;
+
+        if (visibleProducts.length === 0) {
+          grid.innerHTML =
+            '<p class="col-span-full text-center text-gray-500 py-10">No hay productos en esta categoría.</p>';
+          return;
         }
 
-        let activeCategory = 'all';
+        visibleProducts.forEach((product) => {
+          const card = document.createElement("div");
+          card.className =
+            "group bg-white rounded-3xl p-4 flex flex-col h-full shadow-sm border border-gray-100 hover:shadow-xl hover:border-paw-accent/30 transition-all duration-300";
 
-        function filterProducts(category) {
-            activeCategory = category;
-            document.querySelectorAll('.product-filter').forEach(button => {
-                const isActive = button.dataset.filter === category;
-                button.classList.toggle('active', isActive);
-                button.classList.toggle('bg-paw-petrol', isActive);
-                button.classList.toggle('text-white', isActive);
-                button.classList.toggle('bg-white', !isActive);
-                button.classList.toggle('text-gray-600', !isActive);
-            });
-            renderProducts();
-        }
+          const formattedPrice = new Intl.NumberFormat("es-AR", {
+            style: "currency",
+            currency: "ARS",
+            maximumFractionDigits: 0,
+          }).format(product.price);
 
-        function renderProducts() {
-            const grid = document.getElementById('product-grid');
-            if (!grid) return;
-            const count = document.getElementById('product-count');
-            grid.innerHTML = '';
-
-            const visibleProducts = activeCategory === 'all'
-                ? products
-                : products.filter(product => product.category.toLowerCase() === activeCategory);
-
-            count.textContent = `${visibleProducts.length} producto${visibleProducts.length === 1 ? '' : 's'}`;
-
-            if (visibleProducts.length === 0) {
-                grid.innerHTML = '<p class="col-span-full text-center text-gray-500 py-10">No hay productos en esta categoría.</p>';
-                return;
-            }
-
-            visibleProducts.forEach(product => {
-                const card = document.createElement('div');
-                card.className = "group bg-white rounded-3xl p-4 flex flex-col h-full shadow-sm border border-gray-100 hover:shadow-xl hover:border-paw-accent/30 transition-all duration-300";
-
-                const formattedPrice = new Intl.NumberFormat('es-AR', {style: 'currency', currency: 'ARS', maximumFractionDigits: 0}).format(product.price);
-
-                card.innerHTML = `
+          card.innerHTML = `
                     <div class="relative bg-gray-50 rounded-2xl aspect-square mb-4 overflow-hidden">
                         <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         
@@ -1215,56 +1756,61 @@
                         </div>
                     </div>
                 `;
-                grid.appendChild(card);
-            });
+          grid.appendChild(card);
+        });
+      }
+
+      function addToCart(id) {
+        const prod = products.find((p) => p.id === id);
+        const existing = cart.find((item) => item.id === id);
+        if (existing) {
+          existing.qty++;
+        } else {
+          cart.push({ ...prod, qty: 1 });
         }
+        updateCartUI();
 
-        function addToCart(id) {
-            const prod = products.find(p => p.id === id);
-            const existing = cart.find(item => item.id === id);
-            if (existing) {
-                existing.qty++;
-            } else {
-                cart.push({...prod, qty: 1});
-            }
-            updateCartUI();
+        // Visual feedback on the header cart icon
+        const counter = document.getElementById("cart-counter");
+        counter.classList.add("scale-150", "bg-red-500");
+        setTimeout(() => {
+          counter.classList.remove("scale-150", "bg-red-500");
+        }, 300);
 
-            // Visual feedback on the header cart icon
-            const counter = document.getElementById('cart-counter');
-            counter.classList.add('scale-150', 'bg-red-500');
-            setTimeout(() => {
-                counter.classList.remove('scale-150', 'bg-red-500');
-            }, 300);
+        // Open cart drawer automatically
+        toggleCart(true);
+      }
 
-            // Open cart drawer automatically
-            toggleCart(true);
-        }
+      function updateCartUI() {
+        const counter = document.getElementById("cart-counter");
+        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+        counter.innerText = totalItems;
 
-        function updateCartUI() {
-            const counter = document.getElementById('cart-counter');
-            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-            counter.innerText = totalItems;
+        const itemsContainer = document.getElementById("cart-items");
+        itemsContainer.innerHTML = "";
+        let total = 0;
 
-            const itemsContainer = document.getElementById('cart-items');
-            itemsContainer.innerHTML = '';
-            let total = 0;
-
-            if (cart.length === 0) {
-                itemsContainer.innerHTML = `
+        if (cart.length === 0) {
+          itemsContainer.innerHTML = `
                     <div class="flex flex-col items-center justify-center h-full text-gray-400 space-y-6 pt-20">
                         <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center text-4xl">🛒</div>
                         <p class="text-center font-medium text-lg text-gray-500">Tu carrito está triste y vacío</p>
                         <button onclick="toggleCart()" class="bg-paw-petrol text-white px-6 py-2 rounded-full font-medium hover:bg-paw-petrolDark transition">Llénalo de alegría</button>
                     </div>
                 `;
-            } else {
-                cart.forEach(item => {
-                    total += item.price * item.qty;
-                    const formattedItemPrice = new Intl.NumberFormat('es-AR', {style: 'currency', currency: 'ARS', maximumFractionDigits: 0}).format(item.price);
+        } else {
+          cart.forEach((item) => {
+            total += item.price * item.qty;
+            const formattedItemPrice = new Intl.NumberFormat("es-AR", {
+              style: "currency",
+              currency: "ARS",
+              maximumFractionDigits: 0,
+            }).format(item.price);
 
-                    const row = document.createElement('div');
-                    row.className = "flex gap-4 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm relative group";
-                    row.innerHTML = `
+            const row = document.createElement("div");
+            row.className =
+              "flex gap-4 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm relative group";
+            row.innerHTML = `
                         <div class="w-24 h-24 bg-gray-50 rounded-xl overflow-hidden flex-shrink-0 border border-gray-100">
                              <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
                         </div>
@@ -1282,87 +1828,107 @@
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                         </button>
                     `;
-                    itemsContainer.appendChild(row);
-                });
-            }
-
-            const formattedTotal = new Intl.NumberFormat('es-AR', {style: 'currency', currency: 'ARS', maximumFractionDigits: 0}).format(total);
-            document.getElementById('cart-subtotal').innerText = formattedTotal;
-            document.getElementById('cart-total').innerText = formattedTotal;
+            itemsContainer.appendChild(row);
+          });
         }
 
-        function changeQty(id, delta) {
-            const item = cart.find(i => i.id === id);
-            if (item) {
-                item.qty += delta;
-                if (item.qty <= 0) {
-                    cart = cart.filter(i => i.id !== id);
-                }
-                updateCartUI();
-            }
+        const formattedTotal = new Intl.NumberFormat("es-AR", {
+          style: "currency",
+          currency: "ARS",
+          maximumFractionDigits: 0,
+        }).format(total);
+        document.getElementById("cart-subtotal").innerText = formattedTotal;
+        document.getElementById("cart-total").innerText = formattedTotal;
+      }
+
+      function changeQty(id, delta) {
+        const item = cart.find((i) => i.id === id);
+        if (item) {
+          item.qty += delta;
+          if (item.qty <= 0) {
+            cart = cart.filter((i) => i.id !== id);
+          }
+          updateCartUI();
         }
+      }
 
-        function removeItem(id) {
-            cart = cart.filter(i => i.id !== id);
-            updateCartUI();
+      function removeItem(id) {
+        cart = cart.filter((i) => i.id !== id);
+        updateCartUI();
+      }
+
+      function toggleCart(forceOpen = null) {
+        const drawer = document.getElementById("cart-drawer");
+        const overlay = document.getElementById("cart-overlay");
+
+        const isCurrentlyOpen = !drawer.classList.contains("translate-x-full");
+        const shouldOpen = forceOpen !== null ? forceOpen : !isCurrentlyOpen;
+
+        if (shouldOpen) {
+          overlay.classList.remove("hidden");
+          setTimeout(() => {
+            overlay.classList.remove("opacity-0");
+            overlay.classList.add("opacity-100");
+            drawer.classList.remove("translate-x-full");
+          }, 10);
+          document.body.style.overflow = "hidden";
+        } else {
+          drawer.classList.add("translate-x-full");
+          overlay.classList.remove("opacity-100");
+          overlay.classList.add("opacity-0");
+          setTimeout(() => {
+            overlay.classList.add("hidden");
+          }, 300);
+          document.body.style.overflow = "";
         }
+      }
 
-        function toggleCart(forceOpen = null) {
-            const drawer = document.getElementById('cart-drawer');
-            const overlay = document.getElementById('cart-overlay');
+      function checkoutWhatsApp() {
+        if (cart.length === 0) return;
+        let text =
+          "Hola! Quisiera realizar el siguiente pedido en Malvinas Pet Shop:%0A%0A";
+        let total = 0;
 
-            const isCurrentlyOpen = !drawer.classList.contains('translate-x-full');
-            const shouldOpen = forceOpen !== null ? forceOpen : !isCurrentlyOpen;
+        cart.forEach((item) => {
+          const lineTotal = item.price * item.qty;
+          const formattedLineTotal = new Intl.NumberFormat("es-AR", {
+            style: "currency",
+            currency: "ARS",
+            maximumFractionDigits: 0,
+          }).format(lineTotal);
+          text += `🔸 ${item.qty}x ${item.name} (${formattedLineTotal})%0A`;
+          total += lineTotal;
+        });
 
-            if (shouldOpen) {
-                overlay.classList.remove('hidden');
-                setTimeout(() => {
-                    overlay.classList.remove('opacity-0');
-                    overlay.classList.add('opacity-100');
-                    drawer.classList.remove('translate-x-full');
-                }, 10);
-                document.body.style.overflow = 'hidden';
-            } else {
-                drawer.classList.add('translate-x-full');
-                overlay.classList.remove('opacity-100');
-                overlay.classList.add('opacity-0');
-                setTimeout(() => {
-                    overlay.classList.add('hidden');
-                }, 300);
-                document.body.style.overflow = '';
-            }
-        }
+        const formattedTotal = new Intl.NumberFormat("es-AR", {
+          style: "currency",
+          currency: "ARS",
+          maximumFractionDigits: 0,
+        }).format(total);
+        text += `%0A*Total Estimado: ${formattedTotal}*%0A%0A(Aguardaré a que me confirmen el costo de envío. ¡Gracias!)`;
 
-        function checkoutWhatsApp() {
-            if (cart.length === 0) return;
-            let text = "Hola! Quisiera realizar el siguiente pedido en Malvinas Pet Shop:%0A%0A";
-            let total = 0;
+        window.open(`https://wa.me/?text=${text}`, "_blank");
+      }
 
-            cart.forEach(item => {
-                const lineTotal = item.price * item.qty;
-                const formattedLineTotal = new Intl.NumberFormat('es-AR', {style: 'currency', currency: 'ARS', maximumFractionDigits: 0}).format(lineTotal);
-                text += `🔸 ${item.qty}x ${item.name} (${formattedLineTotal})%0A`;
-                total += lineTotal;
-            });
-
-            const formattedTotal = new Intl.NumberFormat('es-AR', {style: 'currency', currency: 'ARS', maximumFractionDigits: 0}).format(total);
-            text += `%0A*Total Estimado: ${formattedTotal}*%0A%0A(Aguardaré a que me confirmen el costo de envío. ¡Gracias!)`;
-
-            window.open(`https://wa.me/?text=${text}`, '_blank');
-        }
-
-        // Initialize
-        window.onload = function () {
-            document.querySelectorAll('#product-filters [data-filter]').forEach(button => {
-                button.addEventListener('click', () => filterProducts(button.dataset.filter));
-            });
-            document.querySelectorAll('#categories [data-category]').forEach(categoryCard => {
-                categoryCard.addEventListener('click', () => filterProducts(categoryCard.dataset.category));
-            });
-            renderProducts();
-            updateCartUI();
-        }
+      // Initialize
+      window.onload = function () {
+        document
+          .querySelectorAll("#product-filters [data-filter]")
+          .forEach((button) => {
+            button.addEventListener("click", () =>
+              filterProducts(button.dataset.filter),
+            );
+          });
+        document
+          .querySelectorAll("#categories [data-category]")
+          .forEach((categoryCard) => {
+            categoryCard.addEventListener("click", () =>
+              filterProducts(categoryCard.dataset.category),
+            );
+          });
+        renderProducts();
+        updateCartUI();
+      };
     </script>
-</body>
-
+  </body>
 </html>
