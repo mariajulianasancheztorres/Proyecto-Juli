@@ -991,16 +991,24 @@
           class="md:w-[70%] w-full h-full p-0 m-0 min-h-[450px] md:min-h-[500px] relative rounded-[2rem] overflow-hidden bg-[#F4EDDF]"
         >
           <div class="absolute inset-0 w-full h-full flex justify-end">
-            <img
-              src="assets/image-08.jpg"
-              alt="Perro con frisbee en la playa"
-              class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-100"
-            />
-            <img
-              src="assets/image-09.jpg"
-              alt="Mujer paseando tres perros con correa"
-              class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-0"
-            />
+            <div
+              class="pet-gallery-slide absolute top-0 right-0 h-full aspect-square rounded-3xl overflow-hidden transition-opacity duration-700 opacity-100"
+            >
+              <img
+                src="assets/image-08.jpg"
+                alt="Perro con frisbee en la playa"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div
+              class="pet-gallery-slide absolute top-0 right-0 h-full aspect-square rounded-3xl overflow-hidden transition-opacity duration-700 opacity-0"
+            >
+              <img
+                src="assets/image-09.jpg"
+                alt="Mujer paseando tres perros con correa"
+                class="w-full h-full object-cover"
+              />
+            </div>
             <img
               src="assets/image-10.jpg"
               alt="Mochila transportadora para gato"
@@ -1016,11 +1024,15 @@
               alt="Perro con mochila de paseo"
               class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-0"
             />
-            <img
-              src="assets/image-13.jpg"
-              alt="Perro con accesorios de paseo"
-              class="pet-gallery-slide absolute inset-0 w-auto h-full max-w-full ml-auto object-contain rounded-3xl transition-opacity duration-700 opacity-0"
-            />
+            <div
+              class="pet-gallery-slide absolute top-0 right-0 h-full aspect-square rounded-3xl overflow-hidden transition-opacity duration-700 opacity-0"
+            >
+              <img
+                src="assets/image-13.jpg"
+                alt="Perro con accesorios de paseo"
+                class="w-full h-full object-cover"
+              />
+            </div>
             <!-- Flechas (ancladas a la foto actual) -->
             <button
               id="pet-gallery-prev"
