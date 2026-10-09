@@ -149,16 +149,116 @@
         </button>
       </div>
 
-      <div class="flex justify-between items-center mb-5">
-        <h2
-          id="product-heading"
-          class="font-serif text-2xl font-bold text-gray-900"
-        >
-          Productos
-        </h2>
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-5">
+        <div>
+          <h2
+            id="product-heading"
+            class="font-serif text-2xl font-bold text-gray-900"
+          >
+            Productos
+          </h2>
+          <div
+            id="species-filter-area"
+            class="hidden mt-3"
+          >
+            <div
+              id="food-species-filters"
+              class="flex flex-wrap items-start gap-x-2"
+              role="group"
+              aria-label="Filtrar productos por especie"
+            >
+              <button
+                type="button"
+                data-species="perros"
+                aria-pressed="false"
+                class="food-species-filter group relative flex items-baseline gap-2 px-3 py-2 text-gray-500 transition-colors hover:text-paw-petrol focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paw-accent rounded-sm"
+              >
+                <span class="font-sans text-[10px] font-bold tracking-[0.16em] text-paw-accent">01</span>
+                <span class="font-serif text-lg sm:text-xl font-semibold">Perros</span>
+                <span class="species-filter-indicator absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-paw-accent transition-transform duration-300 group-hover:scale-x-100"></span>
+              </button>
+              <div class="flex flex-col items-start">
+                <button
+                  type="button"
+                  data-species="gatos"
+                  aria-pressed="false"
+                  class="food-species-filter group relative flex items-baseline gap-2 px-3 py-2 text-gray-500 transition-colors hover:text-paw-petrol focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paw-accent rounded-sm"
+                >
+                  <span class="font-sans text-[10px] font-bold tracking-[0.16em] text-paw-accent">02</span>
+                  <span class="font-serif text-lg sm:text-xl font-semibold">Gatos</span>
+                  <span class="species-filter-indicator absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-paw-accent transition-transform duration-300 group-hover:scale-x-100"></span>
+                </button>
+                <div
+                  id="cat-life-stage-filters"
+                  class="hidden flex-col items-start gap-y-1 mt-2 ml-3 pl-4 border-l-2 border-paw-border"
+                  role="group"
+                  aria-label="Filtrar alimento para gatos por etapa de vida"
+                >
+                  <button
+                    type="button"
+                    data-life-stage="cachorro"
+                    aria-pressed="false"
+                    class="life-stage-filter border-b border-transparent py-1 font-serif text-base font-medium text-gray-500 transition-colors hover:text-paw-petrol"
+                  >
+                    Cachorro
+                  </button>
+                  <button
+                    type="button"
+                    data-life-stage="adulto"
+                    aria-pressed="false"
+                    class="life-stage-filter border-b border-transparent py-1 font-serif text-base font-medium text-gray-500 transition-colors hover:text-paw-petrol"
+                  >
+                    Adulto
+                  </button>
+                </div>
+              </div>
+              <button
+                type="button"
+                data-species="otras-especies"
+                aria-pressed="false"
+                class="food-species-filter group relative flex items-baseline gap-2 px-3 py-2 text-gray-500 transition-colors hover:text-paw-petrol focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paw-accent rounded-sm"
+              >
+                <span class="font-sans text-[10px] font-bold tracking-[0.16em] text-paw-accent">03</span>
+                <span class="font-serif text-lg sm:text-xl font-semibold">Otras especies</span>
+                <span class="species-filter-indicator absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-paw-accent transition-transform duration-300 group-hover:scale-x-100"></span>
+              </button>
+            </div>
+            <div
+              id="dog-life-stage-filters"
+              class="hidden flex-col items-start gap-y-1 mt-2 ml-3 pl-4 border-l-2 border-paw-border"
+              role="group"
+              aria-label="Filtrar alimento para perros por etapa de vida"
+            >
+              <button
+                type="button"
+                data-life-stage="cachorro"
+                aria-pressed="false"
+                class="life-stage-filter border-b border-transparent py-1 font-serif text-base font-medium text-gray-500 transition-colors hover:text-paw-petrol"
+              >
+                Cachorro
+              </button>
+              <button
+                type="button"
+                data-life-stage="adulto"
+                aria-pressed="false"
+                class="life-stage-filter border-b border-transparent py-1 font-serif text-base font-medium text-gray-500 transition-colors hover:text-paw-petrol"
+              >
+                Adulto
+              </button>
+              <button
+                type="button"
+                data-life-stage="senior"
+                aria-pressed="false"
+                class="life-stage-filter border-b border-transparent py-1 font-serif text-base font-medium text-gray-500 transition-colors hover:text-paw-petrol"
+              >
+                Senior
+              </button>
+            </div>
+          </div>
+        </div>
         <span
           id="product-count"
-          class="text-sm font-medium text-gray-500"
+          class="text-sm font-medium text-gray-500 mt-1"
         ></span>
       </div>
       <div
@@ -362,6 +462,15 @@
       }
       let activeCategory =
         new URLSearchParams(location.search).get("categoria") || "all";
+      const foodSpeciesFilters = ["perros", "gatos", "otras-especies"];
+      const lifeStagesBySpecies = {
+        perros: ["cachorro", "adulto", "senior"],
+        gatos: ["cachorro", "adulto"],
+      };
+      const initialSpecies = new URLSearchParams(location.search).get("especie");
+      const initialLifeStage = new URLSearchParams(location.search).get("etapa");
+      let activeSpecies = "all";
+      let activeLifeStage = "all";
       let showingWishlist =
         new URLSearchParams(location.search).get("vista") === "deseos";
       const money = (value) =>
@@ -379,6 +488,7 @@
 
       function filterProducts(category) {
         activeCategory = category;
+        if (category !== "alimento") activeLifeStage = "all";
         showingWishlist = false;
         document.querySelectorAll(".product-filter").forEach((button) => {
           const selected = button.dataset.filter === category;
@@ -389,6 +499,31 @@
           button.classList.toggle("text-gray-600", !selected);
         });
         renderProducts();
+      }
+
+      function filterFoodSpecies(species) {
+        activeSpecies = species;
+        activeLifeStage = "all";
+        renderProducts();
+        updateProductFilterUrl();
+      }
+
+      function filterDogLifeStage(lifeStage) {
+        activeLifeStage = lifeStage;
+        renderProducts();
+        updateProductFilterUrl();
+      }
+
+      function updateProductFilterUrl() {
+        const query = new URLSearchParams();
+        if (activeCategory !== "all") query.set("categoria", activeCategory);
+        if (activeSpecies !== "all") query.set("especie", activeSpecies);
+        if (activeLifeStage !== "all") query.set("etapa", activeLifeStage);
+        history.replaceState(
+          null,
+          "",
+          `tienda.html${query.size ? `?${query}` : ""}`,
+        );
       }
 
       function showWishlist() {
@@ -406,13 +541,79 @@
       }
 
       function renderProducts() {
-        const visible = showingWishlist
+        const categoryProducts = showingWishlist
           ? products.filter((product) => wishlist.includes(product.id))
           : activeCategory === "all"
             ? products
             : products.filter(
                 (product) => product.category.toLowerCase() === activeCategory,
               );
+        let visible = categoryProducts;
+        if (!showingWishlist && activeSpecies !== "all") {
+          visible = visible.filter((product) =>
+            product.species?.includes(activeSpecies),
+          );
+        }
+        if (!showingWishlist && activeLifeStage !== "all") {
+          visible = visible.filter(
+            (product) => product.lifeStage === activeLifeStage,
+          );
+        }
+        document
+          .getElementById("species-filter-area")
+          .classList.toggle("hidden", showingWishlist);
+        document
+          .getElementById("dog-life-stage-filters")
+          .classList.toggle(
+            "hidden",
+            showingWishlist ||
+              activeCategory !== "alimento" ||
+              activeSpecies !== "perros",
+          );
+        document
+          .getElementById("dog-life-stage-filters")
+          .classList.toggle(
+            "flex",
+            !showingWishlist &&
+              activeCategory === "alimento" &&
+              activeSpecies === "perros",
+          );
+        document
+          .getElementById("cat-life-stage-filters")
+          .classList.toggle(
+            "hidden",
+            showingWishlist ||
+              activeCategory !== "alimento" ||
+              activeSpecies !== "gatos",
+          );
+        document
+          .getElementById("cat-life-stage-filters")
+          .classList.toggle(
+            "flex",
+            !showingWishlist &&
+              activeCategory === "alimento" &&
+              activeSpecies === "gatos",
+          );
+        document.querySelectorAll(".food-species-filter").forEach((button) => {
+          const selected = button.dataset.species === activeSpecies;
+          button.classList.toggle("active", selected);
+          button.classList.toggle("text-paw-petrol", selected);
+          button.classList.toggle("text-gray-500", !selected);
+          button.setAttribute("aria-pressed", selected);
+          button
+            .querySelector(".species-filter-indicator")
+            .classList.toggle("scale-x-100", selected);
+        });
+        document.querySelectorAll(".life-stage-filter").forEach((button) => {
+          const selected = button.dataset.lifeStage === activeLifeStage;
+          button.setAttribute("aria-pressed", selected);
+          button.classList.toggle("text-paw-petrol", selected);
+          button.classList.toggle("font-semibold", selected);
+          button.classList.toggle("border-paw-accent", selected);
+          button.classList.toggle("text-gray-500", !selected);
+          button.classList.toggle("font-medium", !selected);
+          button.classList.toggle("border-transparent", !selected);
+        });
         document.getElementById("product-heading").textContent = showingWishlist
           ? "Mis deseos"
           : "Productos";
@@ -421,6 +622,11 @@
         if (showingWishlist && visible.length === 0) {
           document.getElementById("product-grid").innerHTML =
             '<p class="col-span-full text-center text-gray-500 py-10">Todavía no guardaste productos en Deseos.</p>';
+          return;
+        }
+        if (visible.length === 0) {
+          document.getElementById("product-grid").innerHTML =
+            `<p class="col-span-full text-center text-gray-500 py-10">Todavía no hay productos${activeLifeStage !== "all" ? " para esta etapa" : activeSpecies !== "all" ? " para esta especie" : ""}.</p>`;
           return;
         }
         document.getElementById("product-grid").innerHTML = visible
@@ -533,17 +739,49 @@
         .forEach((button) =>
           button.addEventListener("click", () => {
             filterProducts(button.dataset.filter);
+            const query = new URLSearchParams({
+              ...(button.dataset.filter === "all"
+                ? {}
+                : { categoria: button.dataset.filter }),
+              ...(activeSpecies === "all" ? {} : { especie: activeSpecies }),
+              ...(activeLifeStage === "all"
+                ? {}
+                : { etapa: activeLifeStage }),
+            });
             history.replaceState(
               null,
               "",
-              `tienda.html${button.dataset.filter === "all" ? "" : `?categoria=${button.dataset.filter}`}`,
+              `tienda.html${query.size ? `?${query}` : ""}`,
             );
           }),
+        );
+      document
+        .querySelectorAll("#food-species-filters [data-species]")
+        .forEach((button) =>
+          button.addEventListener("click", () =>
+            filterFoodSpecies(button.dataset.species),
+          ),
+        );
+      document
+        .querySelectorAll(".life-stage-filter[data-life-stage]")
+        .forEach((button) =>
+          button.addEventListener("click", () =>
+            filterDogLifeStage(button.dataset.lifeStage),
+          ),
         );
       if (showingWishlist) {
         showWishlist();
       } else {
         filterProducts(activeCategory);
+        if (foodSpeciesFilters.includes(initialSpecies)) {
+          filterFoodSpecies(initialSpecies);
+          if (
+            activeCategory === "alimento" &&
+            lifeStagesBySpecies[initialSpecies]?.includes(initialLifeStage)
+          ) {
+            filterDogLifeStage(initialLifeStage);
+          }
+        }
       }
       updateCart();
     </script>
