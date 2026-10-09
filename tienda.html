@@ -939,6 +939,78 @@
           price: 15534,
           image: "assets/soga-flotadora-44cm-nudo.jpg",
         },
+        {
+          id: 78,
+          name: "Adorno para acuario: planta y rocas apiladas",
+          category: "Juguetes",
+          species: ["otras-especies"],
+          price: 25000,
+          priceEstimated: true,
+          image: "assets/acuario-planta-rocas.jpg",
+        },
+        {
+          id: 79,
+          name: "Rueda metálica de ejercicio para hámster",
+          category: "Juguetes",
+          species: ["otras-especies"],
+          price: 23000,
+          priceEstimated: true,
+          image: "assets/rueda-hamster-metalica.jpg",
+        },
+        {
+          id: 80,
+          name: "Pack de pelotas masticables de heno y fibra",
+          category: "Juguetes",
+          species: ["otras-especies"],
+          price: 16000,
+          priceEstimated: true,
+          image: "assets/pelotas-masticables-heno-fibra.jpg",
+        },
+        {
+          id: 81,
+          name: "Bola de ejercicio para hámster",
+          category: "Juguetes",
+          species: ["otras-especies"],
+          price: 18000,
+          priceEstimated: true,
+          image: "assets/bola-ejercicio-hamster.jpg",
+        },
+        {
+          id: 82,
+          name: "Estrella de mar decorativa para acuario",
+          category: "Juguetes",
+          species: ["otras-especies"],
+          price: 10000,
+          priceEstimated: true,
+          image: "assets/estrella-mar-acuario.jpg",
+        },
+        {
+          id: 83,
+          name: "Adorno de arrecife de coral para acuario",
+          category: "Juguetes",
+          species: ["otras-especies"],
+          price: 35000,
+          priceEstimated: true,
+          image: "assets/arrecife-coral-acuario.jpg",
+        },
+        {
+          id: 84,
+          name: "Planta artificial para acuario con base de roca",
+          category: "Juguetes",
+          species: ["otras-especies"],
+          price: 12000,
+          priceEstimated: true,
+          image: "assets/planta-acuario-base-roca.jpg",
+        },
+        {
+          id: 85,
+          name: "Juguete colgante de madera natural para aves",
+          category: "Juguetes",
+          species: ["otras-especies"],
+          price: 22000,
+          priceEstimated: true,
+          image: "assets/juguete-colgante-madera-aves.jpg",
+        },
       ];
       let cart = [];
       const wishlistStorageKey = "malvinasWishlist";
@@ -1161,7 +1233,7 @@
                     </div>
                     <h3 class="font-bold text-gray-900 leading-snug mb-2">${product.name}</h3>
                     ${
-                      product.priceEstimated
+                      product.priceEstimated && activeSpecies === "all"
                         ? `<p class="text-xs text-gray-500 mb-2">Precio estimado</p>`
                         : ""
                     }
