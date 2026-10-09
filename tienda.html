@@ -171,9 +171,9 @@
                 type="button"
                 data-species="perros"
                 aria-pressed="false"
-                class="food-species-filter group relative flex items-baseline gap-2 px-3 py-2 text-gray-500 transition-colors hover:text-paw-petrol focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paw-accent rounded-sm"
+                aria-label="Filtrar por Perros; volver a pulsar para quitar el filtro"
+                class="food-species-filter group relative flex items-baseline px-3 py-2 text-gray-500 transition-colors hover:text-paw-petrol focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paw-accent rounded-sm"
               >
-                <span class="font-sans text-[10px] font-bold tracking-[0.16em] text-paw-accent">01</span>
                 <span class="font-serif text-lg sm:text-xl font-semibold">Perros</span>
                 <span class="species-filter-indicator absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-paw-accent transition-transform duration-300 group-hover:scale-x-100"></span>
               </button>
@@ -182,9 +182,9 @@
                   type="button"
                   data-species="gatos"
                   aria-pressed="false"
-                  class="food-species-filter group relative flex items-baseline gap-2 px-3 py-2 text-gray-500 transition-colors hover:text-paw-petrol focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paw-accent rounded-sm"
+                  aria-label="Filtrar por Gatos; volver a pulsar para quitar el filtro"
+                  class="food-species-filter group relative flex items-baseline px-3 py-2 text-gray-500 transition-colors hover:text-paw-petrol focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paw-accent rounded-sm"
                 >
-                  <span class="font-sans text-[10px] font-bold tracking-[0.16em] text-paw-accent">02</span>
                   <span class="font-serif text-lg sm:text-xl font-semibold">Gatos</span>
                   <span class="species-filter-indicator absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-paw-accent transition-transform duration-300 group-hover:scale-x-100"></span>
                 </button>
@@ -216,9 +216,9 @@
                 type="button"
                 data-species="otras-especies"
                 aria-pressed="false"
-                class="food-species-filter group relative flex items-baseline gap-2 px-3 py-2 text-gray-500 transition-colors hover:text-paw-petrol focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paw-accent rounded-sm"
+                aria-label="Filtrar por Otras especies; volver a pulsar para quitar el filtro"
+                class="food-species-filter group relative flex items-baseline px-3 py-2 text-gray-500 transition-colors hover:text-paw-petrol focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paw-accent rounded-sm"
               >
-                <span class="font-sans text-[10px] font-bold tracking-[0.16em] text-paw-accent">03</span>
                 <span class="font-serif text-lg sm:text-xl font-semibold">Otras especies</span>
                 <span class="species-filter-indicator absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-paw-accent transition-transform duration-300 group-hover:scale-x-100"></span>
               </button>
@@ -442,6 +442,280 @@
           reviews: 39,
           image: "assets/image-18.jpg",
         },
+        {
+          id: 17,
+          name: "Royal Canin Mini Puppy",
+          category: "Alimento",
+          species: ["perros"],
+          lifeStage: "cachorro",
+          weight: "1 kg",
+          price: 14800,
+          image: "assets/royal-canin-mini-puppy.webp",
+        },
+        {
+          id: 18,
+          name: "Vitalcan Complete Puppy Razas Pequeñas",
+          category: "Alimento",
+          species: ["perros"],
+          lifeStage: "cachorro",
+          weight: "3 kg",
+          price: 13000,
+          image: "assets/vitalcan-complete-puppy.webp",
+        },
+        {
+          id: 19,
+          name: "Pro Plan Puppy Razas Pequeñas",
+          category: "Alimento",
+          species: ["perros"],
+          lifeStage: "cachorro",
+          weight: "3 kg",
+          price: 41600,
+          image: "assets/pro-plan-puppy.webp",
+        },
+        {
+          id: 20,
+          name: "Old Prince Cordero Puppy",
+          category: "Alimento",
+          species: ["perros"],
+          lifeStage: "cachorro",
+          weight: "3 kg",
+          price: 22500,
+          image: "assets/old-prince-cordero-puppy.webp",
+        },
+        {
+          id: 21,
+          name: "Dog Chow Gran Comienzo Cachorros Medianos y Grandes",
+          category: "Alimento",
+          species: ["perros"],
+          lifeStage: "cachorro",
+          weight: "8 kg",
+          price: 31000,
+          image: "assets/dog-chow-gran-comienzo-puppy.webp",
+        },
+        {
+          id: 22,
+          name: "High Pro Criadores Cordero",
+          category: "Alimento",
+          species: ["perros"],
+          lifeStage: "adulto",
+          weight: "20 kg",
+          price: 54000,
+          image: "assets/high-pro-criadores-adulto-cordero.webp",
+        },
+        {
+          id: 23,
+          name: "Old Prince Cordero Adulto Razas Medianas y Grandes",
+          category: "Alimento",
+          species: ["perros"],
+          lifeStage: "adulto",
+          weight: "15 kg",
+          price: 80000,
+          image: "assets/old-prince-cordero-adulto.webp",
+        },
+        {
+          id: 24,
+          name: "Old Prince Equilibrium Adulto Razas Medianas y Grandes",
+          category: "Alimento",
+          species: ["perros"],
+          lifeStage: "adulto",
+          weight: "7,5 kg",
+          price: 37200,
+          image: "assets/old-prince-equilibrium-adulto.webp",
+        },
+        {
+          id: 25,
+          name: "Purina Excellent Adulto Razas Medianas y Grandes",
+          category: "Alimento",
+          species: ["perros"],
+          lifeStage: "adulto",
+          weight: "15 kg",
+          price: 72800,
+          image: "assets/purina-excellent-adulto.webp",
+        },
+        {
+          id: 26,
+          name: "Pro Plan Active Mind Razas Pequeñas",
+          category: "Alimento",
+          species: ["perros"],
+          lifeStage: "senior",
+          weight: "7,5 kg",
+          price: 87300,
+          image: "assets/pro-plan-active-mind-senior.webp",
+        },
+        {
+          id: 27,
+          name: "Royal Canin Medium Ageing 10+",
+          category: "Alimento",
+          species: ["perros"],
+          lifeStage: "senior",
+          weight: "15 kg",
+          price: 146320,
+          image: "assets/royal-canin-medium-ageing-senior.webp",
+        },
+        {
+          id: 28,
+          name: "Dog Chow Longevidad Adultos 7+",
+          category: "Alimento",
+          species: ["perros"],
+          lifeStage: "senior",
+          weight: "21 kg",
+          price: 75000,
+          image: "assets/dog-chow-longevidad-senior.webp",
+        },
+        {
+          id: 29,
+          name: "Whiskas Gatitos Sabor Carne",
+          category: "Alimento",
+          species: ["gatos"],
+          lifeStage: "cachorro",
+          weight: "85 gr",
+          price: 1500,
+          image: "assets/whiskas-gatitos-carne.webp",
+        },
+        {
+          id: 30,
+          name: "Sieger Katze Kitten Pollo",
+          category: "Alimento",
+          species: ["gatos"],
+          lifeStage: "cachorro",
+          weight: "340 gr",
+          price: 6200,
+          image: "assets/sieger-katze-kitten-pollo.webp",
+        },
+        {
+          id: 31,
+          name: "Cat Chow Gatitos con Pollo",
+          category: "Alimento",
+          species: ["gatos"],
+          lifeStage: "cachorro",
+          weight: "85 gr",
+          price: 1550,
+          image: "assets/cat-chow-gatito-pollo.webp",
+        },
+        {
+          id: 32,
+          name: "Royal Canin Kitten Pouch",
+          category: "Alimento",
+          species: ["gatos"],
+          lifeStage: "cachorro",
+          weight: "85 gr",
+          price: 3300,
+          image: "assets/royal-canin-kitten-pouch.webp",
+        },
+        {
+          id: 33,
+          name: "Pouch Cat Chow Gato Adulto Pollo",
+          category: "Alimento",
+          species: ["gatos"],
+          lifeStage: "adulto",
+          weight: "85 gr",
+          price: 1720,
+          image: "assets/cat-chow-adulto-pollo.jpg",
+        },
+        {
+          id: 34,
+          name: "Pouch Cat Chow Gato Adulto Pescado",
+          category: "Alimento",
+          species: ["gatos"],
+          lifeStage: "adulto",
+          weight: "85 gr",
+          price: 1720,
+          image: "assets/cat-chow-adulto-pescado.jpg",
+        },
+        {
+          id: 35,
+          name: "Pouch Pro Plan Gato Adulto Pollo",
+          category: "Alimento",
+          species: ["gatos"],
+          lifeStage: "adulto",
+          weight: "85 gr",
+          price: 2998,
+          image: "assets/pro-plan-adulto-pollo.jpg",
+        },
+        {
+          id: 36,
+          name: "Pouch Pro Plan Gato Adulto Salmón",
+          category: "Alimento",
+          species: ["gatos"],
+          lifeStage: "adulto",
+          weight: "85 gr",
+          price: 2998,
+          image: "assets/pro-plan-adulto-salmon.jpg",
+        },
+        {
+          id: 37,
+          name: "Pouch Royal Canin Gato Instinctive Wet",
+          category: "Alimento",
+          species: ["gatos"],
+          lifeStage: "adulto",
+          weight: "85 gr",
+          price: 3895,
+          image: "assets/royal-canin-instinctive-adulto.jpg",
+        },
+        {
+          id: 38,
+          name: "Pouch Sieger Katze Gato Adulto Salmón y Pollo",
+          category: "Alimento",
+          species: ["gatos"],
+          lifeStage: "adulto",
+          weight: "100 gr",
+          price: 3189,
+          image: "assets/sieger-katze-adulto-salmon-pollo.jpg",
+        },
+        {
+          id: 39,
+          name: "Alimento para Chinchillas Nelsoni Ranch",
+          category: "Alimento",
+          species: ["otras-especies"],
+          weight: "750 g",
+          price: 7235,
+          image: "assets/nelsoni-alimento-chinchillas.jpg",
+        },
+        {
+          id: 40,
+          name: "Heno Seleccionado Nelsoni Ranch Pequeños Mamíferos",
+          category: "Alimento",
+          species: ["otras-especies"],
+          weight: "500 g",
+          price: 7235,
+          image: "assets/nelsoni-heno-seleccionado.jpg",
+        },
+        {
+          id: 41,
+          name: "Alimento Nelsoni Ranch para Conejos",
+          category: "Alimento",
+          species: ["otras-especies"],
+          weight: "750 g",
+          price: 7235,
+          image: "assets/nelsoni-alimento-conejos.jpg",
+        },
+        {
+          id: 42,
+          name: "Nelsoni Ranch Heno de Avena",
+          category: "Alimento",
+          species: ["otras-especies"],
+          weight: "500 g",
+          price: 8235,
+          image: "assets/nelsoni-heno-avena.jpg",
+        },
+        {
+          id: 43,
+          name: "Alimento Mix Cobayos Nelsoni Ranch",
+          category: "Alimento",
+          species: ["otras-especies"],
+          weight: "750 g",
+          price: 5235,
+          image: "assets/nelsoni-alimento-cobayos.jpg",
+        },
+        {
+          id: 44,
+          name: "Alimento para Hámster Nelsoni Ranch Mix",
+          category: "Alimento",
+          species: ["otras-especies"],
+          weight: "750 g",
+          price: 5235,
+          image: "assets/nelsoni-alimento-hamster.jpg",
+        },
       ];
       let cart = [];
       const wishlistStorageKey = "malvinasWishlist";
@@ -502,7 +776,7 @@
       }
 
       function filterFoodSpecies(species) {
-        activeSpecies = species;
+        activeSpecies = activeSpecies === species ? "all" : species;
         activeLifeStage = "all";
         renderProducts();
         updateProductFilterUrl();
@@ -636,7 +910,20 @@
               return `
                 <article class="group bg-white rounded-3xl p-4 flex flex-col shadow-sm border border-gray-100 hover:shadow-xl transition">
                     <div class="relative bg-gray-50 rounded-2xl aspect-square mb-4 overflow-hidden">
-                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        ${
+                          product.image
+                            ? `<img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">`
+                            : `<div role="img" aria-label="Imagen de ${product.name} próximamente" class="w-full h-full flex flex-col items-center justify-center gap-3 bg-paw-card text-paw-accent">
+                                <svg class="w-16 h-16" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                                  <path d="M12 34h40l-5 17H17l-5-17Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                                  <path d="M8 31c0-2 2-4 4-4h40c2 0 4 2 4 4v3H8v-3Z" fill="currentColor" opacity=".22" stroke="currentColor" stroke-width="2.5"/>
+                                  <circle cx="25" cy="19" r="4" fill="currentColor"/>
+                                  <circle cx="36" cy="16" r="4" fill="currentColor"/>
+                                  <circle cx="45" cy="22" r="4" fill="currentColor"/>
+                                </svg>
+                                <span class="text-xs font-semibold tracking-wide">Imagen próximamente</span>
+                              </div>`
+                        }
                         <button
                           type="button"
                           onclick="toggleWishlist(${product.id})"
@@ -650,10 +937,19 @@
                         </button>
                     </div>
                     <h3 class="font-bold text-gray-900 leading-snug mb-2">${product.name}</h3>
-                    <div class="flex items-center gap-1 mb-4">${stars(product.rating)} <span class="text-[10px] text-gray-400">(${product.reviews})</span></div>
+                    ${
+                      product.rating != null
+                        ? `<div class="flex items-center gap-1 mb-4">${stars(product.rating)} <span class="text-[10px] text-gray-400">(${product.reviews})</span></div>`
+                        : ""
+                    }
                     <div class="mt-auto pt-3 border-t border-gray-100">
-                        <strong class="text-lg block mb-3">${money(product.price)}</strong>
-                        <button onclick="addToCart(${product.id})" class="w-full bg-green-50 hover:bg-paw-accent hover:text-white text-paw-accent font-bold py-2.5 rounded-xl border border-green-200 transition">🛒 AGREGAR</button>
+                        ${
+                          product.price == null
+                            ? `<p class="py-2 text-sm font-medium text-gray-500">${product.weight == null ? "Peso y precio próximamente" : "Precio próximamente"}</p>`
+                            : `<p class="mb-1 text-sm text-gray-500">${product.weight ?? ""}</p>
+                            <strong class="text-lg block mb-3">${money(product.price)}</strong>
+                        <button onclick="addToCart(${product.id})" class="w-full bg-green-50 hover:bg-paw-accent hover:text-white text-paw-accent font-bold py-2.5 rounded-xl border border-green-200 transition">🛒 AGREGAR</button>`
+                        }
                     </div>
                 </article>`;
             },
