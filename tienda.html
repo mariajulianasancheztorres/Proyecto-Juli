@@ -163,53 +163,73 @@
           >
             <div
               id="food-species-filters"
-              class="flex flex-wrap items-start gap-x-2"
-              role="group"
-              aria-label="Filtrar productos por especie"
+              class="flex flex-wrap items-start gap-x-2 gap-y-2"
             >
-              <button
-                type="button"
-                data-species="perros"
-                aria-pressed="false"
-                aria-label="Filtrar por Perros; volver a pulsar para quitar el filtro"
-                class="food-species-filter group relative flex items-baseline px-3 py-2 text-gray-500 transition-colors hover:text-paw-petrol focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paw-accent rounded-sm"
+              <div
+                class="life-stage-dropdown relative flex items-center"
+                data-species-dropdown="perros"
               >
-                <span class="font-serif text-lg sm:text-xl font-semibold">Perros</span>
-                <span class="species-filter-indicator absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-paw-accent transition-transform duration-300 group-hover:scale-x-100"></span>
-              </button>
-              <div class="flex flex-col items-start">
+                <button
+                  type="button"
+                  data-species="perros"
+                  aria-pressed="false"
+                  aria-label="Filtrar por Perros"
+                  class="food-species-filter group relative flex items-baseline px-3 py-2 text-gray-500 transition-colors hover:text-paw-petrol focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paw-accent rounded-sm"
+                >
+                  <span class="font-serif text-lg sm:text-xl font-semibold">Perros</span>
+                  <span class="species-filter-indicator absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-paw-accent transition-transform duration-300 group-hover:scale-x-100"></span>
+                </button>
+                <span
+                  class="life-stage-indicator hidden rounded p-1 text-gray-500"
+                    aria-hidden="true"
+                >
+                  <svg class="h-4 w-4 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.22 7.47a.75.75 0 0 1 1.06 0L10 11.19l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 8.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+                <div
+                  id="dog-life-stage-filters"
+                  class="life-stage-menu hidden absolute left-0 top-full z-20 mt-2 min-w-44 rounded-xl border border-paw-border bg-white p-2 shadow-lg"
+                  role="group"
+                  aria-label="Filtrar alimento para perros por etapa de vida"
+                >
+                  <button type="button" data-life-stage="all" aria-pressed="false" class="life-stage-filter block w-full rounded-lg px-3 py-2 text-left text-sm text-gray-600 hover:bg-paw-bg">Todas las etapas</button>
+                  <button type="button" data-life-stage="cachorro" aria-pressed="false" class="life-stage-filter block w-full rounded-lg px-3 py-2 text-left text-sm text-gray-600 hover:bg-paw-bg">Cachorro</button>
+                  <button type="button" data-life-stage="adulto" aria-pressed="false" class="life-stage-filter block w-full rounded-lg px-3 py-2 text-left text-sm text-gray-600 hover:bg-paw-bg">Adulto</button>
+                  <button type="button" data-life-stage="senior" aria-pressed="false" class="life-stage-filter block w-full rounded-lg px-3 py-2 text-left text-sm text-gray-600 hover:bg-paw-bg">Senior</button>
+                </div>
+              </div>
+              <div
+                class="life-stage-dropdown relative flex items-center"
+                data-species-dropdown="gatos"
+              >
                 <button
                   type="button"
                   data-species="gatos"
                   aria-pressed="false"
-                  aria-label="Filtrar por Gatos; volver a pulsar para quitar el filtro"
+                  aria-label="Filtrar por Gatos"
                   class="food-species-filter group relative flex items-baseline px-3 py-2 text-gray-500 transition-colors hover:text-paw-petrol focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paw-accent rounded-sm"
                 >
                   <span class="font-serif text-lg sm:text-xl font-semibold">Gatos</span>
                   <span class="species-filter-indicator absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-paw-accent transition-transform duration-300 group-hover:scale-x-100"></span>
                 </button>
+                <span
+                  class="life-stage-indicator hidden rounded p-1 text-gray-500"
+                    aria-hidden="true"
+                >
+                  <svg class="h-4 w-4 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.22 7.47a.75.75 0 0 1 1.06 0L10 11.19l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 8.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                  </svg>
+                </span>
                 <div
                   id="cat-life-stage-filters"
-                  class="hidden flex-col items-start gap-y-1 mt-2 ml-3 pl-4 border-l-2 border-paw-border"
+                  class="life-stage-menu hidden absolute left-0 top-full z-20 mt-2 min-w-44 rounded-xl border border-paw-border bg-white p-2 shadow-lg"
                   role="group"
                   aria-label="Filtrar alimento para gatos por etapa de vida"
                 >
-                  <button
-                    type="button"
-                    data-life-stage="cachorro"
-                    aria-pressed="false"
-                    class="life-stage-filter border-b border-transparent py-1 font-serif text-base font-medium text-gray-500 transition-colors hover:text-paw-petrol"
-                  >
-                    Cachorro
-                  </button>
-                  <button
-                    type="button"
-                    data-life-stage="adulto"
-                    aria-pressed="false"
-                    class="life-stage-filter border-b border-transparent py-1 font-serif text-base font-medium text-gray-500 transition-colors hover:text-paw-petrol"
-                  >
-                    Adulto
-                  </button>
+                  <button type="button" data-life-stage="all" aria-pressed="false" class="life-stage-filter block w-full rounded-lg px-3 py-2 text-left text-sm text-gray-600 hover:bg-paw-bg">Todas las etapas</button>
+                  <button type="button" data-life-stage="cachorro" aria-pressed="false" class="life-stage-filter block w-full rounded-lg px-3 py-2 text-left text-sm text-gray-600 hover:bg-paw-bg">Cachorro</button>
+                  <button type="button" data-life-stage="adulto" aria-pressed="false" class="life-stage-filter block w-full rounded-lg px-3 py-2 text-left text-sm text-gray-600 hover:bg-paw-bg">Adulto</button>
                 </div>
               </div>
               <button
@@ -221,37 +241,6 @@
               >
                 <span class="font-serif text-lg sm:text-xl font-semibold">Otras especies</span>
                 <span class="species-filter-indicator absolute bottom-0 left-3 right-3 h-0.5 origin-left scale-x-0 bg-paw-accent transition-transform duration-300 group-hover:scale-x-100"></span>
-              </button>
-            </div>
-            <div
-              id="dog-life-stage-filters"
-              class="hidden flex-col items-start gap-y-1 mt-2 ml-3 pl-4 border-l-2 border-paw-border"
-              role="group"
-              aria-label="Filtrar alimento para perros por etapa de vida"
-            >
-              <button
-                type="button"
-                data-life-stage="cachorro"
-                aria-pressed="false"
-                class="life-stage-filter border-b border-transparent py-1 font-serif text-base font-medium text-gray-500 transition-colors hover:text-paw-petrol"
-              >
-                Cachorro
-              </button>
-              <button
-                type="button"
-                data-life-stage="adulto"
-                aria-pressed="false"
-                class="life-stage-filter border-b border-transparent py-1 font-serif text-base font-medium text-gray-500 transition-colors hover:text-paw-petrol"
-              >
-                Adulto
-              </button>
-              <button
-                type="button"
-                data-life-stage="senior"
-                aria-pressed="false"
-                class="life-stage-filter border-b border-transparent py-1 font-serif text-base font-medium text-gray-500 transition-colors hover:text-paw-petrol"
-              >
-                Senior
               </button>
             </div>
           </div>
@@ -1057,7 +1046,9 @@
 
       function filterProducts(category) {
         activeCategory = category;
-        if (category !== "alimento") activeLifeStage = "all";
+        if (category !== "alimento") {
+          activeLifeStage = "all";
+        }
         showingWishlist = false;
         document.querySelectorAll(".product-filter").forEach((button) => {
           const selected = button.dataset.filter === category;
@@ -1077,7 +1068,29 @@
         updateProductFilterUrl();
       }
 
-      function filterDogLifeStage(lifeStage) {
+      function updateLifeStageDropdowns() {
+        document.querySelectorAll(".life-stage-dropdown").forEach((wrapper) => {
+          const species = wrapper.dataset.speciesDropdown;
+          const available =
+            !showingWishlist &&
+            activeCategory === "alimento" &&
+            activeSpecies === species;
+          const expanded =
+            available &&
+            (wrapper.matches(":hover") || wrapper.matches(":focus-within"));
+          const indicator = wrapper.querySelector(".life-stage-indicator");
+
+          indicator.classList.toggle("hidden", !available);
+          indicator
+            .querySelector("svg")
+            .classList.toggle("rotate-180", expanded);
+          wrapper
+            .querySelector(".life-stage-menu")
+            .classList.toggle("hidden", !expanded);
+        });
+      }
+
+      function filterLifeStage(lifeStage) {
         activeLifeStage = lifeStage;
         renderProducts();
         updateProductFilterUrl();
@@ -1131,38 +1144,7 @@
         document
           .getElementById("species-filter-area")
           .classList.toggle("hidden", showingWishlist);
-        document
-          .getElementById("dog-life-stage-filters")
-          .classList.toggle(
-            "hidden",
-            showingWishlist ||
-              activeCategory !== "alimento" ||
-              activeSpecies !== "perros",
-          );
-        document
-          .getElementById("dog-life-stage-filters")
-          .classList.toggle(
-            "flex",
-            !showingWishlist &&
-              activeCategory === "alimento" &&
-              activeSpecies === "perros",
-          );
-        document
-          .getElementById("cat-life-stage-filters")
-          .classList.toggle(
-            "hidden",
-            showingWishlist ||
-              activeCategory !== "alimento" ||
-              activeSpecies !== "gatos",
-          );
-        document
-          .getElementById("cat-life-stage-filters")
-          .classList.toggle(
-            "flex",
-            !showingWishlist &&
-              activeCategory === "alimento" &&
-              activeSpecies === "gatos",
-          );
+        updateLifeStageDropdowns();
         document.querySelectorAll(".food-species-filter").forEach((button) => {
           const selected = button.dataset.species === activeSpecies;
           button.classList.toggle("active", selected);
@@ -1174,14 +1156,16 @@
             .classList.toggle("scale-x-100", selected);
         });
         document.querySelectorAll(".life-stage-filter").forEach((button) => {
-          const selected = button.dataset.lifeStage === activeLifeStage;
-          button.setAttribute("aria-pressed", selected);
-          button.classList.toggle("text-paw-petrol", selected);
-          button.classList.toggle("font-semibold", selected);
-          button.classList.toggle("border-paw-accent", selected);
-          button.classList.toggle("text-gray-500", !selected);
-          button.classList.toggle("font-medium", !selected);
-          button.classList.toggle("border-transparent", !selected);
+          const selectedForSpecies =
+            button.dataset.lifeStage === activeLifeStage &&
+            ((activeSpecies === "perros" &&
+              button.closest("#dog-life-stage-filters")) ||
+              (activeSpecies === "gatos" &&
+                button.closest("#cat-life-stage-filters")));
+          button.setAttribute("aria-pressed", Boolean(selectedForSpecies));
+          button.classList.toggle("bg-paw-bg", Boolean(selectedForSpecies));
+          button.classList.toggle("font-semibold", Boolean(selectedForSpecies));
+          button.classList.toggle("text-paw-petrol", Boolean(selectedForSpecies));
         });
         document.getElementById("product-heading").textContent = showingWishlist
           ? "Mis deseos"
@@ -1370,11 +1354,19 @@
             filterFoodSpecies(button.dataset.species),
           ),
         );
+      document.querySelectorAll(".life-stage-dropdown").forEach((wrapper) => {
+        wrapper.addEventListener("pointerenter", updateLifeStageDropdowns);
+        wrapper.addEventListener("pointerleave", updateLifeStageDropdowns);
+        wrapper.addEventListener("focusin", updateLifeStageDropdowns);
+        wrapper.addEventListener("focusout", () =>
+          setTimeout(updateLifeStageDropdowns, 0),
+        );
+      });
       document
         .querySelectorAll(".life-stage-filter[data-life-stage]")
         .forEach((button) =>
           button.addEventListener("click", () =>
-            filterDogLifeStage(button.dataset.lifeStage),
+            filterLifeStage(button.dataset.lifeStage),
           ),
         );
       if (showingWishlist) {
@@ -1387,7 +1379,7 @@
             activeCategory === "alimento" &&
             lifeStagesBySpecies[initialSpecies]?.includes(initialLifeStage)
           ) {
-            filterDogLifeStage(initialLifeStage);
+            filterLifeStage(initialLifeStage);
           }
         }
       }
