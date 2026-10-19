@@ -232,6 +232,7 @@
               </div>
               <button
                 type="button"
+                id="other-species-filter"
                 data-species="otras-especies"
                 aria-pressed="false"
                 aria-label="Filtrar por Otras especies; volver a pulsar para quitar el filtro"
@@ -308,9 +309,80 @@
           name: "ROSITA",
           category: "Camas",
           species: ["perros"],
-          brandLogo: true,
-          price: 42706,
+          price: 42691,
           image: "assets/cama-dona-antiestres-marron.jpg",
+        },
+        {
+          id: 109,
+          name: "ANIMAL PRINT",
+          category: "Camas",
+          species: ["perros"],
+          price: 45990,
+          priceEstimated: true,
+          image: "assets/dog-cama-animal-print.jpg",
+        },
+        {
+          id: 110,
+          name: "VAQUITA",
+          category: "Camas",
+          species: ["perros"],
+          price: 42990,
+          priceEstimated: true,
+          image: "assets/dog-cama-vaquita.jpg",
+        },
+        {
+          id: 111,
+          name: "OLIVA",
+          category: "Camas",
+          species: ["perros"],
+          price: 42990,
+          priceEstimated: true,
+          image: "assets/dog-cama-oliva.jpg",
+        },
+        {
+          id: 112,
+          name: "VIOLETA",
+          category: "Camas",
+          species: ["perros"],
+          price: 42990,
+          priceEstimated: true,
+          image: "assets/dog-cama-violeta.jpg",
+        },
+        {
+          id: 113,
+          name: "COLORES",
+          category: "Camas",
+          species: ["perros"],
+          price: 45990,
+          priceEstimated: true,
+          image: "assets/dog-cama-colores.jpg",
+        },
+        {
+          id: 114,
+          name: "FELPITA",
+          category: "Camas",
+          species: ["perros"],
+          price: 49990,
+          priceEstimated: true,
+          image: "assets/dog-cama-felpita.jpg",
+        },
+        {
+          id: 115,
+          name: "HUELLAS",
+          category: "Camas",
+          species: ["perros"],
+          price: 42990,
+          priceEstimated: true,
+          image: "assets/dog-cama-huellas.jpg",
+        },
+        {
+          id: 116,
+          name: "CEBRA",
+          category: "Camas",
+          species: ["perros"],
+          price: 45990,
+          priceEstimated: true,
+          image: "assets/dog-cama-cebra.jpg",
         },
         {
           id: 3,
@@ -334,19 +406,10 @@
           id: 5,
           name: "Cama nido acolchada",
           category: "Camas",
-          price: 42990,
+          price: 42975,
           rating: 4.8,
           reviews: 61,
           image: "assets/image-08.jpg",
-        },
-        {
-          id: 94,
-          name: "La Siestita, camita gris peludita",
-          category: "Camas",
-          species: ["perros"],
-          brandLogo: true,
-          price: 92326,
-          image: "assets/cama-moises-olivia-gris.jpg",
         },
         {
           id: 6,
@@ -367,13 +430,76 @@
           image: "assets/image-10.jpg",
         },
         {
-          id: 96,
-          name: "Misión Sueñitos",
+          id: 101,
+          name: "Blanquito Osito",
           category: "Camas",
-          species: ["perros"],
-          brandLogo: true,
-          price: 58255,
-          image: "assets/cama-dogit-azul-crema.jpg",
+          species: ["gatos"],
+          price: 33990,
+          priceEstimated: true,
+          image: "assets/cat-cama-blanquito-osito.jpg",
+        },
+        {
+          id: 102,
+          name: "Cactus Cat",
+          category: "Camas",
+          species: ["gatos"],
+          price: 33990,
+          priceEstimated: true,
+          image: "assets/cat-cama-cactus-cat.jpg",
+        },
+        {
+          id: 103,
+          name: "Nidito",
+          category: "Camas",
+          species: ["gatos"],
+          price: 34990,
+          priceEstimated: true,
+          image: "assets/cat-cama-nidito.jpg",
+        },
+        {
+          id: 104,
+          name: "Tibu Cat",
+          category: "Camas",
+          species: ["gatos"],
+          price: 38990,
+          priceEstimated: true,
+          image: "assets/cat-cama-tibu-cat.jpg",
+        },
+        {
+          id: 105,
+          name: "Príncipe",
+          category: "Camas",
+          species: ["gatos"],
+          price: 44975,
+          priceEstimated: true,
+          image: "assets/cat-cama-principe.jpg",
+        },
+        {
+          id: 106,
+          name: "Sofá Rosita",
+          category: "Camas",
+          species: ["gatos"],
+          price: 68990,
+          priceEstimated: true,
+          image: "assets/cat-sofa-rosita.jpg",
+        },
+        {
+          id: 107,
+          name: "Sofá Amarillo",
+          category: "Camas",
+          species: ["gatos"],
+          price: 68990,
+          priceEstimated: true,
+          image: "assets/cat-sofa-amarillo.jpg",
+        },
+        {
+          id: 108,
+          name: "Camita",
+          category: "Camas",
+          species: ["gatos"],
+          price: 44975,
+          priceEstimated: true,
+          image: "assets/cat-camita-celeste.jpg",
         },
         {
           id: 8,
@@ -483,7 +609,7 @@
           species: ["perros"],
           lifeStage: "cachorro",
           weight: "3 kg",
-          price: 41600,
+          price: 41585,
           image: "assets/pro-plan-puppy.webp",
         },
         {
@@ -1172,6 +1298,9 @@
         document
           .getElementById("species-filter-area")
           .classList.toggle("hidden", showingWishlist);
+        document
+          .getElementById("other-species-filter")
+          .classList.toggle("hidden", activeCategory === "camas");
         updateLifeStageDropdowns();
         document.querySelectorAll(".food-species-filter").forEach((button) => {
           const selected = button.dataset.species === activeSpecies;
@@ -1219,7 +1348,7 @@
                     <div class="relative ${product.species?.includes("gatos") ? "bg-white" : "bg-gray-50"} rounded-2xl aspect-square mb-4 overflow-hidden">
                         ${
                           product.image
-                            ? `<img src="${product.image}" alt="${product.name}" class="w-full h-full ${product.species?.includes("gatos") ? "object-contain" : "object-cover"} group-hover:scale-105 transition-transform duration-500">`
+                            ? `<img src="${product.image}" alt="${product.name}" class="w-full h-full ${product.category === "Camas" || product.species?.includes("gatos") ? "object-contain scale-[1.06] group-hover:scale-[1.1]" : "object-cover group-hover:scale-105"} transition-transform duration-500">`
                             : `<div role="img" aria-label="Imagen de ${product.name} próximamente" class="w-full h-full flex flex-col items-center justify-center gap-3 bg-paw-card text-paw-accent">
                                 <svg class="w-16 h-16" viewBox="0 0 64 64" fill="none" aria-hidden="true">
                                   <path d="M12 34h40l-5 17H17l-5-17Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
@@ -1250,7 +1379,7 @@
                     </div>
                     <h3 class="font-bold text-gray-900 leading-snug mb-2">${product.name}</h3>
                     ${
-                      product.priceEstimated && activeSpecies === "all"
+                      product.priceEstimated
                         ? `<p class="text-xs text-gray-500 mb-2">Precio estimado</p>`
                         : ""
                     }
