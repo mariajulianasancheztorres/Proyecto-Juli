@@ -304,6 +304,15 @@
           image: "assets/image-20.jpg",
         },
         {
+          id: 93,
+          name: "ROSITA",
+          category: "Camas",
+          species: ["perros"],
+          brandLogo: true,
+          price: 42706,
+          image: "assets/cama-dona-antiestres-marron.jpg",
+        },
+        {
           id: 3,
           name: "Snacks Naturales de Pollo y Carne",
           category: "Alimento",
@@ -331,6 +340,15 @@
           image: "assets/image-08.jpg",
         },
         {
+          id: 94,
+          name: "La Siestita, camita gris peludita",
+          category: "Camas",
+          species: ["perros"],
+          brandLogo: true,
+          price: 92326,
+          image: "assets/cama-moises-olivia-gris.jpg",
+        },
+        {
           id: 6,
           name: "Colchón refrescante",
           category: "Camas",
@@ -347,6 +365,15 @@
           rating: 4.9,
           reviews: 37,
           image: "assets/image-10.jpg",
+        },
+        {
+          id: 96,
+          name: "Misión Sueñitos",
+          category: "Camas",
+          species: ["perros"],
+          brandLogo: true,
+          price: 58255,
+          image: "assets/cama-dogit-azul-crema.jpg",
         },
         {
           id: 8,
@@ -1203,6 +1230,11 @@
                                 </svg>
                                 <span class="text-xs font-semibold tracking-wide">Imagen próximamente</span>
                               </div>`
+                        }
+                        ${
+                          product.brandLogo
+                            ? `<img src="assets/logo-huellita.png" alt="" aria-hidden="true" class="pointer-events-none absolute ${product.brandLogoPosition === "bottom-right" ? "bottom-2 right-2" : "bottom-2 left-2"} z-[1] h-6 w-6 object-contain opacity-75 drop-shadow-sm sm:h-7 sm:w-7">`
+                            : ""
                         }
                         <button
                           type="button"
