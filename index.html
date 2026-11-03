@@ -1188,7 +1188,7 @@
       <div class="flex flex-col md:flex-row gap-8 items-stretch">
         <!-- Left: Bigotes fun fact (real image) -->
         <div
-          class="md:w-1/2 w-full h-[480px] rounded-3xl overflow-hidden shadow-lg relative group"
+          class="md:w-1/2 w-full h-[480px] md:h-[clamp(480px,55vw,640px)] rounded-3xl overflow-hidden shadow-lg relative group"
         >
           <img
             src="assets/image-14.jpg"
@@ -1210,40 +1210,163 @@
                 Son un órgano sensorial: le permiten a tu gato medir espacios y
                 percibir el aire a su alrededor. Nunca deben recortarse.
               </p>
+              <button
+                id="whisker-tips-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="whisker-tips"
+                class="mt-4 rounded-full bg-white px-5 py-2 text-sm font-semibold text-paw-petrol shadow transition hover:bg-[#F4EDDF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+              >
+                Descubrí para qué sirven ›
+              </button>
             </div>
           </div>
         </div>
 
-        <!-- Right: Manejo del enojo / comportamiento (real image) -->
+        <!-- Right: Consejos para calmar a un perro enojado -->
         <div
-          class="md:w-1/2 w-full h-[480px] rounded-3xl overflow-hidden shadow-lg relative group bg-[#152238]"
+          class="md:w-1/2 w-full h-[480px] md:h-[clamp(480px,55vw,640px)] rounded-3xl overflow-hidden shadow-lg"
+          style="background: linear-gradient(to bottom, #FFF8EF 0 50%, #1F4A40 50% 100%)"
         >
-          <img
-            src="assets/image-15.jpg"
-            alt="Pasos para calmar el enojo de tu mascota"
-            class="w-full h-full object-cover object-center opacity-90 group-hover:opacity-100 transition-opacity"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8"
-          >
-            <div class="text-white">
-              <span
-                class="bg-paw-accent text-white text-xs font-bold px-3 py-1 rounded-full mb-3 inline-block"
-                >Comportamiento</span
+          <div class="flex h-full items-center justify-center">
+            <div class="relative w-full aspect-[768/819]">
+              <img
+                src="assets/chihuahua-enojado.png"
+                alt="Afiche con consejos para tranquilizar a un perro enojado"
+                class="w-full h-full"
+              />
+              <button
+                id="calm-tips-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="calm-tips"
+                class="absolute left-[57%] top-[84%] flex h-[8%] w-[39%] items-center justify-center rounded-full bg-[#1F4A40] px-1 text-[clamp(6px,1vw,12px)] font-semibold leading-tight text-white shadow-sm transition hover:bg-[#17372F] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
               >
-              <h3 class="text-2xl font-serif font-bold mb-2">
-                Pasos para calmarle el enojo
-              </h3>
-              <p class="text-sm opacity-90 max-w-sm">
-                Dale espacio, hablale bajito y evitá los castigos: la paciencia
-                y la rutina son las mejores herramientas para un hogar
-                tranquilo.
-              </p>
+                Descubrí cómo ayudarlo ›
+              </button>
             </div>
           </div>
         </div>
       </div>
+      <div
+        id="whisker-tips"
+        class="hidden mt-8 rounded-3xl bg-[#F4EDDF] border border-[#E8DCC0] p-6 sm:p-8"
+        aria-labelledby="whisker-tips-heading"
+      >
+        <h3
+          id="whisker-tips-heading"
+          class="font-serif text-2xl font-bold text-paw-petrol mb-6"
+        >
+          ¿Para qué sirven los bigotes de tu gato?
+        </h3>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <h4 class="font-semibold text-paw-petrol mb-2">
+              Perciben el entorno
+            </h4>
+            <p class="text-sm text-gray-700">
+              Sus raíces sensibles detectan vibraciones y movimientos sutiles
+              del aire que lo rodea.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-paw-petrol mb-2">
+              Lo ayudan a orientarse
+            </h4>
+            <p class="text-sm text-gray-700">
+              Le aportan información sobre los objetos cercanos, especialmente
+              cuando hay poca luz.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-paw-petrol mb-2">
+              Protegen su carita
+            </h4>
+            <p class="text-sm text-gray-700">
+              Los bigotes de las mejillas pueden activar un reflejo cuando
+              rozan algo cerca de sus ojos.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-paw-petrol mb-2">
+              No los recortes
+            </h4>
+            <p class="text-sm text-gray-700">
+              Se caen y renuevan naturalmente. Si notás cambios inusuales o
+              irritación, consultá con su veterinario.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        id="calm-tips"
+        class="hidden mt-8 rounded-3xl bg-[#F4EDDF] border border-[#E8DCC0] p-6 sm:p-8"
+        aria-labelledby="calm-tips-heading"
+      >
+        <h3
+          id="calm-tips-heading"
+          class="font-serif text-2xl font-bold text-paw-petrol mb-6"
+        >
+          Cómo ayudar a tu perro a recuperar la calma
+        </h3>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <h4 class="font-semibold text-paw-petrol mb-2">Dale espacio</h4>
+            <p class="text-sm text-gray-700">
+              No lo acorrales ni lo obligues a interactuar. Dejá que se acerque
+              cuando esté listo.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-paw-petrol mb-2">Bajá el estímulo</h4>
+            <p class="text-sm text-gray-700">
+              Alejalo con calma de aquello que lo altera y buscá un lugar
+              tranquilo y seguro.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-paw-petrol mb-2">
+              Hablale suavemente
+            </h4>
+            <p class="text-sm text-gray-700">
+              Mantené una voz serena y evitá los retos o movimientos bruscos;
+              pueden aumentar su malestar.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-paw-petrol mb-2">
+              Observá sus señales
+            </h4>
+            <p class="text-sm text-gray-700">
+              Si el enojo se repite o hay riesgo de mordida, mantené distancia
+              y consultá con un veterinario o especialista en conducta.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
+    <script>
+      (() => {
+        ["whisker", "calm"].forEach((topic) => {
+          const toggle = document.getElementById(`${topic}-tips-toggle`);
+          const tips = document.getElementById(`${topic}-tips`);
+
+          if (!toggle || !tips) {
+            return;
+          }
+
+          toggle.addEventListener("click", () => {
+            const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+            toggle.setAttribute("aria-expanded", String(!isExpanded));
+            tips.classList.toggle("hidden", isExpanded);
+
+            if (!isExpanded) {
+              tips.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }
+          });
+        });
+      })();
+    </script>
 
     <!-- Promo: Snacks felinos (imagen real Paca) -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
