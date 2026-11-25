@@ -100,6 +100,27 @@
         margin-top: 16px;
       }
 
+      .home-link {
+        display: inline-flex;
+        margin-top: auto;
+        align-self: flex-end;
+        color: #53615c;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 160ms ease;
+      }
+
+      .home-link:hover {
+        color: var(--petrol);
+        text-decoration: underline;
+      }
+
+      .home-link:focus-visible {
+        outline: 2px solid var(--petrol);
+        outline-offset: 3px;
+      }
+
       .team-list {
         display: grid;
         margin-top: auto;
@@ -201,6 +222,7 @@
             comerciales.
           </p>
         </div>
+        <a class="home-link" href="index.html">← Volver al inicio</a>
       </section>
       <section class="team-list" aria-label="Integrantes del equipo">
         <article class="member">
