@@ -489,42 +489,43 @@
           </div>
         </div>
 
-        <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-gray-600">
-          <a href="tienda.html#nuestra-tienda" class="hover:text-paw-accent transition">Tienda</a>
-          <a href="http://127.0.0.1:3000/index.html#categories" class="hover:text-paw-accent transition">Colecciones</a>
-          <a href="tienda.html?categoria=ofertas" class="hover:text-paw-accent transition">Ofertas</a>
-        </nav>
+        <div class="flex items-center gap-4">
+          <nav class="hidden md:flex items-center gap-3 lg:gap-4 text-sm font-medium text-gray-600">
+            <a href="tienda.html#nuestra-tienda" class="hover:text-paw-accent transition">Tienda</a>
+            <a href="tienda.html?categoria=ofertas" class="hover:text-paw-accent transition">Ofertas</a>
+          </nav>
 
-        <!-- Icons -->
-        <div class="flex items-center space-x-6">
-          <a
-            href="tienda.html?vista=deseos"
-            class="hidden sm:flex flex-col items-center gap-1 text-gray-600 hover:text-paw-accent transition"
-          >
-            <svg
-              class="w-6 h-6 transition-colors"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              fill="#f4a7a7"
-              stroke="#d94b4b"
-              stroke-width="2.2"
+          <!-- Icons -->
+          <div class="flex items-center gap-3">
+            <a
+              href="tienda.html?vista=deseos"
+              class="hidden sm:flex flex-col items-center gap-1 text-gray-600 hover:text-paw-accent transition"
             >
-              <path d="M12 21.35 10.55 20C5.4 15.36 2 12.28 2 8.5A4.5 4.5 0 0 1 6.5 4c1.74 0 3.41.81 4.5 2.09A6.06 6.06 0 0 1 15.5 4A4.5 4.5 0 0 1 20 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35Z" />
-            </svg>
-            <span class="text-[10px] font-medium">Deseos</span>
-          </a>
-          <button
-            onclick="toggleCart()"
-            class="flex flex-col items-center gap-1 text-gray-600 hover:text-paw-accent transition relative group"
-          >
-            <span class="text-xl">🛒</span>
-            <span class="text-[10px] font-medium">Carrito</span>
-            <span
-              id="cart-counter"
-              class="absolute -top-1 -right-2 bg-paw-petrol text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform"
-              >0</span
+              <svg
+                class="w-6 h-6 transition-colors"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="#f4a7a7"
+                stroke="#d94b4b"
+                stroke-width="2.2"
+              >
+                <path d="M12 21.35 10.55 20C5.4 15.36 2 12.28 2 8.5A4.5 4.5 0 0 1 6.5 4c1.74 0 3.41.81 4.5 2.09A6.06 6.06 0 0 1 15.5 4A4.5 4.5 0 0 1 20 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35Z" />
+              </svg>
+              <span class="text-[10px] font-medium">Deseos</span>
+            </a>
+            <button
+              onclick="toggleCart()"
+              class="flex flex-col items-center gap-1 text-gray-600 hover:text-paw-accent transition relative group"
             >
-          </button>
+              <span class="text-xl">🛒</span>
+              <span class="text-[10px] font-medium">Carrito</span>
+              <span
+                id="cart-counter"
+                class="absolute -top-1 -right-2 bg-paw-petrol text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform"
+                >0</span
+              >
+            </button>
+          </div>
         </div>
       </div>
 
@@ -551,8 +552,8 @@
           class="absolute left-[4%] top-[64%] w-[18%] h-[9%]"
         ></a>
         <a
-          href="#categories"
-          aria-label="Explorar Más"
+          href="tienda.html"
+          aria-label="Explorar la tienda"
           class="absolute left-[4%] top-[75%] w-[16%] h-[9%]"
         ></a>
       </div>
@@ -603,134 +604,6 @@
             <p class="text-[11px] text-gray-500">Productos testeados</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section
-      id="categories"
-      class="max-w-7xl lg:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-12 lg:py-16 text-center"
-    >
-      <h2
-        class="font-serif text-[26px] sm:text-[34px] font-bold text-gray-900 mb-8 lg:mb-12"
-      >
-        〰 Comprar por Categoría 〰
-      </h2>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-        <!-- Category Card 1: Camas -->
-        <a
-          href="tienda.html?categoria=camas"
-          data-category="camas"
-          id="cat-camas"
-          class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center"
-        >
-          <div
-            class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
-            style="aspect-ratio: 1230/1278"
-          >
-            <img
-              src="assets/image-02.jpg"
-              alt="Camas"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <h3 class="font-serif font-bold text-lg lg:text-2xl text-gray-900">
-            Camas
-          </h3>
-          <p class="text-xs lg:text-base text-gray-500 mb-2 lg:mb-3">
-            Acogedoras & Cómodas
-          </p>
-          <span
-            class="bg-paw-petrol text-white text-xs lg:text-sm px-6 py-2 lg:px-8 lg:py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity"
-            >Ver Más</span
-          >
-        </a>
-
-        <!-- Category Card 2: Juguetes -->
-        <a
-          href="tienda.html?categoria=juguetes"
-          data-category="juguetes"
-          id="cat-juguetes"
-          class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center"
-        >
-          <div
-            class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
-            style="aspect-ratio: 1230/1278"
-          >
-            <img
-              src="assets/image-03.jpg"
-              alt="Juguetes"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <h3 class="font-serif font-bold text-lg lg:text-2xl text-gray-900">
-            Juguetes
-          </h3>
-          <p class="text-xs lg:text-base text-gray-500 mb-2 lg:mb-3">
-            Diversión Interactiva
-          </p>
-          <span
-            class="bg-paw-petrol text-white text-xs lg:text-sm px-6 py-2 lg:px-8 lg:py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity"
-            >Ver Más</span
-          >
-        </a>
-
-        <!-- Category Card 3: Alimento -->
-        <a
-          href="tienda.html?categoria=alimento"
-          data-category="alimento"
-          id="cat-alimento"
-          class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center"
-        >
-          <div
-            class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
-            style="aspect-ratio: 1230/1278"
-          >
-            <img
-              src="assets/image-04.jpg"
-              alt="Alimento"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <h3 class="font-serif font-bold text-lg lg:text-2xl text-gray-900">
-            Alimento
-          </h3>
-          <p class="text-xs lg:text-base text-gray-500 mb-2 lg:mb-3">
-            Nutrición & Salud
-          </p>
-          <span
-            class="bg-paw-petrol text-white text-xs lg:text-sm px-6 py-2 lg:px-8 lg:py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity"
-            >Ver Más</span
-          >
-        </a>
-
-        <!-- Category Card 4: Higiene -->
-        <a
-          href="tienda.html?categoria=higiene"
-          data-category="higiene"
-          id="cat-higiene"
-          class="bg-white rounded-3xl p-3 lg:p-4 shadow-sm border border-paw-border/50 hover:shadow-md hover:border-paw-accent transition-all group cursor-pointer flex flex-col items-center"
-        >
-          <div
-            class="w-full mb-3 lg:mb-4 overflow-hidden rounded-2xl bg-gray-50 flex items-center justify-center"
-            style="aspect-ratio: 1230/1278"
-          >
-            <img
-              src="assets/image-05.jpg"
-              alt="Higiene"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <h3 class="font-serif font-bold text-lg lg:text-2xl text-gray-900">
-            Higiene
-          </h3>
-          <p class="text-xs lg:text-base text-gray-500 mb-2 lg:mb-3">
-            Limpieza & Cuidado
-          </p>
-          <span
-            class="bg-paw-petrol text-white text-xs lg:text-sm px-6 py-2 lg:px-8 lg:py-3 rounded-full font-medium opacity-0 group-hover:opacity-100 transition-opacity"
-            >Ver Más</span
-          >
-        </a>
       </div>
     </section>
 
@@ -977,7 +850,7 @@
               Paseos felices comienzan aquí
             </p>
             <a
-              href="tienda.html?categoria=ofertas"
+              href="tienda.html?categoria=paseo"
               class="relative z-10 bg-[#D35400] hover:bg-[#A04000] text-white w-[150px] h-[45px] inline-flex items-center justify-center text-[15px] lg:text-base rounded-full font-semibold transition shadow-lg"
             >
               Comprar Oferta
@@ -1977,13 +1850,6 @@
           .forEach((button) => {
             button.addEventListener("click", () =>
               filterProducts(button.dataset.filter),
-            );
-          });
-        document
-          .querySelectorAll("#categories [data-category]")
-          .forEach((categoryCard) => {
-            categoryCard.addEventListener("click", () =>
-              filterProducts(categoryCard.dataset.category),
             );
           });
         renderProducts();
