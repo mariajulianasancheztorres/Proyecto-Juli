@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Conoce al equipo de Malvinas Argentinas S.A."
+    />
+    <title>Nuestro equipo - Malvinas Argentinas S.A.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #203a35;
+        --paper: #f5f2eb;
+        --line: #ded8cb;
+        --petrol: #1f4a40;
+        font-family: "DM Sans", sans-serif;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(rgba(245, 242, 235, 0.28), rgba(245, 242, 235, 0.38)),
+          url("assets/universidad-uba.jpg") center / cover fixed no-repeat;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+          linear-gradient(180deg, rgba(31, 74, 64, 0.12), transparent 40%);
+      }
+
+      main {
+        display: flex;
+        width: min(calc(100% - 48px), 1120px);
+        min-height: 100vh;
+        margin: 0 auto;
+        padding: 58px 0 36px;
+        flex-direction: column;
+      }
+
+      h1 {
+        margin: 0 0 24px;
+        color: var(--petrol);
+        font-family: "Playfair Display", serif;
+        font-size: clamp(20px, 2.2vw, 28px);
+        font-weight: 600;
+        letter-spacing: 0.13em;
+        text-align: left;
+      }
+
+      .team-story {
+        display: flex;
+        flex: 1;
+        width: min(100%, 980px);
+        margin-bottom: 42px;
+        align-self: center;
+        padding: clamp(28px, 5vw, 54px);
+        border: 1px solid #e4e6dc;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.72);
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0 18px 48px rgba(32, 58, 53, 0.06);
+      }
+
+      .story-body {
+        max-width: 800px;
+      }
+
+      .story-body p {
+        margin: 0;
+        color: #2f3f3a;
+        font-size: 15px;
+        line-height: 1.85;
+      }
+
+      .story-body p + p {
+        margin-top: 16px;
+      }
+
+      .team-list {
+        display: grid;
+        margin-top: auto;
+        overflow: hidden;
+        border-radius: 14px;
+        background: var(--petrol);
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .member {
+        display: grid;
+        min-height: 52px;
+        padding: 12px 10px;
+        border-left: 1px solid rgba(255, 255, 255, 0.18);
+        place-items: center;
+        text-align: center;
+      }
+
+      .member:last-child {
+        border-right: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      h2 {
+        margin: 0;
+        color: #ffffff;
+        font-family: "DM Sans", sans-serif;
+        font-size: clamp(14px, 1.5vw, 18px);
+        font-weight: 700;
+      }
+
+      @media (max-width: 640px) {
+        main {
+          width: min(calc(100% - 32px), 440px);
+          min-height: 100svh;
+          padding: 40px 0 28px;
+        }
+
+        h1 {
+          margin-bottom: 20px;
+          font-size: clamp(20px, 6vw, 26px);
+          letter-spacing: 0.09em;
+        }
+
+        .team-story {
+          margin-bottom: 30px;
+          padding: 24px;
+        }
+
+        .story-body p {
+          font-size: 14px;
+        }
+
+        .team-list {
+          overflow-x: auto;
+          grid-template-columns: repeat(5, minmax(118px, 1fr));
+          scroll-snap-type: x mandatory;
+        }
+
+        .member {
+          scroll-snap-align: start;
+        }
+
+        h2 {
+          font-size: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section
+        class="team-story"
+        aria-label="Presentación académica del equipo"
+      >
+        <div class="story-body">
+          <h1>NUESTRO EQUIPO</h1>
+          <p>
+            Somos un grupo de estudiantes de la Facultad de Ciencias Económicas
+            de la Universidad de Buenos Aires. Desarrollamos esta página web
+            para la materia Taller de Práctica Profesional en las Organizaciones
+            (Cátedra de Norma Alicia Cristobal – Profesora Adjunta Dalila Effron).
+          </p>
+          <p>
+            Este trabajo refleja nuestro recorrido práctico en la creación y
+            puesta en marcha de una Sociedad Anónima en CABA, aplicando paso a
+            paso los criterios técnicos, normativos y societarios propios de la
+            labor del Contador Público.
+          </p>
+          <p>
+            Queremos agradecer a todo el cuerpo docente de la cátedra por
+            acompañarnos, guiarnos y brindarnos sus valiosos aportes durante este
+            cuatrimestre.
+          </p>
+          <p>
+            Malvinas Argentinas S.A. y sus operaciones comerciales forman parte
+            de una simulación elaborada exclusivamente con fines académicos.
+            Las marcas y los productos
+            exhibidos se utilizan únicamente a modo ilustrativo, sin fines
+            comerciales.
+          </p>
+        </div>
+      </section>
+      <section class="team-list" aria-label="Integrantes del equipo">
+        <article class="member">
+          <h2>Juliana Sanchez</h2>
+        </article>
+        <article class="member">
+          <h2>Naiomi Pacheco</h2>
+        </article>
+        <article class="member">
+          <h2>Abigail Espinoza</h2>
+        </article>
+        <article class="member">
+          <h2>Nicolás Nasra</h2>
+        </article>
+        <article class="member">
+          <h2>José Mutti</h2>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
