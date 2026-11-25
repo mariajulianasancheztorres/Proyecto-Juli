@@ -98,7 +98,7 @@
         >
           Malvinas Pet Shop
         </p>
-        <h1 class="font-serif text-4xl sm:text-5xl font-bold text-gray-900">
+        <h1 id="nuestra-tienda" class="font-serif text-4xl sm:text-5xl font-bold text-gray-900 scroll-mt-24">
           Nuestra tienda
         </h1>
         <p class="text-gray-500 mt-3 max-w-xl mx-auto">
@@ -146,6 +146,20 @@
           class="product-filter bg-white text-gray-600 border border-paw-border px-5 py-2.5 rounded-full text-sm font-semibold hover:border-paw-accent"
         >
           Higiene
+        </button>
+        <button
+          type="button"
+          data-filter="paseo"
+          class="product-filter bg-white text-gray-600 border border-paw-border px-5 py-2.5 rounded-full text-sm font-semibold hover:border-paw-accent"
+        >
+          Paseo
+        </button>
+        <button
+          type="button"
+          data-filter="ofertas"
+          class="product-filter bg-white text-gray-600 border border-paw-border px-5 py-2.5 rounded-full text-sm font-semibold hover:border-paw-accent"
+        >
+          Ofertas
         </button>
       </div>
 
@@ -290,19 +304,13 @@
           id: 1,
           name: "Peluche con sonido",
           category: "Juguetes",
-          price: 12000,
+          price: 9600,
+          originalPrice: 12000,
+          discount: 20,
+          offer: true,
           rating: 4.8,
           reviews: 128,
           image: "assets/image-19.jpg",
-        },
-        {
-          id: 2,
-          name: "Camita 10",
-          category: "Camas",
-          price: 49990,
-          rating: 4.9,
-          reviews: 96,
-          image: "assets/image-20.jpg",
         },
         {
           id: 93,
@@ -363,6 +371,9 @@
           category: "Camas",
           species: ["perros"],
           price: 49990,
+          originalPrice: 52621,
+          discount: 5,
+          offer: true,
           priceEstimated: true,
           image: "assets/dog-cama-felpita.jpg",
         },
@@ -385,49 +396,16 @@
           image: "assets/dog-cama-cebra.jpg",
         },
         {
-          id: 3,
-          name: "Snacks Naturales de Pollo y Carne",
-          category: "Alimento",
-          price: 6000,
-          rating: 4.7,
-          reviews: 74,
-          image: "assets/image-21.jpg",
-        },
-        {
           id: 4,
           name: "Juguete interactivo",
           category: "Juguetes",
           price: 24990,
+          originalPrice: 26305,
+          discount: 5,
+          offer: true,
           rating: 4.6,
           reviews: 112,
           image: "assets/image-22.jpg",
-        },
-        {
-          id: 5,
-          name: "Cama nido acolchada",
-          category: "Camas",
-          price: 42975,
-          rating: 4.8,
-          reviews: 61,
-          image: "assets/image-08.jpg",
-        },
-        {
-          id: 6,
-          name: "Colchón refrescante",
-          category: "Camas",
-          price: 55990,
-          rating: 4.7,
-          reviews: 48,
-          image: "assets/image-09.jpg",
-        },
-        {
-          id: 7,
-          name: "Cueva polar para descanso",
-          category: "Camas",
-          price: 63990,
-          rating: 4.9,
-          reviews: 37,
-          image: "assets/image-10.jpg",
         },
         {
           id: 101,
@@ -502,85 +480,16 @@
           image: "assets/cat-camita-celeste.jpg",
         },
         {
-          id: 8,
-          name: "Pelota mordillo resistente",
-          category: "Juguetes",
-          price: 8990,
-          rating: 4.5,
-          reviews: 83,
-          image: "assets/image-11.jpg",
-        },
-        {
-          id: 9,
-          name: "Cuerda dental multicolor",
-          category: "Juguetes",
-          price: 7490,
-          rating: 4.6,
-          reviews: 56,
-          image: "assets/image-12.jpg",
-        },
-        {
-          id: 10,
-          name: "Frisbee flexible",
-          category: "Juguetes",
-          price: 10990,
-          rating: 4.4,
-          reviews: 42,
-          image: "assets/image-13.jpg",
-        },
-        {
-          id: 11,
-          name: "Alimento balanceado premium",
-          category: "Alimento",
-          price: 28990,
-          rating: 4.9,
-          reviews: 104,
-          image: "assets/image-14.jpg",
-        },
-        {
-          id: 12,
-          name: "Mix de croquetas para cachorro",
-          category: "Alimento",
-          price: 21990,
-          rating: 4.8,
-          reviews: 78,
-          image: "assets/image-16.jpg",
-        },
-        {
-          id: 13,
-          name: "Galletas de avena y manzana",
-          category: "Alimento",
-          price: 8490,
-          rating: 4.7,
-          reviews: 65,
-          image: "assets/image-17.jpg",
-        },
-        {
           id: 14,
           name: "Shampoo hipoalergénico",
           category: "Higiene",
-          price: 12990,
+          price: 10392,
+          originalPrice: 12990,
+          discount: 20,
+          offer: true,
           rating: 4.8,
           reviews: 52,
-          image: "assets/image-06.jpg",
-        },
-        {
-          id: 15,
-          name: "Toallitas húmedas biodegradables",
-          category: "Higiene",
-          price: 6990,
-          rating: 4.6,
-          reviews: 44,
-          image: "assets/image-07.jpg",
-        },
-        {
-          id: 16,
-          name: "Cepillo removedor de pelo",
-          category: "Higiene",
-          price: 9990,
-          rating: 4.7,
-          reviews: 39,
-          image: "assets/image-18.jpg",
+          image: "assets/dog-shampoo-avena.jpg",
         },
         {
           id: 117,
@@ -588,6 +497,9 @@
           category: "Higiene",
           species: ["perros"],
           price: 5990,
+          originalPrice: 6305,
+          discount: 5,
+          offer: true,
           image: "assets/dog-cepillo-saca-nudos.jpg",
         },
         {
@@ -604,6 +516,9 @@
           category: "Higiene",
           species: ["perros", "gatos"],
           price: 4990,
+          originalPrice: 5253,
+          discount: 5,
+          offer: true,
           image: "assets/dog-balsamo-para-patas.jpg",
         },
         {
@@ -668,6 +583,9 @@
           category: "Higiene",
           species: ["gatos"],
           price: 8990,
+          originalPrice: 9463,
+          discount: 5,
+          offer: true,
           image: "assets/cat-pasta-malta.jpg",
         },
         {
@@ -984,6 +902,9 @@
           category: "Juguetes",
           species: ["perros"],
           price: 7500,
+          originalPrice: 7895,
+          discount: 5,
+          offer: true,
           priceEstimated: true,
           image: "assets/pelota-nudo-arcoiris.png",
         },
@@ -1074,6 +995,9 @@
           category: "Juguetes",
           species: ["gatos"],
           price: 4500,
+          originalPrice: 4737,
+          discount: 5,
+          offer: true,
           priceEstimated: true,
           image: "assets/raton-ratoncito-rosa.png",
         },
@@ -1282,6 +1206,186 @@
           priceEstimated: true,
           image: "assets/juguete-colgante-madera-aves.jpg",
         },
+        {
+          id: 209,
+          name: "Correa Extensible",
+          category: "Paseo",
+          species: ["perros"],
+          price: 9000,
+          originalPrice: 12857,
+          discount: 30,
+          offer: true,
+          rating: 4.8,
+          reviews: 67,
+          image: "assets/correa-extensible-kong-gris.jpg",
+        },
+        {
+          id: 210,
+          name: "Correa Retráctil",
+          category: "Paseo",
+          species: ["perros"],
+          price: 46500,
+          originalPrice: 66429,
+          discount: 30,
+          offer: true,
+          rating: 4.9,
+          reviews: 84,
+          image: "assets/correa-retractil-m-pets-azul.jpg",
+        },
+        {
+          id: 211,
+          name: "Carrito de paseo para mascotas",
+          category: "Paseo",
+          species: ["perros", "gatos"],
+          price: 249990,
+          originalPrice: 357129,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-carrito-mascotas.png",
+        },
+        {
+          id: 212,
+          name: "Porta bolsas con forma de hueso",
+          category: "Paseo",
+          species: ["perros"],
+          price: 4990,
+          originalPrice: 7129,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-porta-bolsas-azul.png",
+        },
+        {
+          id: 213,
+          name: "Dispensador de bolsas para paseo",
+          category: "Paseo",
+          species: ["perros"],
+          price: 6990,
+          originalPrice: 9986,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-dispensador-bolsas-azul.png",
+        },
+        {
+          id: 214,
+          name: "Correa azul reforzada",
+          category: "Paseo",
+          species: ["perros"],
+          price: 12990,
+          originalPrice: 18557,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-correa-azul.png",
+        },
+        {
+          id: 215,
+          name: "Bolso transportador rosa con burbuja",
+          category: "Paseo",
+          species: ["gatos"],
+          price: 45990,
+          originalPrice: 65700,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-bolso-rosa-gatito.png",
+        },
+        {
+          id: 216,
+          name: "Bebedero portátil azul plegable",
+          category: "Paseo",
+          species: ["perros", "gatos"],
+          price: 8990,
+          originalPrice: 12843,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-bebedero-azul.png",
+        },
+        {
+          id: 217,
+          name: "Botella bebedero portátil azul",
+          category: "Paseo",
+          species: ["perros", "gatos"],
+          price: 14990,
+          originalPrice: 21414,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-bebedero-portatil-azul.png",
+        },
+        {
+          id: 218,
+          name: "Transportadora rígida azul",
+          category: "Paseo",
+          species: ["perros", "gatos"],
+          price: 39990,
+          originalPrice: 57129,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-transporter-plastico-azul.png",
+        },
+        {
+          id: 219,
+          name: "Correa retráctil azul",
+          category: "Paseo",
+          species: ["perros"],
+          price: 24990,
+          originalPrice: 35700,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-correa-extensible-azul.png",
+        },
+        {
+          id: 220,
+          name: "Pechera azul de malla",
+          category: "Paseo",
+          species: ["perros"],
+          price: 18990,
+          originalPrice: 27129,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-pechera-malla-azul.png",
+        },
+        {
+          id: 221,
+          name: "Mochila transportadora gris con burbuja",
+          category: "Paseo",
+          species: ["gatos"],
+          price: 42990,
+          originalPrice: 61414,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-bolso-gris-gatito.png",
+        },
+        {
+          id: 222,
+          name: "Mochila transportadora rosa y negra",
+          category: "Paseo",
+          species: ["perros", "gatos"],
+          price: 44990,
+          originalPrice: 64271,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-bolso-rosa-negro.png",
+        },
+        {
+          id: 223,
+          name: "Pechera roja acolchada",
+          category: "Paseo",
+          species: ["perros"],
+          price: 17990,
+          originalPrice: 25700,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-pechera-roja.png",
+        },
+        {
+          id: 224,
+          name: "Pechera rosa de malla",
+          category: "Paseo",
+          species: ["perros"],
+          price: 16990,
+          originalPrice: 24271,
+          discount: 30,
+          offer: true,
+          image: "assets/oferta-pechera-rosa.png",
+        },
       ];
       let cart = [];
       const wishlistStorageKey = "malvinasWishlist";
@@ -1413,6 +1517,8 @@
         }
         const categoryProducts = showingWishlist
           ? products.filter((product) => wishlist.includes(product.id))
+          : activeCategory === "ofertas"
+            ? products.filter((product) => product.offer || product.discount)
           : activeCategory === "all"
             ? products
             : products.filter(
@@ -1431,12 +1537,14 @@
         }
         document
           .getElementById("species-filter-area")
-          .classList.toggle("hidden", showingWishlist);
+          .classList.toggle("hidden", showingWishlist || activeCategory === "ofertas");
         document
           .getElementById("other-species-filter")
           .classList.toggle(
             "hidden",
-            activeCategory === "camas" || activeCategory === "higiene",
+            activeCategory === "camas" ||
+              activeCategory === "higiene" ||
+              activeCategory === "paseo",
           );
         updateLifeStageDropdowns();
         document.querySelectorAll(".food-species-filter").forEach((button) => {
@@ -1463,6 +1571,8 @@
         });
         document.getElementById("product-heading").textContent = showingWishlist
           ? "Mis deseos"
+          : activeCategory === "ofertas"
+            ? "Ofertas"
           : "Productos";
         document.getElementById("product-count").textContent =
           `${visible.length} producto${visible.length === 1 ? "" : "s"}`;
@@ -1502,6 +1612,11 @@
                             ? `<img src="assets/logo-huellita.png" alt="" aria-hidden="true" class="pointer-events-none absolute ${product.brandLogoPosition === "bottom-right" ? "bottom-2 right-2" : "bottom-2 left-2"} z-[1] h-6 w-6 object-contain opacity-75 drop-shadow-sm sm:h-7 sm:w-7">`
                             : ""
                         }
+                        ${
+                          product.discount
+                            ? `<span class="absolute left-3 top-3 z-10 rounded-full bg-red-500 px-3 py-1 text-xs font-bold text-white shadow-sm">${product.discount}% OFF</span>`
+                            : ""
+                        }
                         <button
                           type="button"
                           onclick="toggleWishlist(${product.id})"
@@ -1525,6 +1640,7 @@
                           product.price == null
                             ? `<p class="py-2 text-sm font-medium text-gray-500">${product.weight == null ? "Peso y precio próximamente" : "Precio próximamente"}</p>`
                             : `<p class="mb-1 text-sm text-gray-500">${product.weight ?? ""}</p>
+                            ${product.originalPrice ? `<span class="mr-2 text-sm text-gray-400 line-through">${money(product.originalPrice)}</span>` : ""}
                             <strong class="text-lg block mb-3">${money(product.price)}</strong>
                         ${
                           product.available === false
