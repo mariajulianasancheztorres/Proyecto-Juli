@@ -174,13 +174,20 @@
         }
 
         .team-list {
-          overflow-x: auto;
-          grid-template-columns: repeat(5, minmax(118px, 1fr));
-          scroll-snap-type: x mandatory;
+          grid-template-columns: minmax(0, 1fr);
         }
 
         .member {
-          scroll-snap-align: start;
+          border-top: 1px solid rgba(255, 255, 255, 0.18);
+          border-left: 0;
+        }
+
+        .member:first-child {
+          border-top: 0;
+        }
+
+        .member:last-child {
+          border-right: 0;
         }
 
         h2 {
