@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Preguntas frecuentes de Malvinas Argentinas S.A."
+    />
+    <title>Preguntas Frecuentes - Malvinas Argentinas S.A.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #203a35;
+        --petrol: #1f4a40;
+        font-family: "DM Sans", sans-serif;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(rgba(245, 242, 235, 0.28), rgba(245, 242, 235, 0.38)),
+          url("assets/universidad-uba.jpg") center / cover fixed no-repeat;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+          linear-gradient(180deg, rgba(31, 74, 64, 0.12), transparent 40%);
+      }
+
+      main {
+        display: flex;
+        width: min(calc(100% - 48px), 1120px);
+        min-height: 100vh;
+        margin: 0 auto;
+        padding: 58px 0 36px;
+        flex-direction: column;
+      }
+
+      .faq-card {
+        display: flex;
+        flex: 1;
+        width: min(100%, 980px);
+        margin-bottom: 42px;
+        align-self: center;
+        padding: clamp(28px, 5vw, 54px);
+        border: 1px solid #e4e6dc;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.72);
+        flex-direction: column;
+        box-shadow: 0 18px 48px rgba(32, 58, 53, 0.06);
+      }
+
+      h1 {
+        margin: 0 0 24px;
+        color: var(--petrol);
+        font-family: "Playfair Display", serif;
+        font-size: clamp(20px, 2.2vw, 28px);
+        font-weight: 600;
+        letter-spacing: 0.13em;
+      }
+
+      .faq-content {
+        flex: 1;
+      }
+
+      .faq-content h2 {
+        margin: 26px 0 10px;
+        color: var(--petrol);
+        font-size: 17px;
+        line-height: 1.5;
+      }
+
+      .faq-content p,
+      .faq-content li {
+        color: #2f3f3a;
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .faq-content p {
+        margin: 0 0 14px;
+      }
+
+      .faq-content ul {
+        margin: 0 0 16px;
+        padding-left: 24px;
+      }
+
+      .home-link {
+        display: inline-flex;
+        margin-top: auto;
+        align-self: flex-end;
+        color: #53615c;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 160ms ease;
+      }
+
+      .home-link:hover {
+        color: var(--petrol);
+        text-decoration: underline;
+      }
+
+      .home-link:focus-visible {
+        outline: 2px solid var(--petrol);
+        outline-offset: 3px;
+      }
+
+      @media (max-width: 640px) {
+        main {
+          width: min(calc(100% - 32px), 440px);
+          min-height: 100svh;
+          padding: 40px 0 28px;
+        }
+
+        .faq-card {
+          margin-bottom: 30px;
+          padding: 24px;
+        }
+
+        h1 {
+          margin-bottom: 20px;
+          font-size: clamp(20px, 6vw, 26px);
+          letter-spacing: 0.09em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="faq-card" aria-label="Preguntas frecuentes">
+        <div class="faq-content">
+          <h1>PREGUNTAS FRECUENTES (FAQ)</h1>
+          <h2>1. ¿Cómo realizo una compra en la tienda online?</h2>
+          <p>
+            Es muy simple: navegá por nuestro catálogo, agregá los productos que
+            quieras al carrito y hacé clic en finalizar pedido. Al confirmar tu
+            orden, serás redirigido automáticamente a nuestro
+            <strong>WhatsApp oficial</strong> con el resumen detallado de tu
+            compra para que uno de nuestros asesores confirme el stock y
+            coordine con vos el pago y la entrega.
+          </p>
+
+          <h2>2. ¿Cuáles son los medios de pago disponibles?</h2>
+          <p>
+            Una vez que nos llega tu pedido por WhatsApp, acordamos el método de
+            pago que te resulte más cómodo. Trabajamos con:
+          </p>
+          <ul>
+            <li>Transferencia bancaria.</li>
+            <li>Efectivo (contra entrega o al retirar por nuestro local).</li>
+            <li>
+              Tarjetas de débito y crédito (a través de link de pago seguro).
+            </li>
+          </ul>
+
+          <h2>3. ¿Cómo funcionan los envíos y cuál es su costo?</h2>
+          <p>
+            Realizamos envíos a domicilio en toda la Ciudad Autónoma de Buenos
+            Aires (CABA) y zonas habilitadas.
+          </p>
+          <ul>
+            <li>
+              <strong>Envío Gratis:</strong> En todas las compras superiores a
+              <strong>$50.000</strong>, el envío es totalmente sin cargo.
+            </li>
+            <li>
+              <strong>Compras menores a $50.000:</strong> El costo de envío se
+              calcula según tu zona de entrega y te lo informamos por WhatsApp
+              antes de confirmar el pago.
+            </li>
+          </ul>
+
+          <h2>4. ¿Puedo retirar mi pedido personalmente?</h2>
+          <p>
+            ¡Sí! Podés pasar a retirar tu compra sin costo adicional por nuestro
+            local ubicado en <strong>Rodríguez Peña 102, CABA</strong>.
+            Coordinamos previamente el día y la franja horaria por WhatsApp
+            para tener tu pedido listo cuando llegues.
+          </p>
+
+          <h2>5. ¿Cuánto demora en llegar mi pedido?</h2>
+          <p>
+            Una vez confirmado el pago por WhatsApp, los envíos dentro de CABA
+            se coordinan para entregarse dentro de las
+            <strong>24 a 48 horas hábiles</strong> siguientes, en la franja
+            horaria que acordemos con vos.
+          </p>
+
+          <h2>6. ¿Qué pasa si necesito cambiar o devolver un producto?</h2>
+          <p>
+            Si el talle de un accesorio no le quedó bien a tu mascota o
+            necesitás realizar un cambio, tenés hasta
+            <strong>10 días corridos</strong> desde que recibiste tu pedido
+            para gestionarlo escribiéndonos por WhatsApp. El producto debe
+            estar sin uso, en perfectas condiciones y con su embalaje original
+            cerrado (especialmente en alimentos abiertos o productos de higiene
+            por cuestiones sanitarias).
+          </p>
+
+          <h2>7. ¿Los productos cuentan con garantía de calidad?</h2>
+          <p>
+            Sí, todos los alimentos, juguetes y accesorios de
+            <strong>Malvinas Argentinas S.A.</strong> son seleccionados bajo
+            estrictos estándares de calidad y seguridad para el bienestar de
+            perros y gatos. Si algún artículo presenta una falla de fábrica,
+            lo reemplazamos sin costo.
+          </p>
+
+          <h2>8. Aclaración sobre el sitio web (Proyecto Académico)</h2>
+          <p><strong>¿Este sitio realiza ventas reales?</strong></p>
+          <p>
+            No. Esta plataforma forma parte de un proyecto práctico desarrollado
+            con <strong>fines exclusivamente académicos</strong> por estudiantes
+            de la Facultad de Ciencias Económicas de la Universidad de Buenos
+            Aires (UBA) para la asignatura
+            <em>Taller de Práctica Profesional en las Organizaciones</em>
+            (Cátedra Norma Alicia Cristobal – Prof. Adjunta Dalila Effron,
+            2.º Cuatrimestre de 2026). <strong>Malvinas Argentinas S.A.</strong>
+            es una empresa simulada, por lo que los precios, promociones y
+            pedidos son ilustrativos y no generan transacciones comerciales
+            reales.
+          </p>
+        </div>
+        <a class="home-link" href="index.html">← Volver al inicio</a>
+      </section>
+    </main>
+  </body>
+</html>

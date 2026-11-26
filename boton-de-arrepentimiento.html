@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Botón de arrepentimiento de Malvinas Argentinas S.A."
+    />
+    <title>Botón de Arrepentimiento - Malvinas Argentinas S.A.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #203a35;
+        --petrol: #1f4a40;
+        font-family: "DM Sans", sans-serif;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(rgba(245, 242, 235, 0.28), rgba(245, 242, 235, 0.38)),
+          url("assets/universidad-uba.jpg") center / cover fixed no-repeat;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+          linear-gradient(180deg, rgba(31, 74, 64, 0.12), transparent 40%);
+      }
+
+      main {
+        display: flex;
+        width: min(calc(100% - 48px), 1120px);
+        min-height: 100vh;
+        margin: 0 auto;
+        padding: 58px 0 36px;
+        flex-direction: column;
+      }
+
+      .request-card {
+        display: flex;
+        flex: 1;
+        width: min(100%, 980px);
+        margin-bottom: 42px;
+        align-self: center;
+        padding: clamp(28px, 5vw, 54px);
+        border: 1px solid #e4e6dc;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.72);
+        flex-direction: column;
+        box-shadow: 0 18px 48px rgba(32, 58, 53, 0.06);
+      }
+
+      h1 {
+        margin: 0 0 24px;
+        color: var(--petrol);
+        font-family: "Playfair Display", serif;
+        font-size: clamp(20px, 2.2vw, 28px);
+        font-weight: 600;
+        letter-spacing: 0.13em;
+      }
+
+      .request-content {
+        flex: 1;
+      }
+
+      .request-content h2 {
+        margin: 26px 0 10px;
+        color: var(--petrol);
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+      .request-content p,
+      .request-content li {
+        color: #2f3f3a;
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .request-content p {
+        margin: 0 0 14px;
+      }
+
+      .request-content ul,
+      .request-content ol {
+        margin: 0 0 18px;
+        padding-left: 24px;
+      }
+
+      .request-content li + li {
+        margin-top: 8px;
+      }
+
+      .home-link {
+        display: inline-flex;
+        margin-top: auto;
+        align-self: flex-end;
+        color: #53615c;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 160ms ease;
+      }
+
+      .home-link:hover {
+        color: var(--petrol);
+        text-decoration: underline;
+      }
+
+      .home-link:focus-visible {
+        outline: 2px solid var(--petrol);
+        outline-offset: 3px;
+      }
+
+      @media (max-width: 640px) {
+        main {
+          width: min(calc(100% - 32px), 440px);
+          min-height: 100svh;
+          padding: 40px 0 28px;
+        }
+
+        .request-card {
+          margin-bottom: 30px;
+          padding: 24px;
+        }
+
+        h1 {
+          margin-bottom: 20px;
+          font-size: clamp(20px, 6vw, 26px);
+          letter-spacing: 0.09em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="request-card" aria-label="Botón de arrepentimiento">
+        <div class="request-content">
+          <h1>Botón de Arrepentimiento</h1>
+          <p>
+            En cumplimiento con lo establecido por
+            <strong>la Ley N.º 24.240 de Defensa del Consumidor</strong>. En
+            <strong>Malvinas Argentinas S.A.</strong> garantizamos tu derecho a
+            revocar la aceptación de cualquier compra realizada a distancia.
+          </p>
+
+          <h2>¿En qué consiste este derecho?</h2>
+          <p>
+            Tenés derecho a arrepentirte de tu compra dentro de un plazo de
+            <strong>diez (10) días corridos</strong> contados a partir de la
+            fecha en que recibiste el producto o celebraste el contrato, sin
+            necesidad de expresar motivo alguno y sin penalidades.
+          </p>
+
+          <h2>Condiciones para gestionar la devolución</h2>
+          <p>
+            Para hacer efectivo el arrepentimiento, el artículo debe cumplir
+            con las siguientes condiciones:
+          </p>
+          <ul>
+            <li>
+              Encontrarse en el mismo estado en el que fue recibido,
+              <strong>sin uso</strong> y en perfectas condiciones.
+            </li>
+            <li>
+              Conservar su <strong>embalaje original cerrado</strong>, etiquetas
+              y accesorios completos.
+            </li>
+            <li>
+              <em
+                >Nota sobre productos perecederos o de higiene:</em
+              >
+              Por razones sanitarias y de seguridad animal, no se aceptarán
+              devoluciones de bolsas de alimento balanceado abiertas ni de
+              productos de higiene cuyo sello de seguridad haya sido vulnerado,
+              salvo que presenten defectos de fabricación o problemas de
+              calidad.
+            </li>
+          </ul>
+
+          <h2>¿Cómo solicitar el arrepentimiento?</h2>
+          <ol>
+            <li>
+              Completá el formulario disponible en esta sección (o iniciá el
+              contacto directo a través de nuestro botón hacia
+              <strong>WhatsApp</strong>), indicando tu
+              <strong>nombre completo</strong>,
+              <strong>número o detalle del pedido</strong> y
+              <strong>fecha de recepción</strong>.
+            </li>
+            <li>
+              Dentro de las <strong>24 horas hábiles</strong> siguientes a tu
+              solicitud, nuestro equipo te responderá por WhatsApp o correo
+              electrónico con el <strong>código de identificación de tu
+              trámite</strong> y coordinará con vos la modalidad de retiro o
+              entrega del producto en nuestro local de
+              <strong>Rodríguez Peña 102, CABA</strong> (sin costo de envío para
+              vos).
+            </li>
+            <li>
+              Una vez verificado el estado del producto, gestionaremos el
+              reintegro íntegro del importe abonado por el mismo medio de pago
+              utilizado en la operación original.
+            </li>
+          </ol>
+        </div>
+        <a class="home-link" href="index.html">← Volver al inicio</a>
+      </section>
+    </main>
+  </body>
+</html>

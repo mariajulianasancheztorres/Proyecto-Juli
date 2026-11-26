@@ -551,11 +551,6 @@
           aria-label="Comprar Ahora"
           class="absolute left-[4%] top-[64%] w-[18%] h-[9%]"
         ></a>
-        <a
-          href="tienda.html"
-          aria-label="Explorar la tienda"
-          class="absolute left-[4%] top-[75%] w-[16%] h-[9%]"
-        ></a>
       </div>
 
       <!-- Trust Badges -->
@@ -1414,8 +1409,6 @@
             <li>
               <a
                 href="sobre-nosotros.html"
-                target="_blank"
-                rel="noopener noreferrer"
                 class="hover:text-paw-sageLight transition flex items-center gap-2"
                 ><span class="text-paw-accent">›</span> Sobre Nosotros</a
               >
@@ -1433,17 +1426,25 @@
           <ul class="space-y-3 text-sm text-gray-400">
             <li>
               <a
-                href="#"
+                href="preguntas-frecuentes.html"
                 class="hover:text-paw-sageLight transition flex items-center gap-2"
                 ><span class="text-paw-accent">›</span> Preguntas Frecuentes</a
               >
             </li>
             <li>
               <a
-                href="#"
+                href="terminos-y-condiciones.html"
                 class="hover:text-paw-sageLight transition flex items-center gap-2"
                 ><span class="text-paw-accent">›</span> Términos y
                 Condiciones</a
+              >
+            </li>
+            <li>
+              <a
+                href="boton-de-arrepentimiento.html"
+                class="hover:text-paw-sageLight transition flex items-center gap-2"
+                ><span class="text-paw-accent">›</span> Botón de
+                Arrepentimiento</a
               >
             </li>
           </ul>
@@ -1564,6 +1565,8 @@
     </div>
 
     <script>
+      const TELEFONO_WHATSAPP = "5491156237495";
+
       // Premium Product Data
       const products = [
         {
@@ -1817,30 +1820,35 @@
       }
 
       function checkoutWhatsApp() {
-        if (cart.length === 0) return;
-        let text =
-          "Hola! Quisiera realizar el siguiente pedido en Malvinas Pet Shop:%0A%0A";
-        let total = 0;
+        if (cart.length === 0) {
+          alert("Por favor, agregá productos al carrito antes de comprar.");
+          return;
+        }
 
-        cart.forEach((item) => {
-          const lineTotal = item.price * item.qty;
-          const formattedLineTotal = new Intl.NumberFormat("es-AR", {
-            style: "currency",
-            currency: "ARS",
+        const formatAmount = (amount) =>
+          new Intl.NumberFormat("es-AR", {
             maximumFractionDigits: 0,
-          }).format(lineTotal);
-          text += `🔸 ${item.qty}x ${item.name} (${formattedLineTotal})%0A`;
-          total += lineTotal;
-        });
+          }).format(amount);
+        const productLines = cart.map(
+          (item) =>
+            `- ${item.qty} x ${item.name} ($ ${formatAmount(item.price)})`,
+        );
+        const total = cart.reduce(
+          (sum, item) => sum + item.price * item.qty,
+          0,
+        );
+        const message = [
+          "¡Hola Malvinas Argentinas S.A.! Quiero realizar el siguiente pedido desde la web:",
+          ...productLines,
+          `*Total: $ ${formatAmount(total)}*`,
+          "Aguardo confirmación de stock para acordar la modalidad de pago y entrega.",
+        ].join("\n");
+        const mensaje = encodeURIComponent(message);
 
-        const formattedTotal = new Intl.NumberFormat("es-AR", {
-          style: "currency",
-          currency: "ARS",
-          maximumFractionDigits: 0,
-        }).format(total);
-        text += `%0A*Total Estimado: ${formattedTotal}*%0A%0A(Aguardaré a que me confirmen el costo de envío. ¡Gracias!)`;
-
-        window.open(`https://wa.me/?text=${text}`, "_blank");
+        window.open(
+          `https://wa.me/${TELEFONO_WHATSAPP}?text=${mensaje}`,
+          "_blank",
+        );
       }
 
       // Initialize
